@@ -29,5 +29,28 @@ def common_create():
     # [[ 1.+0.j  2.+0.j]
     #  [ 3.+0.j  4.+0.j]]
 
+
+def lst_2_array():
+    """
+    list, tuple to array
+    :return: none
+    """
+    tp = (1, 2, 3)
+    lst = [[1, 2], [3, 4]]
+    print np.array(lst).shape
+    # (2L, 2L)
+    print np.array(lst)
+    # [[1 2]
+    #   [3 4]]
+    print np.asarray(lst)
+    # [[1 2]
+    #   [3 4]]
+    print np.asarray(tp)
+    # [1 2 3]
+
 if __name__ == '__main__':
-    common_create()
+    # common_create()
+    # lst_2_array()
+    lst = [[1, 2], [3, 4]]
+    print np.array(lst)
+    print np.array(lst)[:-1]
