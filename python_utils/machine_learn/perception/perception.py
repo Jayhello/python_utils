@@ -4,10 +4,6 @@ from utils.FileUtil import get_line_lst
 import matplotlib.pyplot as plt
 
 
-date_path = '../dataset/perception/dataset.txt'
-train_set = []
-
-
 class Perception(object):
 
     def __init__(self, var_num):
@@ -25,24 +21,23 @@ class Perception(object):
         :return none:
         """
         for item in train_data:
-            # output = np.dot(self.w, item[0:-1]) + self.b
-            # output = 1 if output >= 0 else -1
-            # error = True if output != item[-1] else False
-            #
-            # if error:
-            #     self.w += eta * output * item[0:-1]
-            #     self.b += eta * output
-
             output = (np.dot(self.w, item[0:-1]) + self.b)*item[-1]
             if output <= 0:
                 self.w += eta * item[-1] * item[0:-1]
                 self.b += eta * item[-1]
 
-    def sdg(self, train_data, epoch, eta):
-
+    def sgd(self, train_data, epoch, eta, batch_size):
+        """
+        Training perception model by stochastic gradient descent
+        :param train_data: 2D array like [[1.1, 2.3, -1]] the last
+                            item -1 train_date[0][-1] means label
+        :param epoch:
+        :param eta:learning rate
+        :return:none
+        """
         for i in xrange(epoch):
             np.random.shuffle(train_data)
-            batch_lst = [train_data[k:k+20] for k in xrange(0, len(train_data), 20)]
+            batch_lst = [train_data[k:k+batch_size] for k in xrange(0, len(train_data), batch_size)]
             for mini_batch in batch_lst:
                 self.train(mini_batch, eta)
 
@@ -67,9 +62,15 @@ class Perception(object):
     def get_current_para(self):
         return self.w, self.b
 
+    def get_weight(self):
+        return self.w
 
-def generate_data():
-    lst_data = get_line_lst(date_path)
+    def get_bias(self):
+        return self.b
+
+
+def generate_data(data_path):
+    lst_data = get_line_lst(data_path)
 
     lst_ret = []
     for item in lst_data:
@@ -84,20 +85,26 @@ def generate_data():
 
     return ret_arr
 
+
+def plot_data_scatter(train_data, w, b):
+    x = np.linspace(-5, 5, 10)
+    plt.figure()
+    for i in range(len(train_data)):
+        if train_data[i][-1] == 1:
+            plt.scatter(train_data[i][0], train_data[i][1], c=u'b')
+        else:
+            plt.scatter(train_data[i][0], train_data[i][1], c=u'r')
+    plt.plot(x, -(w[0]*x+b) / w[1], c=u'r')
+    plt.show()
+
 if __name__ == '__main__':
-    train_data = generate_data()
-    epoch, eta, var_num = 100, 0.1, 2
+    data_path = '../dataset/perception/dataset.txt'
+    train_data = generate_data(data_path)
+    epoch, eta, var_num, batch_size = 100, 0.1, 2, 20
     p = Perception(var_num)
-    p.sdg(train_data, epoch, eta)
-    # x = np.linspace(-5, 5, 10)
-    # plt.figure()
-    # for i in range(len(train_data)):
-    #     if train_data[i][-1] == 1:
-    #         plt.scatter(train_data[i][0], train_data[i][1], c=u'b')
-    #     else:
-    #         plt.scatter(train_data[i][0], train_data[i][1], c=u'r')
-    #
-    # plt.show()
+    p.sgd(train_data, epoch, eta, batch_size)
+    plot_data_scatter(train_data, p.get_weight(), p.get_bias())
+
     # print generate_date()[0]
     # print generate_date()[0][0:-1]
     # var_num = 2
