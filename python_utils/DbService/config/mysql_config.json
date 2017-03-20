@@ -1,0 +1,4 @@
+{
+  "host":"localhost","user":"root","pwd":"123456",
+  "db":"springdemo","port":3306
+}
