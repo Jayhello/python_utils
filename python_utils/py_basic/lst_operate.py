@@ -13,5 +13,13 @@ def lst_condition():
     print ["ha" if i else "Ha" for i in range(3)]
     # ['Ha', 'ha', 'ha']
 
+
+def lst_delete():
+    lst = [0, 1, 0, 3]
+    for item in lst:
+        print item
+        lst.remove(item)
+
 if __name__ == '__main__':
-    lst_condition()
+    # lst_condition()
+    lst_delete()
