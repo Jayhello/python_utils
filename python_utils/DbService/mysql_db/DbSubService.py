@@ -22,6 +22,6 @@ class DbSubService(DbBase):
         return res[0]
 
 if __name__ == '__main__':
-    db = DbSubService(db_config_file='../config/mysql_police_audit.json')
+    db = DbSubService(db_config_file='../config/mysql_config.json')
     tb = 'tb_test'
     db.count(tb)

@@ -14,12 +14,45 @@ def lst_condition():
     # ['Ha', 'ha', 'ha']
 
 
-def lst_delete():
+def lst_delete_in_for_loop():
     lst = [0, 1, 0, 3]
     for item in lst:
         print item
         lst.remove(item)
 
+
+def lst_shift():
+    """
+    a basic way of shift list
+    :return:
+    """
+    lst = [1, 2, 3, 4]
+    shift_n = 2
+    print lst[shift_n:] + lst[:shift_n]
+    # [3, 4, 1, 2]
+    shift_n = 1
+    print lst[shift_n:] + lst[:shift_n]
+    # [2, 3, 4, 1]
+
+    lst = [1, 2, 3, 4]
+    lst.append(lst.pop(0))
+    print lst
+    # [2, 3, 4, 1]
+
+
+def lst_shift_efficient():
+    """
+    a efficient way of shift list
+    :return:
+    """
+    from collections import deque
+    de_lst = deque([1, 2, 3, 4])
+    de_lst.rotate(1)
+    print de_lst
+    # deque([4, 1, 2, 3])
+
 if __name__ == '__main__':
     # lst_condition()
-    lst_delete()
+    # lst_delete()
+    # lst_shift()
+    lst_shift_efficient()
