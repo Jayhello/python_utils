@@ -72,9 +72,11 @@ class Perception(object):
 def generate_data(data_path):
     lst_data = get_line_lst(data_path)
 
-    lst_ret = []
-    for item in lst_data:
-        lst_ret.append([float(s) for s in item.split()])
+    # lst_ret = []
+    # for item in lst_data:
+    #     lst_ret.append([float(s) for s in item.split()])
+    # the following one line  is equivalent to the above for loop
+    lst_ret = [[float(s) for s in item.split()] for item in lst_data]
 
     ret_arr = np.array(lst_ret)
 
