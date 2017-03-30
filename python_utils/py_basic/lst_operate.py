@@ -51,8 +51,20 @@ def lst_shift_efficient():
     print de_lst
     # deque([4, 1, 2, 3])
 
+
+def del_col_in_2dlst():
+    """
+
+    :return:
+    """
+    td_lst = [[1, 2, 3], [1, 2, 3]]
+    print [lst[1:] for lst in td_lst]
+    # [[2, 3], [2, 3]]
+
+
 if __name__ == '__main__':
     # lst_condition()
     # lst_delete()
     # lst_shift()
-    lst_shift_efficient()
+    # lst_shift_efficient()
+    del_col_in_2dlst()
