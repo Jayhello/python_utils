@@ -17,6 +17,16 @@ def basic_linear():
     plt.show()
 
 
+def plot_x1_y4():
+    """
+    plot a line x = 1
+    :return:
+    """
+    plt.plot([0, 0], [0, 4], color='red', linewidth=3.0)
+    plt.axis([-1, 1, -4, 4])
+    plt.show()
+
+
 def basic_curve():
     x = np.linspace(0, 2, 11)
     print x
@@ -94,15 +104,17 @@ def plot_2d():
     x = [1, 2, 3, 4, 5, 6, 7]
     y = [2.6, 3.6, 8.3, 56, 12.7, 8.9, 5.3]
     plt.plot(x, y)      # plot line
-    plt.scatter(x, y)   # plot scatter
+    # plt.scatter(x, y)   # plot scatter
     plt.show()
 
 
 if __name__ == '__main__':
+    plot_2d()
     # basic_linear()
     # basic_curve()
     # multi_curve()
     # multi_figure()
     # multi_figure_two()
-    histogram()
+    # histogram()
     # histogram_two()
+    pass

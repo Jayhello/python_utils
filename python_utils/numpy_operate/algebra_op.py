@@ -34,7 +34,19 @@ def covariance():
     # [ 0.25  0.25] get variance of every row
 
 
+def eigen_vec_val():
+    arr1 = np.array([[-1, 0], [0, 1]])
+    arr2 = np.array([[0, 0], [1, 1]])
+    eig_val1, eig_vec1 = np.linalg.eig(arr1)
+    print eig_val1
+    print eig_vec1
+
+    eig_val2, eig_vec2 = np.linalg.eig(arr2)
+    print eig_val2
+    print eig_vec2
+
 if __name__ == '__main__':
     # mean()
-    covariance()
+    # covariance()
+    eigen_vec_val()
     pass
