@@ -11,6 +11,8 @@ def mean():
     mean_arr = np.mean(arr, axis=0)
     print mean_arr
     print arr - mean_arr
+    print np.mean(arr)
+    print np.mean(arr, axis=1)
 
 
 def covariance():
@@ -46,7 +48,7 @@ def eigen_vec_val():
     print eig_vec2
 
 if __name__ == '__main__':
-    # mean()
+    mean()
     # covariance()
-    eigen_vec_val()
+    # eigen_vec_val()
     pass

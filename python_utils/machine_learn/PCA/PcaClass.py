@@ -12,6 +12,7 @@ class PcaClass(object):
         mean_value = np.mean(arr_data, axis=0)
         sub_mean_value = arr_data - mean_value
         cov_arr = np.cov(sub_mean_value)
+        print cov_arr
         eig_val, eig_vec = np.linalg.eig(cov_arr)
 
         pass
