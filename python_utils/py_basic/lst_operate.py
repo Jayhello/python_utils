@@ -62,9 +62,24 @@ def del_col_in_2dlst():
     # [[2, 3], [2, 3]]
 
 
+def range_xrange():
+    print range(0, 3)
+    # [0, 1, 2]
+    print range(3)
+    # [0, 1, 2]
+    print range(0, 7, 2)
+    # [0, 2, 4, 6]
+    print xrange(0, 3)
+    # xrange(3)
+    for i in xrange(3):
+        print i  # 0 1 2
+
+
 if __name__ == '__main__':
+    range_xrange()
     # lst_condition()
     # lst_delete()
     # lst_shift()
     # lst_shift_efficient()
-    del_col_in_2dlst()
+    # del_col_in_2dlst()
+    pass
