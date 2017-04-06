@@ -21,6 +21,10 @@ def arr_arg_sort():
 
 
 def arr_sort():
+    arr = np.random.permutation(3 * 4).reshape(3, 4)
+    print arr
+    arr.sort()
+
     pass
 
 if __name__ == '__main__':
