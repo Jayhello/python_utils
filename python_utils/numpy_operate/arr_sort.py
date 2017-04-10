@@ -23,10 +23,19 @@ def arr_arg_sort():
 def arr_sort():
     arr = np.random.permutation(3 * 4).reshape(3, 4)
     print arr
+    # [[11  4  6  1]
+    #  [10  0  2  9]
+    #  [ 8  7  5  3]]
     arr.sort()
-
+    print 'after sort \n', arr
+    # [[ 1  4  6 11]
+    #  [ 0  2  9 10]
+    #  [ 3  5  7  8]]
+    print np.sort(arr)  # the result is as some as arr.sort(),default sort by row
+    print np.sort(arr, axis=0)  # sort by column, axis=0 means column
     pass
 
 if __name__ == '__main__':
-    arr_arg_sort()
+    # arr_arg_sort()
+    arr_sort()
     pass

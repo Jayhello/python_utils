@@ -109,11 +109,11 @@ def plot_2d():
 
 
 if __name__ == '__main__':
-    plot_2d()
+    # plot_2d()
     # basic_linear()
     # basic_curve()
     # multi_curve()
-    # multi_figure()
+    multi_figure()
     # multi_figure_two()
     # histogram()
     # histogram_two()

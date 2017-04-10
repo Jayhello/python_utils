@@ -2,6 +2,7 @@
 
 """
 This file is about operator of threading.Lock
+using which we can realize a thread safe counter
 """
 
 import logging
@@ -12,7 +13,7 @@ import time
 
 logging.basicConfig(level=logging.DEBUG,
                     format='(%(asctime)s %(threadName)-10s) %(message)s',
-                    )
+                    datefmt='%Y-%m-%d %I:%M:%S')
 
 
 class CounterThreadSafe(threading.Thread):
@@ -39,7 +40,7 @@ def do_counter(counter):
         counter.inc(sleep_sec)
 
 
-def test_counter():
+def test_multi_thread_counter():
     counter = CounterThreadSafe()
 
     for i in xrange(0, 3):
@@ -62,7 +63,7 @@ def join_all_others_thread():
 
 
 if __name__ == '__main__':
-    test_counter()
+    test_multi_thread_counter()
     join_all_others_thread()
     # the following msg will be print after all the other thread done
     logging.debug('all the sub threads done')

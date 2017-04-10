@@ -38,17 +38,22 @@ def covariance():
 
 def eigen_vec_val():
     arr1 = np.array([[-1, 0], [0, 1]])
-    arr2 = np.array([[0, 0], [1, 1]])
     eig_val1, eig_vec1 = np.linalg.eig(arr1)
-    print eig_val1
-    print eig_vec1
+    # print eig_val1
+    # print eig_vec1
 
+    arr2 = np.random.randint(1, 10, size=(3, 3))
     eig_val2, eig_vec2 = np.linalg.eig(arr2)
     print eig_val2
     print eig_vec2
+    eig_val2_idx = np.argsort(eig_val2)
+    print eig_val2_idx
+    print eig_val2_idx[::-1]
+    print eig_vec2[:, eig_val2_idx]
+    print eig_vec2[:, eig_val2_idx[::-1]]
 
 if __name__ == '__main__':
-    mean()
+    # mean()
     # covariance()
-    # eigen_vec_val()
+    eigen_vec_val()
     pass

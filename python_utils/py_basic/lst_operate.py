@@ -75,8 +75,60 @@ def range_xrange():
         print i  # 0 1 2
 
 
+def lst_self_step():
+    # L[start:stop:step]
+    lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    for i in lst[::2]:
+        print i
+        # 1 3 5 7 9
+
+    for i in lst[1::2]:
+        print i
+        # 2 4 6 8 10
+
+
+def lst_reverse():
+    lst = [1, 2, 3, 4, 5, 6]
+    print lst[::-1]
+    # [6, 5, 4, 3, 2, 1]
+    print lst[::-2]
+    # [6, 4, 2]
+
+    lst = [1, 2, 3, 4, 5, 6, 7]
+    print lst[:-1]
+    # [1, 2, 3, 4, 5, 6]
+    print lst[:-3]
+    # [1, 2, 3, 4]
+    print lst[:-3:-1]
+    # [7, 6]
+    print lst[:-3:1]
+    # [1, 2, 3, 4]
+    # is step is minus, firstly we reverse the lst and then get the lst by step
+    print lst[:3:-1]
+    # [7, 6, 5]
+    print lst[:-1:-1]
+    # []
+    print lst[:-2:-1]
+    # [7]
+
+    # =======================
+    # [1, 2, 3, 4, 5, 6, 7]
+    #  0  1  2  3  4  5  6
+    # -7 -6 -5 -4 -3 -2 -1
+    print lst[-7:-1]
+    # [1, 2, 3, 4, 5, 6]
+    print lst[-7:0]
+    # []
+    print lst[-7:]
+    # [1, 2, 3, 4, 5, 6, 7]
+    print lst[-5:-2]
+    # [3, 4, 5]
+
+
 if __name__ == '__main__':
-    range_xrange()
+    lst_reverse()
+    # lst_self_step()
+    # range_xrange()
     # lst_condition()
     # lst_delete()
     # lst_shift()
