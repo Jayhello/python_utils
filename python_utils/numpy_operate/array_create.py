@@ -59,6 +59,23 @@ def broadcast_demo():
     # (3L, 4L)
 
 
+def about_reshape():
+    arr = np.array([[1, 2, 3], [4, 5, 6], [10, 11, 12], [13, 14, 15]])
+    print arr.reshape(2, 6)
+    # [[ 1  2  3  4  5  6]
+    #  [10 11 12 13 14 15]]
+    b = np.arange(1, 13).reshape((2, 2, 3))
+    print b
+    # [[[ 1  2  3]
+    #   [ 4  5  6]]
+    #
+    #  [[ 7  8  9]
+    #   [10 11 12]]]
+    print b.reshape((2, 6))
+    # [[ 1  2  3  4  5  6]
+    #  [ 7  8  9 10 11 12]]
+
+
 def lst_2_array():
     """
     list, tuple to array
@@ -77,12 +94,16 @@ def lst_2_array():
     print np.asarray(tp)
     # [1 2 3]
 
+
 if __name__ == '__main__':
-    broadcast_demo()
+    # broadcast_demo()
     # about_shape()
     # common_create()
     # lst_2_array()
-    # lst = [[1, 2, 3], [3, 4, 5]]
-    # print np.array(lst)
+    about_reshape()
+    # lst = [[1.1, 2.3, 3], [3, 4, 5]]
+    # arr = np.array(lst)
+    # print arr
+    # print arr[0, 1], arr[0, 1].flatten.A[0]
     # print np.array(lst)[:-1]
     pass

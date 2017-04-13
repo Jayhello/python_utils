@@ -108,12 +108,26 @@ def plot_2d():
     plt.show()
 
 
+def plot_orthogonal():
+    arr = np.array([[-0.85389096, -0.52045195], [0.52045195, -0.85389096]])
+    # arr = np.array([[1, -1], [1, 1]])
+    v1_x, v2_x = [arr[:, 0][0], 0], [arr[:, 1][0], 0]
+    v1_y, v2_y = [arr[:, 0][1], 0], [arr[:, 1][1], 0]
+    plt.plot(v1_x, v1_y)
+    plt.plot(v2_x, v2_y)
+    # plt.axis([-1, 1, -1, 1])
+    # set the below bound, or the line won't seem orthogonal
+    # plt.axis([-0.85389096, 0.52045195, -0.85389096, 0.52045195])
+    plt.show()
+
+
 if __name__ == '__main__':
+    plot_orthogonal()
     # plot_2d()
     # basic_linear()
     # basic_curve()
     # multi_curve()
-    multi_figure()
+    # multi_figure()
     # multi_figure_two()
     # histogram()
     # histogram_two()

@@ -77,10 +77,53 @@ def subplots_demo4():
     ax3.scatter(x1, y1)
     plt.show()
 
+
+def subplots_demo5():
+    x = np.linspace(0, 2 * np.pi, 300)
+    y = np.sin(x ** 2)
+    f, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, sharex='col', sharey='row')
+    ax1.plot(x, y)
+    ax1.set_title('Sharing x per column, y per row')
+    ax2.scatter(x, y)
+    ax2.set_title('ax2')
+
+    ax3.plot(x, 2 * y ** 2 + 1, color='r')
+    ax3.set_title('ax3')
+    ax4.plot(x, 2 * y ** 2 + 1, color='b')
+    ax4.set_title('ax4')
+
+    plt.show()
+    pass
+
+
+def subplots_demo6():
+    x = np.linspace(0, 2 * np.pi, 300)
+    y = np.sin(x ** 2)
+    f, ax_arr = plt.subplots(2, 2)
+
+    ax_arr[0, 0].plot(x, y)
+    ax_arr[0, 0].set_title('axis 0, 0')
+
+    ax_arr[0, 1].scatter(x, y)
+    ax_arr[0, 1].set_title('axis 0, 1')
+
+    ax_arr[1, 0].plot(x, y ** 2)
+    ax_arr[1, 0].set_title('axis 1, 0')
+
+    ax_arr[1, 1].scatter(x, y ** 2)
+    ax_arr[1, 1].set_title('axis 1, 1')
+    # for row 0, every element x axis hidden
+    plt.setp([ax.get_xticklabels() for ax in ax_arr[0, :]], visible=False)
+    # for column 1, every element y axis hidden
+    plt.setp([ax.get_yticklabels() for ax in ax_arr[:, 1]], visible=False)
+    plt.show()
+
 if __name__ == '__main__':
     # plot_mul()
     # subplot_demo1()
     # subplot_demo2()
     # subplot_demo3()
-    subplots_demo4()
+    # subplots_demo4()
+    # subplots_demo5()
+    subplots_demo6()
     pass

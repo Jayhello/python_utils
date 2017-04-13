@@ -21,6 +21,21 @@ class DbSubService(DbBase):
         print res[0]
         return res[0]
 
+    def get_liver_info(self, limit_start, limit_size):
+        query = """select reported_uid,
+                    sum(audit_status='S01') as audit_status_S01,
+                    sum(audit_status='S02') as audit_status_S02,
+                    sum(audit_status='S03') as audit_status_S03,
+                    sum(audit_status='S04') as audit_status_S04,
+                    sum(audit_status='S05') as audit_status_S05,
+                    count(*) as audit_status_all from iboms.tb_ms_mobile_report_test
+                    group by reported_uid
+                    limit %s, %s""" % (limit_start, limit_size)
+
+        self.cursor.execute(query)
+        return [row for row in self.cursor]
+
+
 if __name__ == '__main__':
     db = DbSubService(db_config_file='../config/mysql_config.json')
     tb = 'tb_test'
