@@ -35,6 +35,17 @@ class DbSubService(DbBase):
         self.cursor.execute(query)
         return [row for row in self.cursor]
 
+    def bulk_update(self, lst):
+        """
+        batch updates
+        [("new_value" , "3"),("new_value" , "6")]
+        :param lst:
+        :return:
+        """
+        query = """UPDATE Writers SET Name = %s WHERE Id = %s"""
+        self.cursor.executemany(query, lst)
+        self.conn.commit()
+
 
 if __name__ == '__main__':
     db = DbSubService(db_config_file='../config/mysql_config.json')
