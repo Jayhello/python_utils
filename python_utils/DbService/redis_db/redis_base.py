@@ -7,23 +7,29 @@ import redis
 
 
 def demo1():
-    ip = '183.36.123.188'
-    ip = 'localhost'
-    p = 6712
-    p = 6379
+    ip = '183.36.123.180'
+    ip2 = 'localhost'
+    p = 36712
+    p2 = 6379
 
-    r = redis.StrictRedis(host=ip, port=p, db=4)
+    # r = redis.StrictRedis(host=ip, port=p, db=4)
     # r.set('name', '必死')
     # print r.get('name')
-    lst = r.keys(pattern='*')
-    val = r.mget(lst)
+    # lst = r.keys(pattern='*')
+    # val = r.mget(lst)
+    #
+    # d = dict(zip(lst, val))
 
-    for i, item in enumerate(lst):
-        lst[i] += '1'
+    r2 = redis.StrictRedis(host=ip2, port=p2, db=4)
 
-    d = {'a':1, 'b':7, 'foo':'bar'}
+    # r2.mset(d)
+    lst = r2.keys(pattern='*')
+    for item in lst[-100:]:
+        print item
+
+    # d = {'a':1, 'b':7, 'foo':'bar'}
     # r.mset(zip(lst, val))
-    r.mset(d)
+    # r.mset(d)
 
 if __name__ == '__main__':
     demo1()

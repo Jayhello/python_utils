@@ -125,8 +125,25 @@ def lst_reverse():
     # [3, 4, 5]
 
 
+def generate_range_tuple_list(start, end, step):
+    """
+    for example generate_range_tuple_list(0, 11, 5) ->
+     [(0, 5), (5, 10), (10, 11)]
+    :param start:  for eg 0
+    :param end:    for eg 11
+    :param step:   for eg 5
+    :return: [(0, 5), (5, 10), (10, 11)]
+    """
+    ret_lst = []
+    for i in xrange(start, end, step):
+        tp = (i, i + step if(i + step < end) else end)
+        ret_lst.append(tp)
+
+    return ret_lst
+
+
 if __name__ == '__main__':
-    lst_reverse()
+    # lst_reverse()
     # lst_self_step()
     # range_xrange()
     # lst_condition()
@@ -134,4 +151,5 @@ if __name__ == '__main__':
     # lst_shift()
     # lst_shift_efficient()
     # del_col_in_2dlst()
+    print generate_range_tuple_list(0, 11, 5)
     pass
