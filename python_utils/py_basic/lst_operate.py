@@ -54,7 +54,7 @@ def lst_shift_efficient():
 
 def del_col_in_2dlst():
     """
-
+    remove certain col in 2-d list
     :return:
     """
     td_lst = [[1, 2, 3], [1, 2, 3]]
