@@ -142,6 +142,14 @@ def generate_range_tuple_list(start, end, step):
     return ret_lst
 
 
+def create_list_repeated_n_times():
+    # generate list with 20 0
+    lst_i = [0 for i in xrange(20)]
+    print lst_i
+    lst_i_2 = [0] * 20
+    print lst_i_2
+
+
 if __name__ == '__main__':
     # lst_reverse()
     # lst_self_step()
@@ -151,5 +159,6 @@ if __name__ == '__main__':
     # lst_shift()
     # lst_shift_efficient()
     # del_col_in_2dlst()
-    print generate_range_tuple_list(0, 11, 5)
+    # print generate_range_tuple_list(0, 11, 5)
+    create_list_repeated_n_times()
     pass

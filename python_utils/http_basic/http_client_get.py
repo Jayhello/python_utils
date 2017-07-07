@@ -18,7 +18,7 @@ def get_ret_from_http(url):
 
 def multi_process_stress_test():
     """
-    start up 4 process to issue 1000 http requests to server
+    start up 4 thread to issue 1000 http requests to server
     and test consume time
     :return:
     """
