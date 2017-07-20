@@ -23,8 +23,9 @@ def multi_process_stress_test():
     :return:
     """
     start = time.time()
-    url = """http://127.0.0.1:9325/shortvideo/checkBlack?url=http%3A%2F%2Fzbasecapture.bs2.yy.com%2F42269159_1499248536403_3.jpg&serial=abc123"""
-    lst_url = [url] * 1000
+    url = """http://127.0.0.1:9325/shortvideo/checkBlack?url=http%3A%2F%2Fzbasecapture.bs2.yy.com%2F42269159_1499248536403_3.jpg&serial=abcdddddddd"""
+    url1 = """http://127.0.0.1:9325/shortvideo/checkBlack?url=http%3A%2F%2Fgenie.bs2dl.yy.com%2Ff4955aa1ab1c479256e2a2c5cdec73a6&serial=abceeeeeeee"""
+    lst_url = [url, url1]*50
     pool = ThreadPool(5)
     ret = pool.map(get_ret_from_http, lst_url)
     pool.close()
