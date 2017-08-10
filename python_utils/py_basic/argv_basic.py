@@ -30,4 +30,4 @@ def parse_js():
 if __name__ == '__main__':
     print sys.argv
     print len(sys.argv)
-    parse_js()
+    # parse_js()

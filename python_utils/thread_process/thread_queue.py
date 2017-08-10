@@ -7,6 +7,7 @@ import threading
 import logging
 import random
 import time
+from basic_thread import join_all_others_thread
 logging.basicConfig(level=logging.DEBUG,
                     format='%(levelname)s %(asctime)s %(threadName)s %(message)s',
                     datefmt='%Y-%m-%d %I:%M:%S')
@@ -74,6 +75,40 @@ def test_consume_produce_queue():
     create_mul_thread(consume_num, 'consume--', consume)
     pass
 
+
+def consume_echo():
+    logging.info('set gpu mode, load caffe net')
+    while True:
+        item = lst_que.get(True)
+        logging.info('recognize %s', item)
+
+
+def get_input_text():
+    while True:
+        text = raw_input("please input a sentence")
+        lst_que.put(text, True)
+
+        if 'exit' == text:
+            break
+
+
+def create_echo_cp():
+    """
+    create consume_echo, get_input_text thread
+    """
+    c1 = threading.Thread(name="c1", target=consume_echo)
+    c2 = threading.Thread(name="c2", target=consume_echo)
+    p1 = threading.Thread(name="p1", target=get_input_text)
+    c1.start()
+    c2.start()
+    p1.start()
+    join_all_others_thread()
+
+
 if __name__ == '__main__':
-    test_consume_produce_queue()
+    # test_consume_produce_queue()
+    # create_echo_cp()
+    s = 'abc'
+    s = s + '123'
+    print s
     pass

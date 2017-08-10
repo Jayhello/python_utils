@@ -100,10 +100,13 @@ if __name__ == '__main__':
     # about_shape()
     # common_create()
     # lst_2_array()
-    about_reshape()
-    # lst = [[1.1, 2.3, 3], [3, 4, 5]]
-    # arr = np.array(lst)
-    # print arr
+    # about_reshape()
+    lst = [[1.1, 2.3, 3], [3, 4, 5]]
+    arr = np.array(lst)
+    print arr
+    print arr[...]
+
+
     # print arr[0, 1], arr[0, 1].flatten.A[0]
     # print np.array(lst)[:-1]
     pass
