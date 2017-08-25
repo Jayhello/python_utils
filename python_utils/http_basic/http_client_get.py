@@ -6,6 +6,7 @@ This file a sample demo to do http stress test
 import requests
 import time
 from multiprocessing.dummy import Pool as ThreadPool
+import urllib
 
 
 def get_ret_from_http(url):
@@ -32,7 +33,31 @@ def multi_process_stress_test():
     pool.join()
     print 'time consume %s' % (time.time() - start)
 
+
+def make_url():
+    """
+    generate url with parameter
+    https://xy.com/index.php?url=http%3A//xy.xxx.com/22.jpg&SecretId=xy_123_move
+    cited from https://stackoverflow.com/questions/2506379/add-params-to-given-url-in-python
+    https://github.com/gruns/furl a good util for url operator
+    :return:
+    """
+    para = {"SecretId": "xy_123_move", "url": "http://xy.xxx.com/22.jpg"}
+
+    print urllib.urlencode(para)
+    # url=http%3A%2F%2Fxy.xxx.com%2F22.jpg&SecretId=xy_123_move
+
+    base_url = 'xy.com/index.php'
+
+    return 'https://%s?%s' % (base_url, '&'.join('%s=%s' % (k, urllib.quote(str(v))) for k, v in para.iteritems()))
+
+
 if __name__ == '__main__':
     # get_ret_from_http()
-    multi_process_stress_test()
+    # multi_process_stress_test()
+
+    print make_url()
+    # s = "abc"
+    s = "abc"
+    print urllib.quote(s)
     pass

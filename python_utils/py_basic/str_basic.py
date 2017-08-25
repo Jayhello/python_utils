@@ -21,13 +21,19 @@ def generator_random_str(size=6, str_source=string.digits + string.lowercase):
 
 if __name__ == '__main__':
     # str_format()
-    print generator_random_str()
-    print generator_random_str(3, 'abc123')
+    # print generator_random_str()
+    # print generator_random_str(3, 'abc123')
     # s = '123'
     # if s.find("12") == -1:
     #     print 'no no '
 
-    # url = 'www.myzaker.com/article/58daf1b69490cbe53400001b/'
+    url = 'www.myzaker.com/article/58daf1b69490cbe53400001b/'
+    if 'aa' in url:
+        print '1'
+    elif 'comp' in url:
+        print '2'
+    else:
+        print '3'
     # print url.find('myzaker')
     # print url.find('www.myzaker')
     # print url.find('http')

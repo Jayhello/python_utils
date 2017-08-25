@@ -102,11 +102,16 @@ if __name__ == '__main__':
     # lst_2_array()
     # about_reshape()
     lst = [[1.1, 2.3, 3], [3, 4, 5]]
-    arr = np.array(lst)
-    print arr
-    print arr[...]
+    # arr = np.array(lst)
+    # print arr
+    # print arr[...]
 
-
+    a = np.array([[1.1, 2.3, 3]])
+    print a[0].tolist()
+    # print "".join([str(i) + "-" for i in a[0].tolist()])
+    # 1.1-2.3-3.0-
+    # if 4 in [1, 3, 5]:
+    #     print 'in it'
     # print arr[0, 1], arr[0, 1].flatten.A[0]
     # print np.array(lst)[:-1]
     pass

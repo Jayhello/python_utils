@@ -150,6 +150,25 @@ def create_list_repeated_n_times():
     print lst_i_2
 
 
+def sort_lst_by_item():
+    """
+    for example lst = ['F:/0.jpg', 'F:/1.jpg', ..., 'F:/101.jpg']
+    in the directory, when we read it.They are sorted by str not the num in pig name
+    we want to read it like that:
+    F:/0.jpg F:/1.jpg F:/9.jpg F:/10.jpg
+    not
+    F:/0.jpg F:/10.jpg F:/9.jpg
+    :return:
+    """
+    import glob
+    import os
+    img_dir = 'F:/ad_samples/img_voice_test/tencent_img/tencent_ocr_sample/'
+
+    lst = glob.glob(img_dir + "*.jpg")
+    # os.path.splitext(x)[0].split('\\')[-1] get num '9' from F:/9.jpg
+    lst_sorted = sorted(lst, key=lambda x: int(os.path.splitext(x)[0].split('\\')[-1]))
+    return lst_sorted
+
 if __name__ == '__main__':
     # lst_reverse()
     # lst_self_step()
