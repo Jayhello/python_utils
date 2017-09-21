@@ -125,19 +125,19 @@ def flip_all_in_dir():
 
 
 def augmentation():
-    # path = 'F:/augment'
+    path = 'F:/augment'
     # path = 'F:/ad_samples/train_samples/ad_text'
 
     # output_path = 'F:/ad_samples/train_samples/ad_text_artifact/augmentation'
-    # output_path = 'output'
+    output_path = 'output'
 
     # path = 'F:/ad_samples/train_samples/artifact_ad_web/artifact_ad_web_14_flip/'
-    path = 'F:/ad_samples/train_samples/ad_text_2/'
+    # path = 'F:/ad_samples/train_samples/ad_text_2/'
     # path = 'F:/ad_samples/new_train_sample/'
     # output_path = 'F:/ad_samples/train_samples/artifact_ad_web/artifact_ad_web_14_aug/'
     # output_path = 'F:/ad_samples/train_samples/ad_text_rotate90/'
     # output_path = 'F:/ad_samples/new_train_sample_artifact/'
-    output_path = 'F:/ad_samples/train_samples/ad_text_2_output/'
+    # output_path = 'F:/ad_samples/train_samples/ad_text_2_output/'
 
     p = Augmentor.Pipeline(path, output_directory=output_path)
 
@@ -152,11 +152,11 @@ def augmentation():
     # p.random_distortion(probability=0.2, grid_height=4, grid_width=4, magnitude=4)
     # p.rotate90(probability=1)
     # SIZE = 4164 * 4
-    # SIZE = 5 * 10
+    SIZE = 5 * 4
     # SIZE = 2799 * 10
     # SIZE = 2799 * 1
     # SIZE = 4148 * 3
-    SIZE = 68 * 5
+    # SIZE = 68 * 5
     p.sample(SIZE)
 
 

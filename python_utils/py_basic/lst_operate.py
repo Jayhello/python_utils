@@ -169,6 +169,7 @@ def sort_lst_by_item():
     lst_sorted = sorted(lst, key=lambda x: int(os.path.splitext(x)[0].split('\\')[-1]))
     return lst_sorted
 
+
 if __name__ == '__main__':
     # lst_reverse()
     # lst_self_step()

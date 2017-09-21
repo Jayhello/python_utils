@@ -4,6 +4,8 @@ from os.path import isfile, join
 import glob
 import os
 import errno
+from xlwt import *
+import time
 
 
 def make_dir_not_exists(path):
@@ -74,6 +76,7 @@ def all_subdir_join():
 
 def batch_rename():
     """
+    two-level dir
     added 2017/8/17, rename dir hello.jpg
     :return:
     """
@@ -93,6 +96,19 @@ def batch_rename():
             # fname = 'xx' + str(i)
             os.rename(f, os.path.join(dir_item, str(i) + '.jpg'))
             i += 1
+
+
+def batch_rename_files_in_dir():
+    """
+    signal level dir
+    :return:
+    """
+    base_dir = 'F:/ad_samples/img_voice_test/tencent_img/violence_samples/'
+    file_list = glob.glob(base_dir + "*.jpg")
+    i = 0
+    for f in file_list:
+        os.rename(f, os.path.join(base_dir, str(i) + '.jpg'))
+        i += 1
 
 
 def get_file_name():
@@ -116,10 +132,45 @@ def get_file_name():
     print os.path.splitext(base)[0]
     # 10
 
+
+def write_list_excel(file_name, title_lst, row_lst):
+    # excel operator handler
+    excel_handler = Workbook(encoding='utf-8')
+    excel_sheet_name = time.strftime('%Y-%m-%d')
+    excel_sheet = excel_handler.add_sheet(excel_sheet_name)
+
+    # write title
+    col_idx = 0
+    for item in title_lst:
+        excel_sheet.write(0, col_idx, item)
+        col_idx += 1
+
+    # write row contents, index->row
+    row_idx = 1
+    for row in row_lst:
+        col_idx = 0
+        for item in row:
+            excel_sheet.write(row_idx, col_idx, item)
+            col_idx += 1
+        row_idx += 1
+
+    # write/save excel to file
+    excel_handler.save(file_name)
+
+
+def test_write_list_excel():
+    file = 'F:/test.xlsx'
+    title_lst = ['姓名', '性别', '年龄', ]
+    row_lst = [['熊大', '男', 10], ['熊2', '男', '15'], ['强哥', '男', 25]]
+    write_list_excel(file, title_lst, row_lst)
+
+
 g_val = 3
 
 if __name__ == '__main__':
-    batch_rename()
+    test_write_list_excel()
+    # batch_rename()
+    # batch_rename_files_in_dir()
     # get_file_name()
     # print get_all_files_name_in_dir('E:/rectimg')
     # print [1, 2, 0] * 3
