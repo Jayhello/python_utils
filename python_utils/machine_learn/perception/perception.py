@@ -91,11 +91,14 @@ def generate_data(data_path):
 def plot_data_scatter(train_data, w, b):
     x = np.linspace(-5, 5, 10)
     plt.figure()
+    # 画散点图(plot scatter)
     for i in range(len(train_data)):
         if train_data[i][-1] == 1:
             plt.scatter(train_data[i][0], train_data[i][1], c=u'b')
         else:
             plt.scatter(train_data[i][0], train_data[i][1], c=u'r')
+
+    # 画感知机分类，slope斜率图
     plt.plot(x, -(w[0]*x+b) / w[1], c=u'r')
     plt.show()
 
