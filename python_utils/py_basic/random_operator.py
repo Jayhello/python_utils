@@ -1,5 +1,6 @@
 # _*_ coding:utf-8 _*_
-import random, string
+import random
+import string
 
 
 def generate_random_num_str(length):
@@ -30,4 +31,3 @@ if __name__ == '__main__':
     # print string.letters
     # abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
     pass
-

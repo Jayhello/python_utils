@@ -109,9 +109,3 @@ if __name__ == '__main__':
     p = Perception(var_num)
     p.sgd(train_data, epoch, eta, batch_size)
     plot_data_scatter(train_data, p.get_weight(), p.get_bias())
-
-    # print generate_date()[0]
-    # print generate_date()[0][0:-1]
-    # var_num = 2
-    # p = Perception(var_num)
-    # print p.get_current_para()[0]
