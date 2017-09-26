@@ -2,7 +2,6 @@
 
 """
 data set https://archive.ics.uci.edu/ml/datasets/Iris
-
 """
 
 import numpy as np
