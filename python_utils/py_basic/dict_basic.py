@@ -65,4 +65,6 @@ if __name__ == '__main__':
     # else:
     #     # 0
     #     print len(d_info)
+    lst = [1, 2, 3]
+
     pass

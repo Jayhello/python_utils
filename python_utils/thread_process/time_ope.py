@@ -11,4 +11,6 @@ if __name__ == '__main__':
     print time_stamp
 
     print time.ctime(time_stamp)
+
+    print time.strftime("%Y-%m-%d %H:%M:%S")
     pass

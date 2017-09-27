@@ -13,7 +13,7 @@ def demo1():
     p2 = 6379
 
     # r = redis.StrictRedis(host=ip, port=p, db=4)
-    # r.set('name', '必死')
+    # r.set('name', 'bear fish')
     # print r.get('name')
     # lst = r.keys(pattern='*')
     # val = r.mget(lst)

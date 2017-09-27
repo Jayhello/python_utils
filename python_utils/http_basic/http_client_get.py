@@ -49,6 +49,7 @@ def make_url():
 
     base_url = 'xy.com/index.php'
 
+    # 记得 下面的是 ?  连接
     return 'https://%s?%s' % (base_url, '&'.join('%s=%s' % (k, urllib.quote(str(v))) for k, v in para.iteritems()))
 
 
