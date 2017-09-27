@@ -170,6 +170,24 @@ def sort_lst_by_item():
     return lst_sorted
 
 
+def clear_lst():
+    """
+    method to clear a list
+    Python 3.3+ you can also use list.clear()
+    """
+    a = [1, 2, 3]
+    b = a
+    a = []
+    print a  # []
+    print b  # [1, 2, 3]
+
+    a = [1, 2, 3]
+    b = a
+    del a[:]  # equivalent to   del a[0:len(a)]
+    print a  # []
+    print b  # []
+
+
 if __name__ == '__main__':
     # lst_reverse()
     # lst_self_step()
@@ -180,5 +198,6 @@ if __name__ == '__main__':
     # lst_shift_efficient()
     # del_col_in_2dlst()
     # print generate_range_tuple_list(0, 11, 5)
-    create_list_repeated_n_times()
+    # create_list_repeated_n_times()
+    clear_lst()
     pass

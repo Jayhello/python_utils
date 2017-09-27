@@ -5,9 +5,13 @@ eg. image to base64 string, and then the base64 string to image
 For a http issue, we may want to send image directly not url, for sake of
 unvisited url by other server
 cited from https://stackoverflow.com/questions/3715493/encoding-an-image-file-with-base64
+
+base64 decode exception
+https://stackoverflow.com/questions/12315398/verify-is-a-string-is-encoded-in-base64-python
 """
 import base64
 import requests
+import binascii
 
 
 def img_base64():
@@ -29,7 +33,18 @@ def img_url_base64():
     print b64_str
 
 
+def base64_exception():
+    s_non_b64 = 'not base64 str 123 456 '
+    try:
+        print base64.decodestring(s_non_b64)
+    # except Exception as e:
+    except binascii.Error as e:
+        # you'd better catch exception
+        print "base64 decode error %s " % e
+
+
 if __name__ == '__main__':
     # img_base64()
-    img_url_base64()
+    # img_url_base64()
+    base64_exception()
     pass

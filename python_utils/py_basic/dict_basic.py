@@ -53,7 +53,7 @@ def iter_dict_remove():
 if __name__ == '__main__':
     # lst_2_dict()
     # iter_dict()
-    # iter_dict_remove()
+    iter_dict_remove()
 
     s_lst={}
     s_lst['worker_1'] = [1, 2, 3]
