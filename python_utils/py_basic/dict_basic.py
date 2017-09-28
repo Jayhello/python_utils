@@ -50,13 +50,22 @@ def iter_dict_remove():
     for key in d_info.iterkeys():
         print key, d_info[key]
 
+
+def iter_dic_sort():
+    d_info = {'33': 33, '88': 88, '22': 22, '44': 44}
+    for k in sorted(d_info):
+        print k, d_info[k]
+
+
 if __name__ == '__main__':
     # lst_2_dict()
     # iter_dict()
-    iter_dict_remove()
+    iter_dic_sort()
+    # iter_dict_remove()
 
     s_lst={}
     s_lst['worker_1'] = [1, 2, 3]
+    s_lst['worker_2'] = [1, 2, 3]
     s_lst['worker_2'] = [1, 2, 3]
     print s_lst
     # d_info = {}

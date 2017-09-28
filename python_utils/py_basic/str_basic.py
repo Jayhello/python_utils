@@ -26,14 +26,28 @@ def str_split():
     print s.split('&')
     print s.split('&')[1:]
 
+
+def remove_sub_str():
+    src = 'channel_1'
+    sub_s = 'chan'
+    print src[src.find(sub_s):]
+    print src.find(sub_s)
+    print src.replace(sub_s, '')
+
 if __name__ == '__main__':
-    str_split()
+    # remove_sub_str()
+    # str_split()
     # str_format()
     # print generator_random_str()
     # print generator_random_str(3, 'abc123')
     # s = '123'
     # if s.find("12") == -1:
     #     print 'no no '
+
+    url = 'bear fish.com'
+    if url.endswith('.com'):
+        url = url[:-4]
+        print url
 
     url = 'www.myzaker.com/article/58daf1b69490cbe53400001b/'
     # if 'aa' in url:
