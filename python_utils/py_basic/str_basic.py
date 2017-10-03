@@ -44,10 +44,16 @@ if __name__ == '__main__':
     # if s.find("12") == -1:
     #     print 'no no '
 
-    url = 'bear fish.com'
-    if url.endswith('.com'):
-        url = url[:-4]
-        print url
+    b = 0
+    b = None
+    # if b is not zero not None(like -1, 1) it will print
+    if b:
+        print '%s not zero' % b
+
+    # url = 'bear fish.com'
+    # if url.endswith('.com'):
+    #     url = url[:-4]
+    #     print url
 
     url = 'www.myzaker.com/article/58daf1b69490cbe53400001b/'
     # if 'aa' in url:

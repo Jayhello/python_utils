@@ -62,7 +62,55 @@ class RdsServer(object):
         except redis.ConnectionError as e:
             pass
 
+    def test_set(self):
+        # rds = redis.Redis(connection_pool=self._rds_pool)
+        rds = redis.Redis(host=self._ip, port=self._port)
+        try:
+            # print rds.sadd('set_1', 123)
+            # if success return 1
+            rv_set = set([123, 456])
+            print rds.srem('set_1', *rv_set)
+            # if success return 1
+            # s_member = rds.smembers('set_1')
+            s_member = rds.smembers('set_2')
+            print s_member
+            print type(s_member)
+        except Exception as e:
+            # if redis server goes down, then 'Error 10061 connecting to 127.0.0.1:6379'
+            print e
+
+    def test_publish(self):
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        channel = 'test_channel'
+        for i in xrange(1, 5):
+            print rds.publish(channel, str(i))
+
+    def del_keys(self):
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        keys = ['set_1', 'set_2']
+        keys = [123]
+        # 下面的 keys前记得加上 *
+        # 返回实际删除的个数(例如上面的keys中 set_2不存在，只是删除了set_1, 故而返回结果 1)
+        print rds.delete(*keys)
+
+    def del_hset_keys(self):
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        keys = ['id_1', 'id_3', 'id_2']
+        print rds.hdel('hset_1', *keys)
+
+    def get_all_key(self):
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        s = set(rds.keys('set_python_worker*'))
+        print s
+        s_sub = {'set_python_worker_1', 'set_python_worker_asdasdasd'}
+        print s - s_sub
+
 if __name__ == '__main__':
     rs = RdsServer()
-    rs.test_sub_lst()
+    # rs.test_sub_lst()
+    # rs.test_set()
+    # rs.del_keys()
+    rs.get_all_key()
+    # rs.del_hset_keys()
+    # rs.test_publish()
     pass

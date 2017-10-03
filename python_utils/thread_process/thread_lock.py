@@ -24,26 +24,37 @@ class CounterThreadSafe(threading.Thread):
 
     def inc(self, num):
         try:
-            logging.debug('wanting for lock')
+            logging.debug('wanting for lock, before num is %s val is %s', num, self.val)
             self.lock.acquire()
             self.val += num
-            logging.debug('now counter add %s', num)
+            logging.debug('after counter val is %s', self.val)
         finally:
             self.lock.release()
 
+    def inc_v2(self, num):
+        logging.debug('wanting for lock, before num is %s val is %s', num, self.val)
+        with self.lock:
+            self.val += num
+        logging.debug('after counter val is %s', self.val)
+
+g_sum = 0
+
 
 def do_counter(counter):
+    global g_sum
     for i in xrange(0, 2):
-        sleep_sec = random.randint(6, 10)
+        sleep_sec = random.randint(1, 3)
         logging.debug('now sleeping %s S', sleep_sec)
+        g_sum += sleep_sec
         time.sleep(sleep_sec)
-        counter.inc(sleep_sec)
+        # counter.inc(sleep_sec)
+        counter.inc_v2(sleep_sec)
 
 
 def test_multi_thread_counter():
     counter = CounterThreadSafe()
 
-    for i in xrange(0, 3):
+    for i in xrange(0, 5):
         t = threading.Thread(target=do_counter, args=(counter, ))
         t.start()
         # t.join()   # can't join in this row or it will block the main thread
@@ -67,4 +78,5 @@ if __name__ == '__main__':
     join_all_others_thread()
     # the following msg will be print after all the other thread done
     logging.debug('all the sub threads done')
+    logging.debug('g_sum is %s', g_sum)
     pass

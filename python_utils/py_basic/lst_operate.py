@@ -13,6 +13,9 @@ def lst_condition():
     print ["ha" if i else "Ha" for i in range(3)]
     # ['Ha', 'ha', 'ha']
 
+    # print [i if i % 2 for i in range(4)]
+    # ['Ha', 'ha', 'ha']
+
 
 def lst_delete_in_for_loop():
     lst = [0, 1, 0, 3]
@@ -199,5 +202,10 @@ if __name__ == '__main__':
     # del_col_in_2dlst()
     # print generate_range_tuple_list(0, 11, 5)
     # create_list_repeated_n_times()
-    clear_lst()
+    # clear_lst()
+
+    l = []
+    for it in l:
+        print "not non"
+
     pass
