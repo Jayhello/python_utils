@@ -191,7 +191,15 @@ def clear_lst():
     print b  # []
 
 
+def eu_distance():
+    a1 = [1, 2, 3]
+    a2 = [3, 4, 5]
+    from math import sqrt
+    print sqrt(sum((a - b)**2 for a, b in zip(a1, a2)))
+    # 3.46410161514
+
 if __name__ == '__main__':
+    eu_distance()
     # lst_reverse()
     # lst_self_step()
     # range_xrange()

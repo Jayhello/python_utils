@@ -102,8 +102,11 @@ if __name__ == '__main__':
     # lst_2_array()
     # about_reshape()
     lst = [[1.1, 2.3, 3], [3, 4, 5]]
-    # arr = np.array(lst)
-    # print arr
+    arr = np.array(lst)
+    print arr[1, :]
+    # [ 3.  4.  5.]
+    print arr[1]
+    # [ 3.  4.  5.]
     # print arr[...]
 
     a = np.array([[1.1, 2.3, 3]])

@@ -25,6 +25,12 @@ def np_sum():
     # 12
 
 
+def np_sqrt():
+    a1 = np.array([1, 4, 9])
+    print np.sqrt(a1)
+    # [ 1.  2.  3.]
+
+
 def euclidean_distance_v2():
     a1 = np.array([1, 2, 3])
     a2 = np.array([3, 4, 5])
@@ -38,9 +44,18 @@ def euclidean_distance_v3():
     print np.linalg.norm(a1 - a2)
     # 3.46410161514
 
+
+def eu_distance():
+    a1 = [1, 2, 3]
+    a2 = [3, 4, 5]
+    from math import sqrt
+    print sqrt(sum((a - b)**2 for a, b in zip(a1, a2)))
+    # 3.46410161514
+
 if __name__ == '__main__':
-    # euclidean_distance()
+    euclidean_distance()
     # euclidean_distance_v2()
     # np_sum()
-    euclidean_distance_v3()
+    # euclidean_distance_v3()
+    # np_sqrt()
     pass
