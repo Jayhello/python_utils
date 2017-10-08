@@ -11,8 +11,9 @@ https://kevinzakka.github.io/2016/07/13/k-nearest-neighbor/
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cross_validation import train_test_split
+from sklearn.cross_validation import train_test_split, cross_val_score
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def load_data():
@@ -32,13 +33,36 @@ def load_data():
 def predict():
     x_train, x_test, y_train, y_test = load_data()
     k = 3
-    k = 7
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(x_train, y_train)
     pred = knn.predict(x_test)
     print accuracy_score(y_test, pred)
 
+
+def cross_validation():
+    x_train, x_test, y_train, y_test = load_data()
+    k_lst = list(range(1, 30))
+    lst_scores = []
+
+    for k in k_lst:
+        knn = KNeighborsClassifier(n_neighbors=k)
+        scores = cross_val_score(knn, x_train, y_train, cv=10, scoring='accuracy')
+        lst_scores.append(scores.mean())
+
+    # changing to misclassification error
+    MSE = [1 - x for x in lst_scores]
+    optimal_k = k_lst[MSE.index(min(MSE))]
+    print "The optimal number of neighbors is %d" % optimal_k
+    # plot misclassification error vs k
+    # plt.plot(k_lst, MSE)
+    # plt.ylabel('Misclassification Error')
+    plt.plot(k_lst, lst_scores)
+    plt.xlabel('Number of Neighbors K')
+    plt.ylabel('correct classification rate')
+    plt.show()
+
 if __name__ == '__main__':
     # load_data()
-    predict()
+    # predict()
+    cross_validation()
     pass
