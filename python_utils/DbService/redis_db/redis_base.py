@@ -48,7 +48,7 @@ class RdsServer(object):
         try:
             sub = rds.pubsub()
             sub_lst = ['channel_1', 'channel_2']
-            sub.subscribe(*sub_lst)
+            print sub.subscribe(*sub_lst)
             sub.subscribe('abc')
 
             for item in sub.listen():
@@ -107,10 +107,10 @@ class RdsServer(object):
 
 if __name__ == '__main__':
     rs = RdsServer()
-    # rs.test_sub_lst()
+    rs.test_sub_lst()
     # rs.test_set()
     # rs.del_keys()
-    rs.get_all_key()
+    # rs.get_all_key()
     # rs.del_hset_keys()
     # rs.test_publish()
     pass

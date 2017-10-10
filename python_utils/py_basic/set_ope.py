@@ -48,18 +48,22 @@ def dict_val_set():
 
 
 def set_remove():
-    s_src = {1, 3, 5, 7}
-    s2 = {1, 3, 2}
+    # s_src = {1, 3, 5, 7}
+    s_src = {1}
+    # s2 = {1, 3, 2}
+    s2 = [1, 3, 2]
     # raise error
     # print s_src.remove(*s2)
     try:
         s_src.remove(*s2)
     except Exception as e:
         print e
+        # print s_src
+        print s_src - s2
 
-    print s_src | s2
+    # print s_src | s2
     # set([1, 2, 3, 5, 7])
-    print s_src & s2
+    # print s_src & s2
     # set([1, 3])
 
 
@@ -95,13 +99,13 @@ if __name__ == '__main__':
     # set_diff()
     # dict_key_to_set()
     # set_lst()
-    # set_remove()
+    set_remove()
     # define_set()
     # dict_val_set()
     # set_basic_usage()
     print min(3, 4, -1)
-    import time
-    import random
-    timestamp = int(time.time())
-    print random.randint(0, 1000000) + timestamp
+    # import time
+    # import random
+    # timestamp = int(time.time())
+    # print random.randint(0, 1000000) + timestamp
     pass

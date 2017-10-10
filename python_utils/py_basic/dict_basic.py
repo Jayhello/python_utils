@@ -115,7 +115,13 @@ def dict_sort_by_value():
     # 1 (长度为 1)
 
 
+def dic_to_lst():
+    dic_k_lst = {'11': [1, 2], 'ab': [3], 'cd': [0, -1, 2]}
+    lst = [(k, len(dic_k_lst[k])) for k in dic_k_lst.keys()]
+    print lst
+
 if __name__ == '__main__':
+    dic_to_lst()
     # dict_sort_by_value()
     # lst_2_dict()
     # iter_dict()
