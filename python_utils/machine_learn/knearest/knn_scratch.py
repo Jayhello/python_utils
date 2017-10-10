@@ -44,6 +44,11 @@ if __name__ == '__main__':
 
     knn = KnnScratch()
     knn.fit(x_train, y_train)
+
+    print knn.predict_once(x_test[0], 2)
+    # aa
+
     print knn.predict(x_test, 2)
     # ['aa', 'bb']
+
     pass

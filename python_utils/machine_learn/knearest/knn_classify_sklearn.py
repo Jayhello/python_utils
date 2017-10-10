@@ -63,6 +63,6 @@ def cross_validation():
 
 if __name__ == '__main__':
     # load_data()
-    # predict()
-    cross_validation()
+    predict()
+    # cross_validation()
     pass
