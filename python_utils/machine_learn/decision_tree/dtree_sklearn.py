@@ -9,21 +9,8 @@ http://archive.ics.uci.edu/ml/machine-learning-databases/00267/data_banknote_aut
 from sklearn.datasets import load_iris
 from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
-import os
 import subprocess
-
-
-clf = tree.DecisionTreeClassifier()
-iris = load_iris()
-clf = clf.fit(iris.data, iris.target)
-tree.export_graphviz(clf, out_file='tree.dot')
-
-command = ["dot", "-Tpng", "tree.dot", "-o", "dt.png"]
-try:
-    subprocess.check_call(command)
-except:
-    exit("Could not run dot, ie graphviz, to "
-         "produce visualization")
+import pydot
 
 def visualize_tree(tree):
     """Create tree png using graphviz.
@@ -43,6 +30,24 @@ def visualize_tree(tree):
     except:
         exit("Could not run dot, ie graphviz, to "
              "produce visualization")
+
+clf = tree.DecisionTreeClassifier()
+iris = load_iris()
+clf = clf.fit(iris.data, iris.target)
+tree.export_graphviz(clf, out_file='tree.dot')
+(graph,) = pydot.graph_from_dot_file('tree.dot')
+graph.write_png('somefile.png')
+
+# command = ["dot", "-Tpng", "tree.dot", "-o", "dt.png"]
+# try:
+#     subprocess.check_call(command)
+# except:
+#     exit("Could not run dot, ie graphviz, to "
+#          "produce visualization")
+
+visualize_tree(clf)
+
+
 
 if __name__ == '__main__':
 
