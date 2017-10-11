@@ -1,6 +1,6 @@
 digraph Tree {
 node [shape=box] ;
-0 [label="petal length (cm) <= 2.45\ngini = 0.6667\nsamples = 150\nvalue = [50, 50, 50]"] ;
+0 [label="petal width (cm) <= 0.8\ngini = 0.6667\nsamples = 150\nvalue = [50, 50, 50]"] ;
 1 [label="gini = 0.0\nsamples = 50\nvalue = [50, 0, 0]"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
 2 [label="petal width (cm) <= 1.75\ngini = 0.5\nsamples = 100\nvalue = [0, 50, 50]"] ;

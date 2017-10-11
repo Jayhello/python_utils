@@ -39,7 +39,7 @@ def iter_dict():
         print key, d_info[key]
         if d_info[key] < 0:
             # RuntimeError: dictionary changed size during iteration
-            # d_info.pop(key)
+            d_info.pop(key)
             # del d_info[key]
             pass
     print 'after del'
@@ -119,9 +119,46 @@ def dic_to_lst():
     dic_k_lst = {'11': [1, 2], 'ab': [3], 'cd': [0, -1, 2]}
     lst = [(k, len(dic_k_lst[k])) for k in dic_k_lst.keys()]
     print lst
+    # [('11', 2), ('ab', 1), ('cd', 3)]
+
+
+def dic_count_value():
+    from collections import Counter
+    dic_k_lst = {'11': None, 'ab': 3, 'name': 'xy', 'none': None, 'age': 26}
+    print Counter(dic_k_lst.values())
+    # Counter({None: 2, 'xy': 1, 26: 1, 3: 1})
+
+    count_none = 0
+    count_not_none = 0
+    for k in dic_k_lst.keys():
+        if dic_k_lst[k] is None:
+            count_none += 1
+        else:
+            count_not_none += 1
+
+    print count_none, count_not_none
+    # 2 3
+
+
+def count_val_lst_len():
+    d = {'T1': ['eggs', 'bacon', 'sausage'], 'T2': ['spam', 'ham', 'monty', 'python']}
+    print map(len, d.values())
+    # [4, 3]
+    print sum(map(len, d.values()))
+    # 7
+
+
+def sum_dic_val():
+    d_info = {'33': 1, '88': 2, '22': 3, '44': 4}
+    print sum(d_info.values())
+    # 10
+
 
 if __name__ == '__main__':
-    dic_to_lst()
+    sum_dic_val()
+    # count_val_lst_len()
+    # dic_count_value()
+    # dic_to_lst()
     # dict_sort_by_value()
     # lst_2_dict()
     # iter_dict()
@@ -133,9 +170,9 @@ if __name__ == '__main__':
     s_lst['worker_2'] = [1, 2, 3]
 
     # s_lst['worker_2'] = [1, 2, 3]
-    print s_lst
-    s_lst.pop('worker_1')
-    print s_lst
+    # print s_lst
+    # s_lst.pop('worker_1')
+    # print s_lst
     # d_info = {}
     # if d_info is None:
     #     print 'none'

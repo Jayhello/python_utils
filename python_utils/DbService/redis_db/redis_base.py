@@ -48,6 +48,8 @@ class RdsServer(object):
         try:
             sub = rds.pubsub()
             sub_lst = ['channel_1', 'channel_2']
+            print sub.unsubscribe(*sub_lst)
+
             print sub.subscribe(*sub_lst)
             sub.subscribe('abc')
 
@@ -57,7 +59,7 @@ class RdsServer(object):
                 if 'chan' in item['channel']:
                     print item['channel'], item['channel'][item['channel'].find('chan'):]
                 if item['channel'] == 'channel_1' and item['type'] == 'subscribe':
-                    sub.unsubscribe(item['channel'])
+                    print sub.unsubscribe(item['channel'])
 
         except redis.ConnectionError as e:
             pass
@@ -66,7 +68,7 @@ class RdsServer(object):
         # rds = redis.Redis(connection_pool=self._rds_pool)
         rds = redis.Redis(host=self._ip, port=self._port)
         try:
-            # print rds.sadd('set_1', 123)
+            print rds.sadd('set_2', 123)
             # if success return 1
             rv_set = set([123, 456])
             print rds.srem('set_1', *rv_set)
@@ -74,7 +76,9 @@ class RdsServer(object):
             # s_member = rds.smembers('set_1')
             s_member = rds.smembers('set_2')
             print s_member
+            # set(['123'])
             print type(s_member)
+            # <type 'set'>
         except Exception as e:
             # if redis server goes down, then 'Error 10061 connecting to 127.0.0.1:6379'
             print e

@@ -198,8 +198,27 @@ def eu_distance():
     print sqrt(sum((a - b)**2 for a, b in zip(a1, a2)))
     # 3.46410161514
 
+
+def lst_tuple_column():
+    lst_tp = [('33', 1), ('88', 2), ('22', 3), ('44', 4)]
+    # 2 column
+    print [x[1] for x in lst_tp]
+    # [1, 2, 3, 4]
+    print sum(x[1] for x in lst_tp)
+    # 10
+    from operator import itemgetter
+    print map(itemgetter(1), lst_tp)
+    # [1, 2, 3, 4]
+    print map(lambda x: x[1], lst_tp)
+    # [1, 2, 3, 4]
+    print dict(lst_tp).keys()
+    # ['33', '88', '44', '22']
+    print dict(lst_tp).values()
+    # [1, 2, 4, 3]
+
 if __name__ == '__main__':
-    eu_distance()
+    lst_tuple_column()
+    # eu_distance()
     # lst_reverse()
     # lst_self_step()
     # range_xrange()

@@ -97,13 +97,13 @@ def set_diff():
 
 if __name__ == '__main__':
     # set_diff()
-    # dict_key_to_set()
+    dict_key_to_set()
     # set_lst()
-    set_remove()
+    # set_remove()
     # define_set()
     # dict_val_set()
     # set_basic_usage()
-    print min(3, 4, -1)
+    # print min(3, 4, -1)
     # import time
     # import random
     # timestamp = int(time.time())
