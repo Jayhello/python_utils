@@ -153,7 +153,6 @@ def sum_dic_val():
     print sum(d_info.values())
     # 10
 
-
 if __name__ == '__main__':
     sum_dic_val()
     # count_val_lst_len()
