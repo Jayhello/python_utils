@@ -42,13 +42,14 @@ if __name__ == '__main__':
     y_train = ['aa', 'aa', 'bb', 'bb']
     x_test = np.array([[3, 2, 4], [9, 13, 11]])
 
+    k = 2
     knn = KnnScratch()
     knn.fit(x_train, y_train)
 
-    print knn.predict_once(x_test[0], 2)
+    print knn.predict_once(x_test[0], k)
     # aa
 
-    print knn.predict(x_test, 2)
+    print knn.predict(x_test, k)
     # ['aa', 'bb']
 
     pass

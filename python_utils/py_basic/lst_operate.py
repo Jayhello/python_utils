@@ -216,8 +216,28 @@ def lst_tuple_column():
     print dict(lst_tp).values()
     # [1, 2, 4, 3]
 
+
+def lst_counter():
+    print [1, 2, 3, 4, 1, 4, 1].count(1)
+    # 3
+    from collections import Counter
+    z = ['blue', 'red', 'blue', 'yellow', 'blue', 'red']
+    print Counter(z)
+    # Counter({'blue': 3, 'red': 2, 'yellow': 1})
+
+    lst = ["a", "b", "b"]
+    print [[x, lst.count(x)] for x in set(lst)]
+    # [['a', 1], ['b', 2]]
+
+    print dict((x, lst.count(x)) for x in set(lst))
+    # {'a': 1, 'b': 2}
+
+    print dict((i, lst.count(i)) for i in lst)
+    # {'a': 1, 'b': 2}
+
 if __name__ == '__main__':
-    lst_tuple_column()
+    lst_counter()
+    # lst_tuple_column()
     # eu_distance()
     # lst_reverse()
     # lst_self_step()

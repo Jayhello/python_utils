@@ -153,8 +153,22 @@ def sum_dic_val():
     print sum(d_info.values())
     # 10
 
+
+def dict_pop():
+    dic_k_lst = {'11': {1, 2}, 'ab': [3], 'cd': [0, -1, 2]}
+    s1 = dic_k_lst['11']
+    print s1
+    # set([1, 2])
+    # del dic_k_lst['11']
+    dic_k_lst.pop('11')
+    print s1
+    # set([1, 2])
+    print dic_k_lst
+    # {'ab': [3], 'cd': [0, -1, 2]}
+
 if __name__ == '__main__':
-    sum_dic_val()
+    dict_pop()
+    # sum_dic_val()
     # count_val_lst_len()
     # dic_count_value()
     # dic_to_lst()
