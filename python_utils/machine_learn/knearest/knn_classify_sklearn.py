@@ -11,7 +11,7 @@ https://kevinzakka.github.io/2016/07/13/k-nearest-neighbor/
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cross_validation import train_test_split, cross_val_score
+from sklearn.model_selection import train_test_split, cross_val_score
 import pandas as pd
 import matplotlib.pyplot as plt
 
