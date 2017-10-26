@@ -52,9 +52,15 @@ def iter_dict_remove():
     """remove item in dict while iteration it"""
     d_info = {'aa': -1, 'bb': 0, 'cc': 1, 'dd': 2}
 
-    for k, v in d_info.items():
-        print k, v
-        if v < 0:
+    # right way
+    # for k, v in d_info.items():
+    #     print k, v
+    #     if v < 0:
+    #         del d_info[k]
+
+    for k in d_info.keys():
+        print k, d_info[k]
+        if d_info[k] < 0:
             del d_info[k]
 
     print 'after del'
@@ -166,8 +172,19 @@ def dict_pop():
     print dic_k_lst
     # {'ab': [3], 'cd': [0, -1, 2]}
 
+
+def dic_val_lst():
+    dic_k_lst = {'11': [1, 2], 'ab': [3], 'cd': [0, -1, 2]}
+    dic_k = {}
+    for k, v in dic_k_lst.items():
+        for item in v:
+            dic_k[item] = k
+
+    print dic_k
+
 if __name__ == '__main__':
-    dict_pop()
+    # dic_val_lst()
+    # dict_pop()
     # sum_dic_val()
     # count_val_lst_len()
     # dic_count_value()
@@ -176,7 +193,7 @@ if __name__ == '__main__':
     # lst_2_dict()
     # iter_dict()
     # iter_dic_sort()
-    # iter_dict_remove()
+    iter_dict_remove()
 
     s_lst={}
     s_lst['worker_1'] = [1, 2, 3]

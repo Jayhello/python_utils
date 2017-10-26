@@ -36,7 +36,9 @@ class RdsServer(object):
     def __init__(self):
         self._ip = '127.0.0.1'
         self._port = 6379
-        self._rds_pool = redis.ConnectionPool(host=self._ip, port=self._port, socket_timeout=3)
+        # self._rds_pool = redis.ConnectionPool(host=self._ip, port=self._port, socket_timeout=3)
+        self._rds_pool = redis.ConnectionPool(host=self._ip, port=self._port, db=2,
+                                              socket_timeout=3)
 
     def test_sub_lst(self):
         """
@@ -84,6 +86,9 @@ class RdsServer(object):
             print e
 
     def test_publish(self):
+        """
+        注意的是，无论redis上面那个db订阅了频道，都会收到 publish消息
+        """
         rds = redis.Redis(connection_pool=self._rds_pool)
         channel = 'test_channel'
         for i in xrange(1, 5):
@@ -109,12 +114,22 @@ class RdsServer(object):
         s_sub = {'set_python_worker_1', 'set_python_worker_asdasdasd'}
         print s - s_sub
 
+    def test_select_db(self):
+        # db = 2
+        # can't select db by the below
+        # rds = redis.Redis(connection_pool=self._rds_pool, db=db)
+
+        # choose db in connection_pool directly
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        print rds.sadd('set_2', 123)
+
 if __name__ == '__main__':
     rs = RdsServer()
-    rs.test_sub_lst()
+    # rs.test_sub_lst()
+    # rs.test_select_db()
     # rs.test_set()
     # rs.del_keys()
     # rs.get_all_key()
     # rs.del_hset_keys()
-    # rs.test_publish()
+    rs.test_publish()
     pass

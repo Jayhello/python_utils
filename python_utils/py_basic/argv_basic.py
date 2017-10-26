@@ -28,6 +28,9 @@ def parse_js():
         kv["msg"] = msg.replace("'", "")
 
 if __name__ == '__main__':
+    # config script para
     print sys.argv
+    # ['E:/git_code/python_utils/py_basic/argv_basic.py', '1', '2', '3']
     print len(sys.argv)
+    # 4
     # parse_js()
