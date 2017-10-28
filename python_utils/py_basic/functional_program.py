@@ -47,6 +47,7 @@ def map_demo():
     print map(lambda x, y, z: x + y + z, a, b, c)
     # [17, 10, 19, 23]
 
+
 def reduce_demo():
     lst = range(1, 6)
     print lst  # [1, 2, 3, 4, 5]

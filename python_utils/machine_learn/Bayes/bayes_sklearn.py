@@ -6,7 +6,7 @@ https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/
 
 """
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import GaussianNB, BernoulliNB
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
 
@@ -40,7 +40,17 @@ def sk_nb_diabetes():
     x_train, x_test, y_train, y_test = load_diabetes_data()
     clf = GaussianNB()
 
+
+def sk_bernoulli_demo():
+    x = np.random.randint(2, size=(6, 100))
+    y = np.array([1, 2, 3, 4, 4, 5])
+    clf = BernoulliNB()
+    clf.fit(x, y)
+    # print clf.predict(x[2:3])
+    print clf.predict(x[2])
+
 if __name__ == '__main__':
     # sk_demo_1()
-    load_diabetes_data()
+    # load_diabetes_data()
+    sk_bernoulli_demo()
     pass
