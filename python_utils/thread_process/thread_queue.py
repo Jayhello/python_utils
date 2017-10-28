@@ -105,6 +105,18 @@ def create_echo_cp():
     join_all_others_thread()
 
 
+def get_que_len():
+    global lst_que
+
+    lst_que.put('abc')
+    print lst_que.qsize()
+    lst_que.put('abc')
+    lst_que.put('abc')
+    print lst_que.qsize()
+    lst_que.put('abc')
+    lst_que.put('abc')
+    print lst_que.qsize()
+
 if __name__ == '__main__':
     # test_consume_produce_queue()
     # create_echo_cp()

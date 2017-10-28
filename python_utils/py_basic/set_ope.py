@@ -16,6 +16,19 @@ def define_set():
     print set_2
     # set([2, 3])
 
+    a = set((1, 2, 3, 4))
+    b = set([3, 4, 5, 6])
+    print a | b  # Union
+    # {1, 2, 3, 4, 5, 6}
+    print a & b  # Intersection
+    # {3, 4}
+    print a < b  # Subset
+    # False
+    print a - b  # Difference
+    # {1, 2}
+    print a ^ b  # Symmetric Difference
+    # {1, 2, 5, 6}
+
 
 def set_basic_usage():
     s1 = set()
@@ -97,10 +110,10 @@ def set_diff():
 
 if __name__ == '__main__':
     # set_diff()
-    dict_key_to_set()
+    # dict_key_to_set()
     # set_lst()
     # set_remove()
-    # define_set()
+    define_set()
     # dict_val_set()
     # set_basic_usage()
     # print min(3, 4, -1)
