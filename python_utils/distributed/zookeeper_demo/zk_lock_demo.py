@@ -3,7 +3,6 @@
 from kazoo.client import KazooClient
 import time
 import uuid
-
 import logging
 logging.basicConfig()
 
