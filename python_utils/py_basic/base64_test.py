@@ -12,6 +12,7 @@ https://stackoverflow.com/questions/12315398/verify-is-a-string-is-encoded-in-ba
 import base64
 import requests
 import binascii
+import time
 
 
 def img_base64():
@@ -43,8 +44,20 @@ def base64_exception():
         print "base64 decode error %s " % e
 
 
+def b64_test():
+    import time
+    # test 300kb string decode time
+    s = 'a' * 1024 * 300
+    start = time.clock()
+    b64_str = base64.b64encode(s)
+    print time.clock() - start
+    start = time.clock()
+    base64.decodestring(b64_str)
+    print time.clock() - start
+
 if __name__ == '__main__':
     # img_base64()
     # img_url_base64()
-    base64_exception()
+    # base64_exception()
+    b64_test()
     pass
