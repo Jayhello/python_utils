@@ -34,7 +34,27 @@ def remove_sub_str():
     print src.find(sub_s)
     print src.replace(sub_s, '')
 
+
+def str_format_once():
+    query = """insert into {tb_name} (create_time, appid) VALUES (%s,%s)"""
+    tb_name = 'tb_audio_rec_ret_2017_11'
+    # query % tb_name  error
+    print query.format(tb_name=tb_name)
+    # insert into tb_audio_rec_ret_2017_11 (create_time, appid) VALUES (%s,%s)
+
+
+def str_replace():
+    import time
+    s = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    print s
+    # 2017-11-09 17:26:34
+    print s[0:7].replace('-', '_')
+    # 2017_11
+
+
 if __name__ == '__main__':
+    str_replace()
+    # str_format_once()
     # remove_sub_str()
     # str_split()
     # str_format()

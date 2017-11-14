@@ -81,6 +81,7 @@ class RdsServer(object):
             # set(['123'])
             print type(s_member)
             # <type 'set'>
+
         except Exception as e:
             # if redis server goes down, then 'Error 10061 connecting to 127.0.0.1:6379'
             print e
@@ -123,13 +124,35 @@ class RdsServer(object):
         rds = redis.Redis(connection_pool=self._rds_pool)
         print rds.sadd('set_2', 123)
 
+    def test_pop(self):
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        QUE_NEW_AUDIO_STREAM = "que_new_audio_stream"
+
+        try:
+            print rds.rpop(QUE_NEW_AUDIO_STREAM)
+        except Exception as e:
+            print e
+
+    def test_pipeline(self):
+        rds = redis.Redis(connection_pool=self._rds_pool)
+        pipe = rds.pipeline()
+        pipe.set('foo', 'bar')
+        pipe.get('bing')
+        pipe.delete('foo')
+        print pipe.execute()[0]
+        # print ret
+        # [True, None, 1]
+
+
 if __name__ == '__main__':
     rs = RdsServer()
+    # rs.test_pop()
+    rs.test_pipeline()
     # rs.test_sub_lst()
     # rs.test_select_db()
     # rs.test_set()
     # rs.del_keys()
     # rs.get_all_key()
     # rs.del_hset_keys()
-    rs.test_publish()
+    # rs.test_publish()
     pass
