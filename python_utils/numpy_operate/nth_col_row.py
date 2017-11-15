@@ -89,7 +89,70 @@ def change_nth_col_value():
     # [ 9 10 11]]
 
 
+def add_row_2arr():
+    a1 = np.array([[0, 1, 2], [0, 2, 0]])
+    a2 = np.array([[1, 1, 1], [2, 2, 2], [3, 2, 0]])
+    print a2[:, 0]
+    # [1 2 3]
+    print [a2[:, 0] < 3]
+    # [array([ True,  True, False], dtype=bool)]
+    print a2[a2[:, 0] < 3]
+    # [[1 1 1]
+    #  [2 2 2]]
+
+    a1 = np.vstack((a1, a2[a2[:, 0] < 3]))
+    print a1
+    # [[0 1 2]
+    #  [0 2 0]
+    #  [1 1 1]
+    #  [2 2 2]]
+
+
+def add_row_2arr_v2():
+    a1 = np.array([[1, 2], [3, 4]])
+    a2 = np.array([[5, 6]])
+    print np.concatenate((a1, a2), axis=0)
+    # [[1 2]
+    #  [3 4]
+    # [5 6]]
+    print np.concatenate((a1, a2.T), axis=1)
+    # [[1 2 5]
+    #  [3 4 6]]
+
+
+def add_row_2arr_v3():
+    print np.append([1, 2, 3], [[4, 5, 6], [7, 8, 9]])
+    # [1 2 3 4 5 6 7 8 9]
+    print np.append([[1, 2, 3], [4, 5, 6]], [[7, 8, 9]], axis=0)
+    # [[1 2 3]
+    #  [4 5 6]
+    #  [7 8 9]]
+    print np.append([[1, 2, 3], [4, 5, 6]], [[7], [8]], axis=1)
+    # [[1 2 3 7]
+    #  [4 5 6 8]]
+
+
+def v_h_column_stack():
+    print np.vstack(([1, 2, 3], [4, 5, 6]))
+    # [[1 2 3]
+    #  [4 5 6]]
+    print np.column_stack(([1, 2, 3], [4, 5, 6]))
+    # [[1 4]
+    #  [2 5]
+    # [3 6]]
+    print np.hstack(([1, 2, 3], [4, 5, 6]))
+    # [1 2 3 4 5 6]
+
+    print np.hstack(([[1], [2], [3]], [[4], [5], [6]]))
+    # equivalent to np.column_stack(([1, 2, 3], [4, 5, 6]))
+
+
 if __name__ == '__main__':
+    v_h_column_stack()
+    # add_row_2arr_v3()
+    # add_row_2arr_v2()
+    # add_row_2arr()
     # get_nth_column()
     # get_nth_row()
-    change_nth_col_value()
+    # change_nth_col_value()
+    pass

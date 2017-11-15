@@ -95,7 +95,16 @@ def lst_2_array():
     # [1 2 3]
 
 
+def file_2np_arr():
+    """txt file to numpy array"""
+    data_path = '../machine_learn/dataset/perception/dataset.txt'
+    x = np.loadtxt(data_path, dtype=float)
+    print x
+    # [ [ 1.1   2.2   0]
+    #   [ 3.5   3.6   1]]
+
 if __name__ == '__main__':
+    file_2np_arr()
     # broadcast_demo()
     # about_shape()
     # common_create()

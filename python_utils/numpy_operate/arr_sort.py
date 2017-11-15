@@ -35,7 +35,26 @@ def arr_sort():
     print np.sort(arr, axis=0)  # sort by column, axis=0 means column
     pass
 
+
+def arr_sum():
+    arr = np.arange(6).reshape((2, 3))
+    print arr
+    # [[0 1 2]
+    #  [3 4 5]]
+    print arr.sum(axis=0)
+    # [3 5 7]
+    print arr.sum(axis=1)
+    # [ 3 12]
+
+    print arr > 1
+    # [[False False  True]
+    #  [ True  True  True]]
+    print arr[::-1]
+    # [[3 4 5]
+    #  [0 1 2]]
+
 if __name__ == '__main__':
+    arr_sum()
     # arr_arg_sort()
-    arr_sort()
+    # arr_sort()
     pass
