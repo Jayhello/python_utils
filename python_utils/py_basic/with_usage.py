@@ -18,6 +18,10 @@ def test_with():
     with get_sample() as sp:
         print 'Sample: ', sp
 
+    # in __enter__
+    # Sample:  Foo
+    # in __exit__
+
 if __name__ == '__main__':
     test_with()
     pass

@@ -235,8 +235,25 @@ def lst_counter():
     print dict((i, lst.count(i)) for i in lst)
     # {'a': 1, 'b': 2}
 
+
+def get_max_val_idx():
+    lst = [1, 7, 3, 5, 6]
+    max_val = max(lst)
+    print max_val
+    # 7
+    max_idx = lst.index(max_val)
+    print max_idx
+    # 1
+
+    import operator
+    index, value = max(enumerate(lst), key=operator.itemgetter(1))
+    print index, value
+    # 1 7
+
 if __name__ == '__main__':
-    lst_counter()
+    get_max_val_idx()
+    # lst_delete_in_for_loop()
+    # lst_counter()
     # lst_tuple_column()
     # eu_distance()
     # lst_reverse()
