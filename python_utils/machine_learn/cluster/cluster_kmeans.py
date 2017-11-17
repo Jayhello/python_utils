@@ -57,8 +57,11 @@ class KMeans(object):
             for c_node in self._cluster_vec:
                 d = self._cal_distance(c_node, x_node)
                 lst_dis.append(d)
-            min_dis, min_idx = min(enumerate(lst_dis), key=operator.itemgetter(1))
+            min_idx, min_dis = min(enumerate(lst_dis), key=operator.itemgetter(1))
             lst_cluster_idx.append(min_idx)
+
+        for i, idx in enumerate(lst_cluster_idx):
+            pass
 
         return lst_cluster_idx
 

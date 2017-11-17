@@ -185,6 +185,11 @@ def iter_sp_row():
     # [2 3]
     # [6 7]
 
+    import operator
+    print operator.itemgetter(lst_idx)(arr)
+    # [[2 3]
+    #  [6 7]]
+
 if __name__ == '__main__':
     iter_sp_row()
     # iter_row_column()
