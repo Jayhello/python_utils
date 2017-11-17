@@ -3,6 +3,7 @@
 import numpy as np
 from sklearn.datasets.samples_generator import make_blobs
 import matplotlib.pyplot as plt
+import operator
 
 
 def get_k_data():
@@ -56,10 +57,16 @@ class KMeans(object):
             for c_node in self._cluster_vec:
                 d = self._cal_distance(c_node, x_node)
                 lst_dis.append(d)
+            min_dis, min_idx = min(enumerate(lst_dis), key=operator.itemgetter(1))
+            lst_cluster_idx.append(min_idx)
 
+        return lst_cluster_idx
 
-    def _check_converge(self):
+    def _update_cluster_node(self, x, lst_cluster_idx):
         pass
+
+    def _check_converge(self, vec):
+        return np.array_equal(self._cluster_vec, vec)
 
 if __name__ == '__main__':
     # x = init_board_gauss(200, 3)

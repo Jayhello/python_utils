@@ -147,8 +147,48 @@ def v_h_column_stack():
     # equivalent to np.column_stack(([1, 2, 3], [4, 5, 6]))
 
 
+def iter_row_column():
+    arr = np.arange(6).reshape(2, 3)
+    print arr
+    # [[0 1 2]
+    #  [3 4 5]]
+
+    for r in arr:
+        print r
+    # [0 1 2]
+    # [3 4 5]
+
+    for c in arr.T:
+        print c
+    # [0 3]
+    # [1 4]
+    # [2 5]
+
+    for c_idx in range(arr.shape[1]):
+        print arr[:, c_idx]
+
+    # [0 3]
+    # [1 4]
+    # [2 5]
+
+
+def iter_sp_row():
+    arr = np.arange(8).reshape(4, 2)
+    print arr
+    # [[0 1]
+    #  [2 3]
+    #  [4 5]
+    #  [6 7]]
+    lst_idx = [1, 3]
+    for idx in lst_idx:
+        print arr[idx]
+    # [2 3]
+    # [6 7]
+
 if __name__ == '__main__':
-    v_h_column_stack()
+    iter_sp_row()
+    # iter_row_column()
+    # v_h_column_stack()
     # add_row_2arr_v3()
     # add_row_2arr_v2()
     # add_row_2arr()
