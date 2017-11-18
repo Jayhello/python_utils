@@ -190,8 +190,66 @@ def iter_sp_row():
     # [[2 3]
     #  [6 7]]
 
+
+def dic_arr_append():
+    a1 = np.array([1, 2])
+    d = {1: a1}
+    # d[1].append([2, 3, 4])
+    # AttributeError: 'numpy.ndarray' object has no attribute 'append'
+
+    lst = [1, 2]
+    a1 = np.array([lst])
+    print a1
+    # [[1 2]]
+    d = {1: a1}
+    np.append(d[1], [2, 3])
+    print d
+    # {1: array([[1, 2]])}
+
+    print np.append(a1, [2, 3])
+    # [1 2 2 3]
+    print a1
+    # [[1 2]]
+
+    print np.append(a1, [[2, 3]])
+    # [1 2 2 3]
+    print np.append(a1, [[2, 3]], axis=0)
+    # [[1 2]
+    #  [2 3]]
+    print a1
+    # [[1 2]]
+
+    # print np.append(a1, [2, 3], axis=0)
+    # ValueError: all the input arrays must have same number of dimensions
+
+
+def dic_arr_concat():
+    lst = [1, 2]
+    a1 = np.array([lst])
+    print a1
+    # [[1 2]
+    #  [2 3]]
+    d = {1: a1}
+
+    # np.concatenate((d[1], [2, 3]))
+    # ValueError: all the input arrays must have same number of dimensions
+
+    print np.concatenate((d[1], [[2, 3]]))
+    # [[1 2]
+    #  [2 3]]
+    print d
+    # {1: array([[1, 2]])}
+
+    print np.concatenate((a1, [[2, 3]]))
+    # [[1 2]
+    #  [2 3]]
+    print a1
+    # [[1 2]]
+
 if __name__ == '__main__':
-    iter_sp_row()
+    # dic_arr_append()
+    dic_arr_concat()
+    # iter_sp_row()
     # iter_row_column()
     # v_h_column_stack()
     # add_row_2arr_v3()

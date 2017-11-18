@@ -6,13 +6,23 @@ import numpy as np
 
 
 def mean():
-    arr = np.arange(12).reshape((4, 3))
+    arr = np.arange(12).reshape((3, 4))
     print arr
+    # [[ 0  1  2  3]
+    #  [ 4  5  6  7]
+    #  [ 8  9 10 11]]
     mean_arr = np.mean(arr, axis=0)
     print mean_arr
+    # [ 4.  5.  6.  7.]
+
     print arr - mean_arr
+    # [[-4. -4. -4. -4.]
+    #  [ 0.  0.  0.  0.]
+    #  [ 4.  4.  4.  4.]]
     print np.mean(arr)
+    # 5.5
     print np.mean(arr, axis=1)
+    # [ 1.5  5.5  9.5]
 
 
 def covariance():
@@ -53,7 +63,7 @@ def eigen_vec_val():
     print eig_vec2[:, eig_val2_idx[::-1]]
 
 if __name__ == '__main__':
-    # mean()
+    mean()
     # covariance()
-    eigen_vec_val()
+    # eigen_vec_val()
     pass
