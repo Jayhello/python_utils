@@ -103,8 +103,22 @@ def file_2np_arr():
     # [ [ 1.1   2.2   0]
     #   [ 3.5   3.6   1]]
 
+
+def empty_arr():
+    arr1 = np.arange(12).reshape(3, 4)
+    print arr1
+    # [[ 0  1  2  3]
+    #  [ 4  5  6  7]
+    #  [ 8  9 10 11]]
+    arr2 = np.empty(arr1.shape)
+    print arr2
+    # [[ 0.  0.  0.  0.]
+    #  [ 0.  0.  0.  0.]
+    #  [ 0.  0.  0.  0.]]
+
 if __name__ == '__main__':
-    file_2np_arr()
+    # empty_arr()
+    # file_2np_arr()
     # broadcast_demo()
     # about_shape()
     # common_create()
@@ -112,14 +126,14 @@ if __name__ == '__main__':
     # about_reshape()
     lst = [[1.1, 2.3, 3], [3, 4, 5]]
     arr = np.array(lst)
-    print arr[1, :]
+    # print arr[1, :]
     # [ 3.  4.  5.]
-    print arr[1]
+    # print arr[1]
     # [ 3.  4.  5.]
     # print arr[...]
 
     a = np.array([[1.1, 2.3, 3]])
-    print a[0].tolist()
+    # print a[0].tolist()
     # print "".join([str(i) + "-" for i in a[0].tolist()])
     # 1.1-2.3-3.0-
     # if 4 in [1, 3, 5]:

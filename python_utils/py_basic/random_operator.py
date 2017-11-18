@@ -21,8 +21,23 @@ def rand_range():
     print random.randrange(0, 100, 10)
     # 90
 
+
+def random_seed():
+    sd = 3
+    random.seed(sd)
+    print "Random number with seed 10 : ", random.random()
+
+    # It will generate same random number(do random.seed(sd) every time before)
+    random.seed(sd)
+    print "Random number with seed 10 : ", random.random()
+
+    # It will generate same random number
+    random.seed(sd)
+    print "Random number with seed 10 : ", random.random()
+
 if __name__ == '__main__':
-    rand_range()
+    random_seed()
+    # rand_range()
     # get_random_int()
     # print random.choice(string.letters)
     # f
