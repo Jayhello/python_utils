@@ -49,16 +49,6 @@ def about_shape():
     # [14 26]
 
 
-def broadcast_demo():
-    arr = np.ones((3, 4))
-    print arr
-    print arr + 1
-
-    b = np.broadcast(arr, 1)
-    print b.shape
-    # (3L, 4L)
-
-
 def about_reshape():
     arr = np.array([[1, 2, 3], [4, 5, 6], [10, 11, 12], [13, 14, 15]])
     print arr.reshape(2, 6)

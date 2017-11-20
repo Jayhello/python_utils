@@ -1,5 +1,9 @@
 # _*_ coding:utf-8 _*_
 
+"""
+cited from
+"""
+
 import numpy as np
 from sklearn.datasets.samples_generator import make_blobs
 import matplotlib.pyplot as plt
@@ -11,7 +15,7 @@ def get_k_data():
     # plt.scatter(x[:, 0], x[:, 1])
     # plt.show()
     # print y
-    return x
+    return x, y
 
 
 def init_board_gauss(N, k):
@@ -91,6 +95,23 @@ class KMeans(object):
     def get_center_node(self):
         return self._cluster_vec
 
+    def pred(self, arr_data):
+        """
+        :param arr_data: numpy array
+        :return:
+        """
+        ret_lst_label =[]
+        for sample in arr_data:
+            lst_d = []
+            for node in self._cluster_vec:
+                d = self._cal_distance(sample, node)
+                lst_d.append(d)
+
+            label, min_d = min(enumerate(lst_d), key=operator.itemgetter(1))
+            ret_lst_label.append(label)
+
+        return ret_lst_label
+
 
 def plot_cluster(x, center_node):
     plt.scatter(x[:, 0], x[:, 1], s=20)
@@ -98,8 +119,8 @@ def plot_cluster(x, center_node):
     plt.show()
 
 if __name__ == '__main__':
-    # x = init_board_gauss(200, 3)
-    x = get_k_data()
+    # x data set, y labels
+    x, y = get_k_data()
     # plt.scatter(x[:, 0], x[:, 1], c='r')
     # plt.show()
     k = 4
@@ -108,14 +129,20 @@ if __name__ == '__main__':
     # [163 283 157 282]
     init_vec = x[lst_idx]
     print init_vec
+
     # plot_cluster(x, init_vec)
     # [[-0.73069817  6.24208856]
     #  [ 1.87271752  4.18069237]
     # [-1.81487687  7.9783219 ]
     # [-1.4136581   7.40962324]]
 
+    print y[lst_idx]
+    # [1 3 2 2]
     km = KMeans(k, init_vec)
     km.fit(x)
 
     plot_cluster(x, km.get_center_node())
+
+    print km.pred(init_vec)
+    # [0, 1, 2, 2]
     pass
