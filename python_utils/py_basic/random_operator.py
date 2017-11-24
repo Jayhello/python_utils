@@ -9,8 +9,10 @@ def generate_random_num_str(length):
 
 def get_random_int():
     # n -> [0, 10]
-    n =random.randint(0, 10)
+    n = random.randint(0, 10)
     print n
+
+    print random.randint(180, 200)
 
 
 def rand_range():
@@ -36,9 +38,9 @@ def random_seed():
     print "Random number with seed 10 : ", random.random()
 
 if __name__ == '__main__':
-    random_seed()
+    # random_seed()
     # rand_range()
-    # get_random_int()
+    get_random_int()
     # print random.choice(string.letters)
     # f
     # print generate_random_num_str(5)
