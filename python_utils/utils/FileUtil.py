@@ -167,6 +167,11 @@ def test_write_list_excel():
 
 g_val = 3
 
+
+def del_file_is_exists(f):
+    if os.path.exists(f):
+        os.remove(f)
+
 if __name__ == '__main__':
     test_write_list_excel()
     # batch_rename()
