@@ -4,6 +4,7 @@ from flask import Flask
 from flask import abort
 from flask import redirect
 from flask import request
+from flask import Response
 
 
 app = Flask(__name__)
@@ -27,6 +28,21 @@ def multi_paras():
         ret_str += para
 
     return '<h1>multi_paras, %s</h1>' % ret_str
+
+
+@app.route('/audio/pcm_mp3/<file_key>')
+def stream_mp3(file_key):
+    def generate():
+        path = 'F:/10191.wav'
+        path = 'F:/826.mp3'
+        # path = '10191.wav'
+        with open(path, 'rb') as fmp3:
+            data = fmp3.read(1024)
+            while data:
+                yield data
+                data = fmp3.read(1024)
+
+    return Response(generate(), mimetype="audio/mpeg3")
 
 
 if __name__ == '__main__':

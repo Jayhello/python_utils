@@ -172,8 +172,22 @@ def del_file_is_exists(f):
     if os.path.exists(f):
         os.remove(f)
 
+
+def get_file_create_time(f_path=None):
+    f_path = 'F:/826.mp3'
+    t = os.path.getmtime(f_path)
+    print t
+    # 1511842029.89
+    print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t))
+    # 2017-11-28 12:07:09
+
+    now_t = int(time.time())
+    print now_t, now_t - int(t)
+    # 1511856026 13997
+
 if __name__ == '__main__':
-    test_write_list_excel()
+    get_file_create_time()
+    # test_write_list_excel()
     # batch_rename()
     # batch_rename_files_in_dir()
     # get_file_name()
