@@ -40,11 +40,14 @@ def random_seed():
 if __name__ == '__main__':
     # random_seed()
     # rand_range()
-    get_random_int()
+    # get_random_int()
     # print random.choice(string.letters)
     # f
     # print generate_random_num_str(5)
     # bjSQU
     # print string.letters
     # abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+    import time
+    t = int(time.time())
+    print random.randint(1000000, 100000000)
     pass
