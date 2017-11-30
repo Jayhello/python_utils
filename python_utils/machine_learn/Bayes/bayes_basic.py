@@ -15,6 +15,14 @@ class MultinomialNB(object):
     def fit(self, x, y):
         pass
 
+    def _cal_y_prob(self):
+        """calculate label probability"""
+        pass
+
+    def _cal_x_prob(self):
+        """calculate input feature probability"""
+        pass
+
     def predict(self, x):
         pass
 
