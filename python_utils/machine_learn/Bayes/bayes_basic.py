@@ -19,14 +19,18 @@ class MultinomialNB(object):
         pass
 
 
-if __name__ == '__main__':
-    X = np.array([
+def get_multi_data():
+    x = np.array([
         [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3],
         [4, 5, 5, 4, 4, 4, 5, 5, 6, 6, 6, 5, 5, 6, 6]
     ])
-    X = X.T
+
+    x = x.T
 
     y = np.array([-1, -1, 1, 1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1])
+    return x, y
+
+if __name__ == '__main__':
 
     p = {1: {1: 0.1, 2: 0.3}, 2: {1: 0.1, 2: 0.3}}
     print p
