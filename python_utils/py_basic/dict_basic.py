@@ -182,6 +182,13 @@ def dic_val_lst():
 
     print dic_k
 
+
+def dic_probability():
+    p = {1: {1: 0.1, 2: 0.3}, 2: {1: 0.1, 2: 0.3}}
+    # {1: {1: 0.1, 2: 0.3}, 2: {1: 0.1, 2: 0.3}}
+    print p[2], p[2][2]
+    # {1: 0.1, 2: 0.3} 0.3
+
 if __name__ == '__main__':
     # dic_val_lst()
     # dict_pop()
