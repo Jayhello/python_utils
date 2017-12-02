@@ -20,6 +20,12 @@ def test_vectorize():
     # [[4 5 6 7]
     #  [0 1 2 3]]
 
+    squarer = lambda t: t ** 2
+    v_fun = np.vectorize(squarer)
+    print v_fun(arr)
+    # [[ 0  1  4  9]
+    #  [16 25 36 49]]
+
 if __name__ == '__main__':
     test_vectorize()
     pass
