@@ -27,6 +27,9 @@ def test_unique():
     print u_arr, counts
     # [ 1  2  5 25] [5 3 1 1]
 
+    print np.unique(arr, return_inverse=True)
+    # (array([ 1,  2,  5, 25]), array([0, 0, 0, 1, 1, 1, 2, 3, 0, 0], dtype=int64))
+
     print np.asarray((u_arr, counts))
     # [[ 1  2  5 25]
     #  [ 5  3  1  1]]
@@ -123,6 +126,11 @@ def test_where():
     print x[np.where(x > 3)]
     # [4 5 6 7 8]
 
+    print np.where(x < 5, x, 0)
+    # [[0 1 2]
+    #  [3 4 0]
+    #  [0 0 0]]
+
 
 def test_sum():
     arr = np.arange(24).reshape((2, 3, 4))
@@ -162,8 +170,8 @@ def test_sum():
     # arr.sum(2) => arr[:, :, 0] + arr[:, :, 1] + arr[:, :, 2] + arr[:, :, 2]
 
 if __name__ == '__main__':
-    # test_unique()
+    test_unique()
     # test_count()
     # test_sum()
-    test_where()
+    # test_where()
     pass

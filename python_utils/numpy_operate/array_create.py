@@ -106,7 +106,25 @@ def empty_arr():
     #  [ 0.  0.  0.  0.]
     #  [ 0.  0.  0.  0.]]
 
+
+def test_ndim():
+    # Number of array dimensions.
+
+    x = np.array([1, 2, 3])
+    print x.ndim
+    # 1
+
+    y = np.array([[1, 2, 3], [4, 5, 6]])
+    print y.ndim
+    # 2
+
+    z = np.arange(12).reshape((2, 2, 3))
+    print z.ndim
+    # 3
+
+
 if __name__ == '__main__':
+    test_ndim()
     # empty_arr()
     # file_2np_arr()
     # broadcast_demo()

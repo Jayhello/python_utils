@@ -250,8 +250,24 @@ def get_max_val_idx():
     print index, value
     # 1 7
 
+
+def get_all_idx_of_val():
+    lst = [1, 2, 1, 3, 1, 4]
+    val = 1
+    # print [idx if v == val for idx, v in enumerate(lst)]
+    print [idx for idx, v in enumerate(lst) if v == val]
+    # [0, 2, 4]
+
+    import numpy as np
+    arr = np.array(lst)
+    print np.where(arr==val)
+    # (array([0, 2, 4], dtype=int64),)
+    print np.where(arr==val)[0]
+    # [0 2 4]
+
 if __name__ == '__main__':
-    get_max_val_idx()
+    get_all_idx_of_val()
+    # get_max_val_idx()
     # lst_delete_in_for_loop()
     # lst_counter()
     # lst_tuple_column()
