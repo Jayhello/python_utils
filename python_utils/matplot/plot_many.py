@@ -118,12 +118,21 @@ def subplots_demo6():
     plt.setp([ax.get_yticklabels() for ax in ax_arr[:, 1]], visible=False)
     plt.show()
 
+
+def plot_fun():
+    x = np.linspace(0.0, 1.0, 1000)
+    plt.plot(x, -1 * np.log2(x) * x)
+    plt.xlim(0, 1)
+    plt.ylim(0, 1)
+    plt.show()
+
 if __name__ == '__main__':
+    plot_fun()
     # plot_mul()
     # subplot_demo1()
     # subplot_demo2()
     # subplot_demo3()
     # subplots_demo4()
     # subplots_demo5()
-    subplots_demo6()
+    # subplots_demo6()
     pass

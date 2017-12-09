@@ -11,6 +11,8 @@ from sklearn import tree
 from sklearn.tree import export_graphviz
 import subprocess
 
+from create_data import get_loan_data_lh
+
 
 def visualize_tree(tree, feature_name, dot_file):
     """Create tree png using graphviz.
@@ -22,7 +24,7 @@ def visualize_tree(tree, feature_name, dot_file):
         export_graphviz(tree, out_file=f,
                         feature_names=feature_name)
 
-    dt_png = "dt.png"
+    dt_png = dot_file.replace('dot', 'png')
     command = ["dot", "-Tpng", dot_file, "-o", dt_png]
     try:
         subprocess.check_call(command)
@@ -45,6 +47,17 @@ def iris_demo():
     # graph.write_png('somefile.png')
 
 
+def loan_demo():
+    dt = tree.DecisionTreeClassifier()
+    X, Y = get_loan_data_lh()
+    dt = dt.fit(X, Y)
+    dot_file = 'loan.dot'
+    tree.export_graphviz(dt, out_file=dot_file)
+    feature_names = ['age', 'has work', 'own house', 'loan level']
+    visualize_tree(dt, feature_names, dot_file)
+
+
 if __name__ == '__main__':
-    iris_demo()
+    # iris_demo()
+    loan_demo()
     pass
