@@ -47,8 +47,23 @@ def url_encode_v2():
     # http://xy.com/?age=21&name=xy熊大
 
 
+def post_request_tw():
+    d_para = {"mp4Url": "https://bilinimg.bs2ul-ssl.yy.com/android2222.mp4",
+              "secretKey": "XY-bl-audio-rec-text-ret",
+              "serial": "17598411"}
+
+    print urllib.urlencode(d_para)
+
+    # rsp = requests.get('http://172.27.49.16:8887/bilin/audiorec/', params=d_para)
+    rsp = requests.get('http://61.147.186.82:9997/bilin/audiorec/', params=d_para)
+    print rsp.content
+
+    s = "sign=75dd4677e941482f882b59bd2aee7fc1&text=%E4%B8%80%E4%BA%8C%E4%B8%89%E5%9B%9B%E4%BA%94%E5%85%AD%E4%B8%83%E5%85%AB%E4%B9%9D%E5%8D%81%E4%B8%80%E4%BA%8C%E4%B8%89%E5%9B%9B%E4%BA%94%E5%85%AD%E4%B8%83%E5%85%AB%E4%B9%9D%E5%8D%81%EF%BC%8C&ts=1513157485&code=0&serial=175984"
+    print urllib.unquote(s)
+
 if __name__ == '__main__':
+    post_request_tw()
     # url_quote()
     # url_encode_v1()
-    url_encode_v2()
+    # url_encode_v2()
     pass

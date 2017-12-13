@@ -17,13 +17,6 @@ def lst_condition():
     # ['Ha', 'ha', 'ha']
 
 
-def lst_delete_in_for_loop():
-    lst = [0, 1, 0, 3]
-    for item in lst:
-        print item
-        lst.remove(item)
-
-
 def lst_shift():
     """
     a basic way of shift list
@@ -265,8 +258,67 @@ def get_all_idx_of_val():
     print np.where(arr==val)[0]
     # [0 2 4]
 
+
+def max_activity():
+    """
+    sorting, by the difference in two elements of a tuple
+    https://stackoverflow.com/questions/8982900/python-custom-sorting-by-the-difference-in-two-elements-of-a-tuple
+    """
+    s = [1, 3, 0, 5, 3, 5, 6, 8, 8, 2]
+    e = [4, 5, 6, 7, 4, 6, 9, 10, 11, 5]
+
+    tp_lst = zip(s, e)
+    print tp_lst
+    # [(1, 4), (3, 5), (0, 6), (5, 7), (3, 4), (5, 6), (6, 9), (8, 10), (8, 11), (2, 5)]
+
+    tp_lst.sort(key=lambda t: t[1] - t[0])
+    print tp_lst
+    # [(3, 4), (5, 6), (3, 5), (5, 7), (8, 10), (1, 4), (6, 9), (8, 11), (2, 5), (0, 6)]
+
+    lst = sorted(zip(s, e), key=lambda t: t[1]-t[0])
+    print lst
+    # [(3, 4), (5, 6), (3, 5), (5, 7), (8, 10), (1, 4), (6, 9), (8, 11), (2, 5), (0, 6)]
+
+    print sorted(zip(s, e), key=lambda t: t[1]-t[0], reverse=True)
+    # [(0, 6), (1, 4), (6, 9), (8, 11), (2, 5), (3, 5), (5, 7), (8, 10), (3, 4), (5, 6)]
+
+
+def remove_item_while_iter():
+    lst = [1, 1, 0, 2, 0, 0, 8, 3, 0]
+
+    print filter(lambda x: x != 0, lst)
+    # [1, 1, 2, 8, 3]
+
+    print [x for x in lst if x != 0]
+    # [1, 1, 2, 8, 3]
+
+    for item in lst[:]:
+        if item == 0:
+            lst.remove(item)
+
+    print lst
+    # [1, 1, 2, 8, 3]
+
+    lst = [1, 1, 0, 2, 0, 0, 8, 3, 0]
+
+    while 0 in lst:
+        lst.remove(0)
+    print lst
+    # [1, 1, 2, 8, 3]
+
+
+def test_print():
+    tp_lst = [(0, 1), (2, 3), (4, 5)]
+
+    for item in tp_lst: print item
+
+    print "->".join([str(item) for item in tp_lst])
+    # (0, 1)->(2, 3)->(4, 5)
+
 if __name__ == '__main__':
-    get_all_idx_of_val()
+    test_print()
+    # remove_item_while_iter()
+    # get_all_idx_of_val()
     # get_max_val_idx()
     # lst_delete_in_for_loop()
     # lst_counter()
