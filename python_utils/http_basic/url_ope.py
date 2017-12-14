@@ -48,7 +48,7 @@ def url_encode_v2():
 
 
 def post_request_tw():
-    d_para = {"mp4Url": "https://bilinimg.bs2ul-ssl.yy.com/android2222.mp4",
+    d_para = {"mp4Url": "http://bilinaudiop.bs2dl.yy.com/odgu3face5561f374d188f8915ed27602173_54673772546203998_17794996?token=rgB8AFyARE0BAEV0MloAAAAA9S0yWgAAAAB7GjUrB0NPTlRFWFQJZQB7ImJ1Y2tldCI6ImJpbGluYXVkaW9wIiwiZmlsZW5hbWUiOiJvZGd1M2ZhY2U1NTYxZjM3NGQxODhmODkxNWVkMjc2MDIxNzNfNTQ2NzM3NzI1NDYyMDM5OThfMTc3OTQ5OTYifQRBVVRIAwQAAwAAAD0Fw82IteG44FVTltIdijGKcfhW",
               "secretKey": "XY-bl-audio-rec-text-ret",
               "serial": "17598411"}
 
@@ -58,7 +58,7 @@ def post_request_tw():
     rsp = requests.get('http://61.147.186.82:9997/bilin/audiorec/', params=d_para)
     print rsp.content
 
-    s = "sign=75dd4677e941482f882b59bd2aee7fc1&text=%E4%B8%80%E4%BA%8C%E4%B8%89%E5%9B%9B%E4%BA%94%E5%85%AD%E4%B8%83%E5%85%AB%E4%B9%9D%E5%8D%81%E4%B8%80%E4%BA%8C%E4%B8%89%E5%9B%9B%E4%BA%94%E5%85%AD%E4%B8%83%E5%85%AB%E4%B9%9D%E5%8D%81%EF%BC%8C&ts=1513157485&code=0&serial=175984"
+    s = "sign=052c177ab75dfd53ab6b1cdc25569ef1&text=%E9%83%BD%E6%95%8F%E6%B3%95%E8%BD%AE%E5%8A%9F%E7%BB%83%E4%B9%A0%E8%80%85%E8%B7%B3%E6%A5%BC%E5%89%B2%E8%85%95%E6%8A%95%E6%B2%B3%EF%BC%8C&ts=1513238084&code=0&serial=17598411"
     print urllib.unquote(s)
 
 if __name__ == '__main__':
