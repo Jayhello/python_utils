@@ -52,21 +52,12 @@ def iter_dict_remove():
     """remove item in dict while iteration it"""
     d_info = {'aa': -1, 'bb': 0, 'cc': 1, 'dd': 2}
 
-    # right way
-    # for k, v in d_info.items():
-    #     print k, v
-    #     if v < 0:
-    #         del d_info[k]
-
     for k in d_info.keys():
         print k, d_info[k]
         if d_info[k] < 0:
             del d_info[k]
 
-    print 'after del'
-
-    for key in d_info.iterkeys():
-        print key, d_info[key]
+    print 'after del', d_info
 
 
 def iter_dic_sort():

@@ -126,8 +126,19 @@ def plot_fun():
     plt.ylim(0, 1)
     plt.show()
 
+
+def plot_sigmoid():
+    def sigmoid(x):
+        return 1.0 / (1 + np.exp(x))
+
+    x = np.arange(-10., 10., 0.1)
+    plt.plot(x, sigmoid(x))
+    plt.show()
+
+
 if __name__ == '__main__':
-    plot_fun()
+    plot_sigmoid()
+    # plot_fun()
     # plot_mul()
     # subplot_demo1()
     # subplot_demo2()
