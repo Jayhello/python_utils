@@ -75,11 +75,23 @@ def test_binarizer():
     print Binarizer(threshold=2).fit_transform(arr)
     # [[0 0 0 1 1]]
 
+
+def test_pearsonr():
+    from scipy.stats import pearsonr
+    arr1 = np.arange(0, 12)
+    arr2 = np.arange(5, 17)
+    print pearsonr(arr1, arr2)
+
+    x = np.arange(-1, 1, 30)
+    y = x
+    print pearsonr(x, y)
+
 if __name__ == '__main__':
+    test_pearsonr()
     # test_binarizer()
     # test_normalizer()
     # test_min_max_scaler()
     # test_standard_scaler()
     # sk_feature_ref_v2()
-    sk_feature_ref()
+    # sk_feature_ref()
     pass

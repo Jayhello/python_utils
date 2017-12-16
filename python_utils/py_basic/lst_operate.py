@@ -139,12 +139,21 @@ def generate_range_tuple_list(start, end, step):
 
 
 def create_list_repeated_n_times():
-    # generate list with 20 0
-    lst_i = [0 for i in xrange(20)]
+    # generate list with 10 0
+    lst_i = [0 for i in xrange(10)]
     print lst_i
-    lst_i_2 = [0] * 20
+    # [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    lst_i_2 = [0] * 3
     print lst_i_2
+    # [0, 0, 0]
 
+    lst_d = [lst_i_2] * 3
+    print lst_d
+    # [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+    lst_d[0].append(0)
+    print lst_d
+    # [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 def sort_lst_by_item():
     """
@@ -316,7 +325,7 @@ def test_print():
     # (0, 1)->(2, 3)->(4, 5)
 
 if __name__ == '__main__':
-    test_print()
+    # test_print()
     # remove_item_while_iter()
     # get_all_idx_of_val()
     # get_max_val_idx()
@@ -333,7 +342,7 @@ if __name__ == '__main__':
     # lst_shift_efficient()
     # del_col_in_2dlst()
     # print generate_range_tuple_list(0, 11, 5)
-    # create_list_repeated_n_times()
+    create_list_repeated_n_times()
     # clear_lst()
 
     l = []

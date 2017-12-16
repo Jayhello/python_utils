@@ -34,14 +34,51 @@ def climb_stair_v2(n):
 
 
 def test_climb_stair():
-    print climb_stair(3)   # 3
-    print climb_stair(5)   # 8
+    print climb_stair(3)  # 3
+    print climb_stair(5)  # 8
     print climb_stair(80)  # 37889062373143906
     # print climb_stair(-1)
     print climb_stair_v2(3)
     print climb_stair_v2(5)
     print climb_stair_v2(80)
 
+
+def knapsack_01(lst_val, lst_weight, capacity):
+    LEN = len(lst_val)
+    ret_lst = []
+    for _ in xrange(LEN):
+        ret_lst.append(list())
+
+    # try:
+    for i in xrange(LEN):
+        for j in xrange(1, capacity + 1):
+            if 0 == i:
+                if j < lst_weight[i]: ret_lst[i].append(0)
+                else:ret_lst[i].append(lst_val[i])
+            else:
+                v1 = ret_lst[i - 1][j - 1]  # note j - 1 not j
+                v2 = 0
+                if j >= lst_weight[i]:
+                    v2 = ret_lst[i - 1][j - lst_weight[i]] + lst_val[i]
+
+                max_v = max(v1, v2)
+                ret_lst[i].append(max_v)
+    # except Exception as e:
+    #     print e, i, j, ret_lst
+    #     return
+    return ret_lst
+
+
+def test_knapsack_01():
+    lst_weight = [2, 2, 6, 5, 4]
+    lst_val = [6, 3, 5, 4, 6]
+    capacity = 8
+    lst_ret = knapsack_01(lst_val, lst_weight, capacity)
+    for lst in lst_ret:
+        print lst
+
+
 if __name__ == '__main__':
-    test_climb_stair()
+    test_knapsack_01()
+    # test_climb_stair()
     pass
