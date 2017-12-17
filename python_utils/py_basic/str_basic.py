@@ -52,8 +52,15 @@ def str_replace():
     # 2017_11
 
 
+def char_2int_2char():
+    print ord('a')
+    # 97
+    print chr(97)
+    # a
+
 if __name__ == '__main__':
-    str_replace()
+    char_2int_2char()
+    # str_replace()
     # str_format_once()
     # remove_sub_str()
     # str_split()

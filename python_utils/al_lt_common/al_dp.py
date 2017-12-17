@@ -53,8 +53,10 @@ def knapsack_01(lst_val, lst_weight, capacity):
     for i in xrange(LEN):
         for j in xrange(1, capacity + 1):
             if 0 == i:
-                if j < lst_weight[i]: ret_lst[i].append(0)
-                else:ret_lst[i].append(lst_val[i])
+                if j < lst_weight[i]:
+                    ret_lst[i].append(0)
+                else:
+                    ret_lst[i].append(lst_val[i])
             else:
                 v1 = ret_lst[i - 1][j - 1]  # note j - 1 not j
                 v2 = 0
@@ -78,7 +80,45 @@ def test_knapsack_01():
         print lst
 
 
+def can_jump(lst, n):
+    cur_reachable = 0
+
+    for i in xrange(n):
+        if cur_reachable < i:
+            return False
+        cur_reachable = max(cur_reachable, i + lst[i])
+        if cur_reachable >= n:
+            return True
+
+    return False
+
+
+def can_jump_v2(lst, n):
+    max_reach = 0
+    for i in xrange(n):
+        if i <= max_reach:
+            max_reach = max(max_reach, i + lst[i])
+        else:
+            break
+
+    return max_reach >= n
+
+
+def test_can_jump():
+    lst = [2, 3, 1, 1, 4]
+    print can_jump(lst, 4)
+    print can_jump_v2(lst, 4)
+
+    lst = [3, 2, 1, 0, 4]
+    print can_jump(lst, 4)
+    print can_jump_v2(lst, 4)
+
+    lst = [1, 0, 0, 3, 2]
+    print can_jump(lst, 4)
+    print can_jump_v2(lst, 4)
+
 if __name__ == '__main__':
-    test_knapsack_01()
+    test_can_jump()
+    # test_knapsack_01()
     # test_climb_stair()
     pass
