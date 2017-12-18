@@ -117,8 +117,76 @@ def test_can_jump():
     print can_jump(lst, 4)
     print can_jump_v2(lst, 4)
 
+
+# def can_jump2(lst):
+#     """https://discuss.leetcode.com/topic/3191/o-n-bfs-solution/8
+#         http://bangbingsyb.blogspot.hk/2014/11/leetcode-jump-game-i-ii.html
+#     """
+#     lst_max_dis = []
+#     LEN = len(lst)
+#     cur_max = 0
+#     for i in xrange(LEN - 1):
+#         if cur_max < i:
+#             return -1
+#         else:
+#             cur_max = max(cur_max, i + lst[i])
+#             if i == 0:
+#                 lst_max_dis.append(cur_max)
+#             else:
+#                 if cur_max > lst_max_dis[-1]:
+#                     lst_max_dis.pop()
+#                     lst_max_dis.append(cur_max)
+#                     if cur_max >= LEN - 1: break
+#
+#     print lst_max_dis
+#     if max(lst_max_dis) < LEN - 1:
+#         return -1
+#
+#     return filter(lambda x: x[1] >= LEN - 1, enumerate(lst_max_dis))[0][0] + 1
+
+
+def can_jump2(lst):
+    n = len(lst)
+    cur_max, last_max, steps, i = 0, 0, 0, 0
+
+    while cur_max < n - 1:
+        last_max = cur_max
+        while i <= last_max:
+            cur_max = max(cur_max, i + lst[i])
+            i += 1
+        steps += 1
+        if cur_max == last_max:
+            return -1
+
+    return steps
+
+
+def test_can_jump2():
+    lst = [3, 2, 1, 0, 4]
+    print can_jump2(lst)
+
+    lst = [2, 3, 1, 1, 4]
+    print can_jump2(lst)
+
+    lst = [1, 0, 0, 3, 4]
+    print can_jump2(lst)
+
+    lst = [1, 2]
+    print can_jump2(lst)
+
+    lst = [2, 1]
+    print can_jump2(lst)
+
+    lst = [1, 2, 1, 1, 1]
+    print can_jump2(lst)
+
+    lst = [7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3]
+    print can_jump2(lst)
+
+
 if __name__ == '__main__':
-    test_can_jump()
+    test_can_jump2()
+    # test_can_jump()
     # test_knapsack_01()
     # test_climb_stair()
     pass

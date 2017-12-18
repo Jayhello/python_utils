@@ -155,6 +155,7 @@ def create_list_repeated_n_times():
     print lst_d
     # [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
+
 def sort_lst_by_item():
     """
     for example lst = ['F:/0.jpg', 'F:/1.jpg', ..., 'F:/101.jpg']
@@ -324,7 +325,19 @@ def test_print():
     print "->".join([str(item) for item in tp_lst])
     # (0, 1)->(2, 3)->(4, 5)
 
+
+def test_find_cond():
+    lst = [0.5, 0.3, 0.9, 0.8]
+
+    print filter(lambda x: x[1] > .7, enumerate(lst))
+    # [(2, 0.9), (3, 0.8)]
+    print next(x[0] for x in enumerate(lst) if x[1] > 0.7)
+    # 2
+    print [n for n, i in enumerate(lst) if i > 0.7][0]
+    # 2
+
 if __name__ == '__main__':
+    test_find_cond()
     # test_print()
     # remove_item_while_iter()
     # get_all_idx_of_val()
@@ -342,11 +355,6 @@ if __name__ == '__main__':
     # lst_shift_efficient()
     # del_col_in_2dlst()
     # print generate_range_tuple_list(0, 11, 5)
-    create_list_repeated_n_times()
+    # create_list_repeated_n_times()
     # clear_lst()
-
-    l = []
-    for it in l:
-        print "not non"
-
     pass
