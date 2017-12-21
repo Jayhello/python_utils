@@ -64,6 +64,9 @@ def test_time_transform():
     print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(1509953402))
     # 2017-11-06 15:30:02
 
+    time_stamp = int(time.time())
+    print time_stamp
+    print divmod(time_stamp, 3600)
 
 if __name__ == '__main__':
     # test_time_consume()

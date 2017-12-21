@@ -184,8 +184,50 @@ def test_can_jump2():
     print can_jump2(lst)
 
 
+def best_time_sell_stock_1(lst):
+    LEN = len(lst)
+    if LEN < 2: return 0
+
+    cur_min, max_profit = lst[0], 0
+    for i in xrange(1, LEN):
+        max_profit = max(max_profit, lst[i] - cur_min)
+        cur_min = min(cur_min, lst[i])
+
+    return max_profit
+
+
+def test_bt_ss_1():
+    lst = [10, 18, 26, 31, 4, 53, 69]
+    print best_time_sell_stock_1(lst)
+
+    lst = [7, 6, 4, 3, 1]
+    print best_time_sell_stock_1(lst)
+
+    lst = [7, 1, 5, 3, 6, 4]
+    print best_time_sell_stock_1(lst)
+
+
+def best_time_sell_stock_2(lst):
+    max_profit, LEN = 0, len(lst)
+    for i in xrange(1, LEN):
+        diff = lst[i] - lst[i - 1]
+        if diff > 0:
+            max_profit += diff
+
+    return max_profit
+
+
+def test_test_bt_ss_2():
+    lst = [5, 1, 2, 3, 4]
+    print best_time_sell_stock_2(lst)  # 3
+
+    lst = [12, 41, 54, 12, 20, 50]
+    print best_time_sell_stock_2(lst)  # 80
+
 if __name__ == '__main__':
-    test_can_jump2()
+    test_test_bt_ss_2()
+    # test_bt_ss_1()
+    # test_can_jump2()
     # test_can_jump()
     # test_knapsack_01()
     # test_climb_stair()
