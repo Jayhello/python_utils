@@ -224,8 +224,71 @@ def test_test_bt_ss_2():
     lst = [12, 41, 54, 12, 20, 50]
     print best_time_sell_stock_2(lst)  # 80
 
+
+def best_time_sell_stock_3(prices):
+    pass
+
+
+def best_time_sell_stock_3_v2(prices):
+    max_profit, n = 0, len(prices)
+    if n < 2: return 0
+    if n == 2: return max(0, prices[1] - prices[0])
+
+    for i in xrange(1, n - 1):
+        min_val = prices[0]
+        local_max_1 = 0
+        for j in xrange(1, i + 1):
+            min_val = min(min_val, prices[j - 1])
+            local_max_1 = max(local_max_1, prices[j] - min_val)
+
+        min_val = prices[i]
+        local_max_2 = 0
+        for k in xrange(i + 1, n):
+            min_val = min(min_val, prices[k - 1])
+            local_max_2 = max(local_max_2, prices[k] - min_val)
+
+        max_profit = max(max_profit, local_max_1 + local_max_2)
+
+    return max_profit
+
+
+def test_bt_ss_3():
+    prices = [10, 5]
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [5, 20]
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [10, 5, 20]
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [5, 10, 20]
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [10, 22, 5, 75, 65, 80]  # 87
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [2, 30, 15, 10, 8, 25, 80]  # 100
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [100, 30, 15, 10, 8, 25, 80]  # 72
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
+    prices = [90, 80, 70, 60, 50]  # 0
+    # print best_time_sell_stock_3(prices)
+    print best_time_sell_stock_3_v2(prices)
+
 if __name__ == '__main__':
-    test_test_bt_ss_2()
+    test_bt_ss_3()
+
+    # test_test_bt_ss_2()
     # test_bt_ss_1()
     # test_can_jump2()
     # test_can_jump()

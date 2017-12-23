@@ -61,7 +61,33 @@ def idx_align_df():
     # 1  14  10
 
 
+def row_col_ope():
+    rng = np.random.RandomState(42)
+    arr = rng.randint(10, size=(3, 4))
+    print arr
+    # [[6 3 7 4]
+    #  [6 9 2 6]
+    # [7 4 3 7]]
+    print arr - arr[0]
+    # [[ 0  0  0  0]
+    #  [ 0  6 -5  2]
+    # [ 1  1 -4  3]]
+    df = pd.DataFrame(arr, columns=list('QRST'))
+    print df - df.iloc[0]
+    #    Q  R  S  T
+    # 0  0  0  0  0
+    # 1  0  6 -5  2
+    # 2  1  1 -4  3
+    print df.subtract(df['R'], axis=0)
+    #    Q  R  S  T
+    # 0  3  0  4  1
+    # 1 -3  0 -7 -3
+    # 2  3  0 -1  3
+
+    print df  # no change
+
 if __name__ == '__main__':
-    idx_align_df()
+    row_col_ope()
+    # idx_align_df()
     # idx_align_series()
     pass

@@ -156,11 +156,27 @@ def series_idx_3():
     print data.iloc[1]
     # b
 
+
+def series_mul_idx_1():
+    city_year = [('bj', 2000), ('bj', 2010),
+             ('gz', 2000), ('gz', 2010)]
+
+    price = [3000, 20000, 2000, 15000]
+
+    h_price = pd.Series(price, index=city_year)
+    print h_price
+    # (bj, 2000)     3000
+    # (bj, 2010)    20000
+    # (gz, 2000)     2000
+    # (gz, 2010)    15000
+    # dtype: int64
+
 if __name__ == '__main__':
+    series_mul_idx_1()
     # series_idx_3()
     # series_idx_2()
     # series_idx_1()
-    test_series_1()
+    # test_series_1()
     # test_series_2()
     # test_series_3()
     pass
