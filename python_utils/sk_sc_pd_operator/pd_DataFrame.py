@@ -198,8 +198,22 @@ def test_df_idx_3():
     #     area   pop  density
     # sz    20  2000    100.0
 
+
+def df_multi_idx_1():
+    df = pd.DataFrame(np.random.rand(4, 2),
+                      index=[['a', 'a', 'b', 'b'], [1, 2, 1, 2]],
+                      columns=['data1', 'data2'])
+
+    print df
+    #      data1     data2
+    # a 1  0.737537  0.102676
+    #   2  0.755261  0.715244
+    # b 1  0.411588  0.081071
+    #   2  0.915185  0.982820
+
 if __name__ == '__main__':
-    test_df_idx_3()
+    df_multi_idx_1()
+    # test_df_idx_3()
     # test_df_idx_2()
     # test_data_frame_4()
     # test_data_frame_3()

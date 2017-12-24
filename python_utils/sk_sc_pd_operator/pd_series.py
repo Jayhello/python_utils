@@ -159,17 +159,76 @@ def series_idx_3():
 
 def series_mul_idx_1():
     city_year = [('bj', 2000), ('bj', 2010),
-             ('gz', 2000), ('gz', 2010)]
+                 ('gz', 2000), ('gz', 2010),
+                 ('sh', 2000), ('sh', 2010)]
 
-    price = [3000, 20000, 2000, 15000]
+    price = [4000, 50000, 2000, 15000, 5000, 50000]
 
     h_price = pd.Series(price, index=city_year)
     print h_price
-    # (bj, 2000)     3000
-    # (bj, 2010)    20000
+    # (bj, 2000)     4000
+    # (bj, 2010)    50000
     # (gz, 2000)     2000
     # (gz, 2010)    15000
+    # (sh, 2000)     5000
+    # (sh, 2010)    50000
     # dtype: int64
+
+    # print year 2000 house price
+    print h_price[[i for i in h_price.index if i[1] == 2000]]
+    # (bj, 2000)    4000
+    # (gz, 2000)    2000
+    # (sh, 2000)    5000
+    # dtype: int64
+
+    # high efficient way
+    idx = pd.MultiIndex.from_tuples(city_year)
+    print idx
+    # MultiIndex(levels=[[u'bj', u'gz', u'sh'], [2000, 2010]],
+    #            labels=[[0, 0, 1, 1, 2, 2], [0, 1, 0, 1, 0, 1]])
+
+    h_price = h_price.reindex(idx)
+    print h_price
+    # bj  2000     4000
+    #     2010    50000
+    # gz  2000     2000
+    #     2010    15000
+    # sh  2000     5000
+    #     2010    50000
+
+    # print year 2000 house price
+    print h_price[:, 2000]
+    # bj    4000
+    # gz    2000
+    # sh    5000
+
+    # convert a multiply-indexed  Series into a conventionally indexed  DataFrame
+    h_prices_df = h_price.unstack()
+    print h_prices_df
+    #     2000   2010
+    # bj  4000  50000
+    # gz  2000  15000
+    # sh  5000  50000
+
+    # add lowest house price of each year
+    df_h_price = pd.DataFrame({'price': h_price,
+                               'price_lowest': [2000, 20000, 1500, 8000, 2500, 25000]})
+    print df_h_price
+    #           price         price_lowest
+    # bj 2000   4000          2000
+    #    2010   50000         20000
+    # gz 2000   2000          1500
+    #    2010   15000         8000
+    # sh 2000   5000          2500
+    #     2010  50000         25000
+
+    # fraction of price_lowest/price
+    f_price = df_h_price['price_lowest'] / df_h_price['price']
+    print f_price.unstack()
+    #     2000      2010
+    # bj  0.50  0.400000
+    # gz  0.75  0.533333
+    # sh  0.50  0.500000
 
 if __name__ == '__main__':
     series_mul_idx_1()
