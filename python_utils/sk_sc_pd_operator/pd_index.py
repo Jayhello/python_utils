@@ -28,7 +28,39 @@ def test_index_2():
     # Int64Index([1, 2, 9, 11], dtype='int64')
 
 
+def rename_columns():
+    df = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6], "C": [7, 8, 9]})
+    print df
+    #    A  B  C
+    # 0  1  4  7
+    # 1  2  5  8
+    # 2  3  6  9
+
+    # df = df.rename(columns={"A": "a"}, inplace=True)
+    df.rename(columns={"B": "b"}, inplace=True)
+    print df
+    #    A  b  C
+    # 0  1  4  7
+    # 1  2  5  8
+    # 2  3  6  9
+
+    df.columns = list('abc')
+
+    print df
+    #    a  b  c
+    # 0  1  4  7
+    # 1  2  5  8
+    # 2  3  6  9
+
+    df.columns.values[2] = 'C'
+    print df
+    # a  b  C
+    # 0  1  4  7
+    # 1  2  5  8
+    # 2  3  6  9
+
 if __name__ == '__main__':
-    test_index_2()
+    rename_columns()
+    # test_index_2()
     # test_index_1()
     pass

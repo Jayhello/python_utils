@@ -336,8 +336,34 @@ def test_find_cond():
     print [n for n, i in enumerate(lst) if i > 0.7][0]
     # 2
 
+    lst = [0.5, 0.3, 0.9, 0.8, 0.7]
+    # find from right
+    print next(x[0] for x in enumerate(lst[::-1]) if x[1] < 0.7)
+    # 3
+
+    lst = [0.5, 0.3, 0.9, 0.8, 0.7]
+    print next(x[0] for x in enumerate(lst[::-1]) if x[1] < 0.3)
+    # StopIteration
+
+
+def test_lst_sum():
+    lst = [1, 3, 5]
+    print sum(lst)  # 9
+    print sum(lst[1:])  # 8
+
+    print sum(lst[5:])  # 0
+    print sum(lst[5:-1])  # 0
+
+    print sum(lst[1: -1])  # 3
+
+    lst_tp = [('33', 1), ('88', 2), ('22', 3), ('44', 4)]
+    print sum(x[1] for x in lst_tp[1:])  # 9
+
+
 if __name__ == '__main__':
     test_find_cond()
+    # test_lst_sum()
+    # test_find_cond()
     # test_print()
     # remove_item_while_iter()
     # get_all_idx_of_val()

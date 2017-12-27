@@ -154,8 +154,58 @@ def apply_1():
     # 4   B  0.571429      7
     # 5   C  0.416667      9
 
+
+def apply_normalize():
+    rng = np.random.RandomState(0)
+    df = pd.DataFrame({'key': ['A', 'B', 'C', 'A'],
+                       'data1': range(1, 5),
+                       'data2': rng.randint(0, 10, 4)},
+                      columns=['key', 'data1', 'data2'])
+
+    print df
+    #    key  data1  data2
+    # 0   A      0      5
+    # 1   B      1      0
+    # 2   C      2      3
+    # 3   A      3      3
+
+    cols_to_norm = ['data1']
+    f_norm = lambda x: (x - x.min()) / (x.max() - x.min())
+    df[cols_to_norm] = df[cols_to_norm].apply(f_norm)
+
+    print df
+    #   key     data1  data2
+    # 0   A  0.000000      5
+    # 1   B  0.333333      0
+    # 2   C  0.666667      3
+    # 3   A  1.000000      3
+
+
+def apply_norm_all():
+    rng = np.random.RandomState(0)
+    df = pd.DataFrame({'data1': range(1, 5),
+                       'data2': rng.randint(0, 10, 4)},
+                      columns=['data1', 'data2'])
+    print df
+    #    data1  data2
+    # 0      1      5
+    # 1      2      0
+    # 2      3      3
+    # 3      4      3
+
+    fun = lambda x: x / x.max()
+    df = df.apply(fun)
+    print df
+    #    data1  data2
+    # 0   0.25    1.0
+    # 1   0.50    0.0
+    # 2   0.75    0.6
+    # 3   1.00    0.6
+
 if __name__ == '__main__':
-    apply_1()
+    apply_norm_all()
+    # apply_normalize()
+    # apply_1()
     # agg_filter_trans_apply()
     # group_by_1()
     # df_demo()

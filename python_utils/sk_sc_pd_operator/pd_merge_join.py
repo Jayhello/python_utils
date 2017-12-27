@@ -129,8 +129,35 @@ def df_merge_5():
     # 2  Lisa       3       4
     # 3   Sue       4       2
 
+
+def join_1():
+    d1 = {'admit': [1, 0, 1, 0], 'gre': [1, 2, 3, 4]}
+    df1 = pd.DataFrame(d1)
+    print df1
+    #    admit  gre
+    # 0      1    1
+    # 1      0    2
+    # 2      1    3
+    # 3      0    4
+    d2 = {'gpa': [22, 44, 33, 11]}
+    df2 = pd.DataFrame(d2)
+    print df2
+    #    gpa
+    # 0   22
+    # 1   44
+    # 2   33
+    # 3   11
+
+    print df1.join(df2)
+    #    admit  gre  gpa
+    # 0      1    1   22
+    # 1      0    2   44
+    # 2      1    3   33
+    # 3      0    4   11
+
 if __name__ == '__main__':
-    df_merge_5()
+    join_1()
+    # df_merge_5()
     # df_merge_4()
     # df_merge_2()
     # df_merge()

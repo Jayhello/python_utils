@@ -285,9 +285,38 @@ def test_bt_ss_3():
     # print best_time_sell_stock_3(prices)
     print best_time_sell_stock_3_v2(prices)
 
-if __name__ == '__main__':
-    test_bt_ss_3()
 
+def contain_max_water(lst):
+    n = len(lst)
+    b, e, max_c = 0, n - 1, 0
+
+    while b < e:
+        h = min(lst[b], lst[e])
+        max_c = max(max_c, (e - b) * h)
+
+        if lst[b] < lst[e]:
+            b += 1
+        else:
+            e -= 1
+
+    return max_c
+
+
+def test_contain_max_water():
+    lst = [1, 5, 4, 3]
+    print contain_max_water(lst)
+
+    lst = [1, 4, 9, 4]
+    print contain_max_water(lst)
+
+    lst = [2, 3, 4, 5, 18, 17, 6]
+    print contain_max_water(lst)  # 17
+
+
+if __name__ == '__main__':
+    test_contain_max_water()
+
+    # test_bt_ss_3()
     # test_test_bt_ss_2()
     # test_bt_ss_1()
     # test_can_jump2()

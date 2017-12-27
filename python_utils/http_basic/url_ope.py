@@ -48,7 +48,10 @@ def url_encode_v2():
 
 
 def post_request_tw():
-    d_para = {"mp4Url": "http://bilinaudiop.bs2dl.yy.com/odgu3face5561f374d188f8915ed27602173_54673772546203998_17794996?token=rgB8AFyARE0BAEV0MloAAAAA9S0yWgAAAAB7GjUrB0NPTlRFWFQJZQB7ImJ1Y2tldCI6ImJpbGluYXVkaW9wIiwiZmlsZW5hbWUiOiJvZGd1M2ZhY2U1NTYxZjM3NGQxODhmODkxNWVkMjc2MDIxNzNfNTQ2NzM3NzI1NDYyMDM5OThfMTc3OTQ5OTYifQRBVVRIAwQAAwAAAD0Fw82IteG44FVTltIdijGKcfhW",
+    mp4Url = 'https://bilinimg.bs2ul-ssl.yy.com/android2222.mp4'
+    mp4Url = 'http://bilinaudiop.bs2dl.yy.com/odgud7b58056e79243f6bacb6580ce0506b1_36695268409460340_37155969.mp4?token=sgCAAFyARE0BAM2BQ1oAAAAAfTtDWgAAAAAMsEEkB0NPTlRFWFQJaQB7ImJ1Y2tldCI6ImJpbGluYXVkaW9wIiwiZmlsZW5hbWUiOiJvZGd1ZDdiNTgwNTZlNzkyNDNmNmJhY2I2NTgwY2UwNTA2YjFfMzY2OTUyNjg0MDk0NjAzNDBfMzcxNTU5NjkubXA0In0EQVVUSAMEAAMAAADI_C7ba_qUVQLIXkAWf7r_sF_FnQ'
+
+    d_para = {"mp4Url": mp4Url,
               "secretKey": "XY-bl-audio-rec-text-ret",
               "serial": "17598411"}
 
