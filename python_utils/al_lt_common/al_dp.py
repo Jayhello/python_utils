@@ -313,9 +313,44 @@ def test_contain_max_water():
     print contain_max_water(lst)  # 17
 
 
-if __name__ == '__main__':
-    test_contain_max_water()
+def interleaving_str(s1, s2, s3):
+    if len(s3) == 0 and (len(s1) != 0 | len(s2) != 0):
+        return False
 
+    if len(s3) != 0 and (len(s1) == 0 & len(s2) == 0):
+        return False
+
+    if len(s3) == 0 & len(s1) == 0 & len(s2) == 0:
+        return True
+
+    b1, b2 = False, False
+
+    if len(s1) > 0 and s1[0] == s3[0]:
+        b1 = interleaving_str(s1[1:], s2, s3[1:])
+    else:
+        if len(s2) > 0 and s2[0] == s3[0]:
+            b2 = interleaving_str(s1, s2[1:], s3[1:])
+
+    return b1 | b2
+
+
+def test_il_str():
+    s1, s2, s3 = 'aabcc', 'dbbca', 'aadbbcbcac'
+    print interleaving_str(s1, s2, s3)
+    s3 = 'aadbbbaccc'
+    print interleaving_str(s1, s2, s3)
+
+    s1, s2, s3 = "YX", "X", "XXY"
+    print interleaving_str(s1, s2, s3)
+    s1 = 'XY'
+    print interleaving_str(s1, s2, s3)
+
+
+if __name__ == '__main__':
+    test_il_str()
+    # test_contain_max_water()
+    # s = 'a'
+    # print s[1:]
     # test_bt_ss_3()
     # test_test_bt_ss_2()
     # test_bt_ss_1()

@@ -114,8 +114,45 @@ def fill_df():
     # 2  NaN  4.0  6.0  6.0
 
 
+def drop_specify():
+    data = {'name': ['Jason', 'Molly', 'Tina', 'Jake', 'Amy'],
+            'year': [2012, 2012, 2013, 2014, 2014],
+            'reports': [4, 24, 31, 2, 3]}
+
+    df = pd.DataFrame(data,
+                      index=['Cochice', 'Pima', 'Santa Cruz', 'Maricopa', 'Yuma'])
+
+    print df
+    #              name  reports  year
+    # Cochice     Jason        4  2012
+    # Pima        Molly       24  2012
+    # Santa Cruz   Tina       31  2013
+    # Maricopa     Jake        2  2014
+    # Yuma          Amy        3  2014
+
+    print df.drop(['Cochice', 'Pima'])
+    #             name  reports  year
+    # Santa Cruz  Tina       31  2013
+    # Maricopa    Jake        2  2014
+    # Yuma         Amy        3  2014
+
+    print df.drop('reports', axis=1)
+    #              name  year
+    # Cochice     Jason  2012
+    # Pima        Molly  2012
+    # Santa Cruz   Tina  2013
+    # Maricopa     Jake  2014
+    # Yuma          Amy  2014
+
+    print df[df.name != 'Tina']
+
+    print df.drop(df.index[2])
+
+    print df.drop(df.index[[2, 3]])
+
 if __name__ == '__main__':
-    fill_df()
+    drop_specify()
+    # fill_df()
     # fill_series()
     # miss_df()
     # miss_series()
