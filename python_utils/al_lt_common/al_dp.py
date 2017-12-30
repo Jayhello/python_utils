@@ -325,26 +325,57 @@ def interleaving_str(s1, s2, s3):
 
     b1, b2 = False, False
 
-    if len(s1) > 0 and s1[0] == s3[0]:
+    if (len(s1) > 0 and s1[0] == s3[0]) | len(s1) == 0:
         b1 = interleaving_str(s1[1:], s2, s3[1:])
     else:
-        if len(s2) > 0 and s2[0] == s3[0]:
+        if (len(s2) > 0 and s2[0] == s3[0]) | len(s2) == 0:
             b2 = interleaving_str(s1, s2[1:], s3[1:])
 
     return b1 | b2
 
 
+def interleaving_str_v1(s1, s2, s3):
+    len1, len2, len3 = len(s1), len(s2), len(s3)
+    if len1 + len2 != len3: return False
+
+    # dp = [[False for _ in xrange(len1 + 1)]] * (len2 + 1) error-prone
+    dp = [[False for _ in xrange(len1 + 1)] for j in xrange(len2 + 1)]
+
+    dp[0][0] = True
+
+    for i in xrange(0, len1):
+        if s1[i] == s3[i]:
+            dp[0][i + 1] = True
+        else:
+            break
+
+    for i in xrange(0, len2):
+        if s2[i] == s3[i]:
+            dp[i + 1][0] = True
+        else:
+            break
+
+    for i in xrange(1, len2 + 1):
+        for j in xrange(1, len1 + 1):
+            dp[i][j] = (dp[i - 1][j] and s2[i - 1] == s3[i - 1 + j]) |\
+                       (dp[i][j - 1] and s1[j - 1] == s3[i + j - 1])
+
+    return dp[len2][len1]  # not dp[len1][len2]
+
+
 def test_il_str():
     s1, s2, s3 = 'aabcc', 'dbbca', 'aadbbcbcac'
-    print interleaving_str(s1, s2, s3)
+    print interleaving_str_v1(s1, s2, s3)
     s3 = 'aadbbbaccc'
-    print interleaving_str(s1, s2, s3)
+    print interleaving_str_v1(s1, s2, s3)
 
     s1, s2, s3 = "YX", "X", "XXY"
-    print interleaving_str(s1, s2, s3)
+    print interleaving_str_v1(s1, s2, s3)
     s1 = 'XY'
-    print interleaving_str(s1, s2, s3)
+    print interleaving_str_v1(s1, s2, s3)
 
+    s1, s2, s3 = 'aacaac', 'aacaaeaac', 'aacaaeaaeaacaac'
+    print interleaving_str_v1(s1, s2, s3)
 
 if __name__ == '__main__':
     test_il_str()
