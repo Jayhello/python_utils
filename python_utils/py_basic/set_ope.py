@@ -108,12 +108,20 @@ def set_diff():
     print s1.difference(s2)
     # set([3])
 
+
+def set_hash():
+    lst = [1, 555, 372, 6, 6, 372, 222]
+    h_set = set(lst)
+    print h_set  # unordered
+    # set([1, 555, 372, 222, 6])
+
 if __name__ == '__main__':
+    set_hash()
     # set_diff()
     # dict_key_to_set()
     # set_lst()
     # set_remove()
-    define_set()
+    # define_set()
     # dict_val_set()
     # set_basic_usage()
     # print min(3, 4, -1)

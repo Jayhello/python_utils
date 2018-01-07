@@ -211,8 +211,27 @@ def df_multi_idx_1():
     # b 1  0.411588  0.081071
     #   2  0.915185  0.982820
 
+
+def df_feature_name():
+    lst = [{'a': 1, 'b': 2}, {'b': 3, 'c': 4}]
+    df = pd.DataFrame(lst)
+    print df
+    #      a  b    c
+    # 0  1.0  2  NaN
+    # 1  NaN  3  4.0
+
+    print df.columns
+    # Index([u'a', u'b', u'c'], dtype='object')
+
+    print list(df.columns.values)
+    print df.columns.tolist()
+    print list(df)
+    # above three are the same ['a', 'b', 'c']
+
+
 if __name__ == '__main__':
-    df_multi_idx_1()
+    df_feature_name()
+    # df_multi_idx_1()
     # test_df_idx_3()
     # test_df_idx_2()
     # test_data_frame_4()
