@@ -192,10 +192,7 @@ def test_srs():
     val = 6
     print search_rotate_sorted(lst, val)
 
-    val = 2
-    print search_rotate_sorted(lst, val)
-
-    val = 1
+    val, lst = 3, [1, 1, 3, 1]
     print search_rotate_sorted(lst, val)
 
     val, lst = 3, [3, 5, 1]
