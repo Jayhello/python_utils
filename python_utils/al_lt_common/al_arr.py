@@ -199,8 +199,129 @@ def test_srs():
     print search_rotate_sorted(lst, val)
 
 
+def median_of_2lst(lst1, lst2):
+    len1, len2 = len(lst1), len(lst2)
+
+    i, j, lst = 0, 0, []
+
+    while i < len1 and j < len2:
+        if lst1[i] <= lst2[j]:
+            lst.append(lst1[i])
+            i += 1
+        else:
+            lst.append(lst2[j])
+            j += 1
+
+    while i < len1:
+        lst.append(lst1[i])
+        i += 1
+
+    while j < len2:
+        lst.append(lst2[j])
+        j += 1
+
+    n = len1 + len2
+
+    if n == 0: return 0
+
+    if n % 2 == 1:
+        return lst[n / 2]
+    else:
+        return (lst[n / 2] + lst[n / 2 - 1]) / 2.0
+
+
+def test_mo2():
+    lst1, lst2 = [1, 3], [2]
+    print median_of_2lst(lst1, lst2)
+
+    lst1, lst2 = [1, 3], [2, 4]
+    print median_of_2lst(lst1, lst2)
+
+
+# def two_sum(lst, val):
+#     n = len(lst)
+#     if n < 2:return None
+#
+#     lst.sort()
+#     i, j = 0, n - 1
+#     while i < j:
+#         tmp = lst[i] + lst[j]
+#         if tmp == val: return [i, j]
+#         elif tmp > val: j -= 1
+#         else: i += 1
+#
+#     return None
+
+
+def two_sum(lst, val):
+    n = len(lst)
+    if n < 2:return None
+
+    lst = [(i, v) for i, v in enumerate(lst)]
+    lst.sort(key=lambda t: t[1])
+
+    i, j = 0, n - 1
+    while i < j :
+        tmp = lst[i][1] + lst[j][1]
+
+        if tmp == val: return [lst[i][0], lst[j][0]]
+        elif tmp > val: j -= 1
+        else: i += 1
+
+    return None
+
+
+def test_ts():
+    lst, val = [2, 11, 7, 15], 9
+    print two_sum(lst, val)
+    pass
+
+
+def three_sum(lst):
+    def find_2(lst, val, idx):
+        n = len(lst)
+        i, j, ret_lst = 0, n - 1, []
+        while i < j:
+            if i == idx:i += 1
+            if j == idx:j -= 1
+
+            tmp = -(lst[i] + lst[j])
+            if tmp == val:
+                ret_lst.append([lst[i], lst[j], val])
+                j -= 1
+            elif -tmp > val: j -= 1
+            else: i += 1
+
+        return ret_lst
+
+    # lst = sorted(set(lst))
+    lst.sort()
+    n = len(lst)
+    if n < 3: return None
+
+    ret_lst = []
+    set_visited = set()
+    for i, v in enumerate(lst):
+        if v not in set_visited:
+            ret = find_2(lst, v, i)
+            if len(ret):
+                ret_lst += ret
+            set_visited.add(v)
+
+    return ret_lst
+
+
+def test_3sum():
+    lst = [-1, 0, 1, 2, -1, -4]
+    print three_sum(lst)
+
+
 if __name__ == '__main__':
-    test_srs()
+    test_3sum()
+
+    # test_ts()
+    # test_mo2()
+    # test_srs()
     # test_rd_2()
     # test_rd()
     # test_lc()

@@ -360,6 +360,17 @@ def test_lst_sum():
     print sum(x[1] for x in lst_tp[1:])  # 9
 
 
+def lst_sort(lst, val):
+    lst = [2, 11, 7, 15]
+    lst = [(i, v) for i, v in enumerate(lst)]
+    print lst
+    # [(0, 2), (1, 11), (2, 7), (3, 15)]
+    lst.sort(key=lambda t: t[1])
+
+    print lst
+    # [(0, 2), (2, 7), (1, 11), (3, 15)]
+
+
 if __name__ == '__main__':
     test_find_cond()
     # test_lst_sum()
