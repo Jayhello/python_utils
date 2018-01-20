@@ -316,9 +316,59 @@ def test_3sum():
     print three_sum(lst)
 
 
-if __name__ == '__main__':
-    test_3sum()
+def sum3_closest(lst, val):
+    n = len(lst)
+    if n < 3: return None
 
+    def find_closest(lst, idx, val):
+        pass
+
+    m_close = lst[0] + lst[1] + lst[2]
+    for i, v in enumerate(lst):
+        tmp = v - val
+        ret = find_closest(lst, i, tmp)
+        m_close = min(m_close, ret)
+
+    return m_close
+
+
+def test_s3c():
+    lst, val = [-1, 2, 1, -4], 1
+    print sum3_closest(lst, val)
+
+
+def remove_ele(lst, val):
+    n, j = len(lst), 0
+
+    for i in xrange(n):
+        if lst[i] != val:
+            lst[j] = lst[i]
+            j += 1
+
+    return j
+
+
+def test_re():
+    lst, val = [3, 5, 4, 5, 3], 5
+    print remove_ele(lst, val), lst
+    # 3 [3, 4, 3, 5, 3]
+
+
+def lexi_next_permutation(lst):
+    pass
+
+
+def test_lnp():
+    lst = ['cba', 'bca', 'bac', 'abc']
+    lst.sort()
+    print lst
+
+
+if __name__ == '__main__':
+    test_lnp()
+    # test_re()
+    # test_s3c()
+    # test_3sum()
     # test_ts()
     # test_mo2()
     # test_srs()

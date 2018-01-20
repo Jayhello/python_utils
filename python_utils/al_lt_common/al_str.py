@@ -76,7 +76,38 @@ def test_max_unique_substr():
     s1 = 'qwertqwer'
     print max_unique_substr_len(s1)
 
-if __name__ == '__main__':
-    test_max_unique_substr()
 
+def print_lst_str(lst_s):
+    print "".join(lst_s)
+
+
+def str_permute(lst_s, b, e):
+    if b == e:
+        print_lst_str(lst_s)
+
+    for i in xrange(b, e + 1):
+        lst_s[b], lst_s[i] = lst_s[i], lst_s[b]
+        # str_permute(lst_s, i + 1, e)
+        str_permute(lst_s, b + 1, e)
+        lst_s[i], lst_s[b] = lst_s[b], lst_s[i]
+
+
+def print_permutation_str(str):
+    n, lst_s = len(str), list(str)
+    str_permute(lst_s, 0, n - 1)
+
+
+def test_pps():
+    s = 'abc'
+    print_permutation_str(s)
+    s = 'abcd'
+    print_permutation_str(s)
+
+
+if __name__ == '__main__':
+    # test_pps()
+    # test_max_unique_substr()
+
+    print list('abc')
+    # ['a', 'b', 'c']
     pass
