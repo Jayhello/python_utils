@@ -371,8 +371,25 @@ def lst_sort(lst, val):
     # [(0, 2), (2, 7), (1, 11), (3, 15)]
 
 
+def lst_idx_reverse():
+    lst = [3, 4, 2, 1]
+    print lst[1:]
+    # [4, 2, 1]
+    print lst[1: 4]
+    # [4, 2, 1]
+    print lst[1: 4: -1]
+    # []  not [1, 2, 4]
+    print lst[1: 4][::-1]
+    # [1, 2, 4]
+
+    print lst[3: 0: -1]
+    # [1, 2, 4]
+    print lst[2: 0: -1]
+    # [1, 2, 4]
+
 if __name__ == '__main__':
-    test_find_cond()
+    lst_idx_reverse()
+    # test_find_cond()
     # test_lst_sum()
     # test_find_cond()
     # test_print()

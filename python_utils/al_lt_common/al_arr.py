@@ -1,5 +1,7 @@
 # coding:utf-8
 
+import numpy as np
+
 
 def trap_max(lst):
     n = len(lst)
@@ -354,18 +356,98 @@ def test_re():
     # 3 [3, 4, 3, 5, 3]
 
 
-def lexi_next_permutation(lst):
-    pass
+def lexi_next_permutation(lst_s):
+    n = len(lst_s)
+    i = n - 2
+
+    while i >= 0 and lst_s[i] >= lst_s[i + 1]:
+        i -= 1
+
+    if i < 0:
+        return ''.join(lst_s)
+
+    j = n - 1
+    while lst_s[j] <= lst_s[i]:  # <= not <
+        j -= 1
+
+    lst_s[i], lst_s[j] = lst_s[j], lst_s[i]
+    lst_s[i + 1:] = lst_s[n - 1: i :-1]
+
+    return ''.join(lst_s)
+
+
+def lnp(s):
+    lst_s = list(s)
+    return lexi_next_permutation(lst_s)
 
 
 def test_lnp():
-    lst = ['cba', 'bca', 'bac', 'abc']
-    lst.sort()
+    s = '2431'
+    print lnp(s)  # 3124
+
+    s = '0125330'
+    print lnp(s)  # 0130235
+
+    s = '151'
+    print lnp(s)  # 511
+
+
+def check(ch, lst_b):
+    if ch == '.': return True
+    if lst_b[int(ch) - 1]:return False
+
+    lst_b[int(ch) - 1] = True
+    return True
+
+
+def valid_sd(board):
+    for i in xrange(9):
+        lst_b = [False] * 9
+        for j in xrange(9):  # check row
+            if not check(board[i][j], lst_b):
+                return False
+
+        lst_b = [False] * 9
+        for j in xrange(9):  # check column
+            if not check(board[j][i], lst_b):
+                return False
+    # check sub 9 board(3 rows, 3 columns)
+    for r in xrange(3):
+        for c in xrange(3):
+            lst_b = [False] * 9
+
+            for i in xrange(3):
+                r_idx = r * 3 + i  # every sub board row index
+                for j in xrange(3):
+                    c_idx = c * 3 + j  # every sub board column index
+                    if not check(board[r_idx][c_idx], lst_b):
+                        return False
+
+    return True
+
+
+def rotate_mat(lst2):
+    n = len(lst2)
+
+    for i in xrange(n / 2):  # 遍历每一层
+        m = n - 1 - i
+        for j in xrange(i, m):
+            tmp = lst2[i][j]
+            lst2[i][j] = lst2[n - j - 1][i]
+            lst2[n - j - 1][i] = lst2[n - i - 1][n - j - 1]
+            lst2[n - i - 1][n - j - 1] = lst2[j][n - 1 - i]
+            lst2[j][n - 1 - i] = tmp
+
+
+def test_rm():
+    lst = np.arange(25).reshape(5, 5)
+    rotate_mat(lst)
     print lst
 
 
 if __name__ == '__main__':
-    test_lnp()
+    test_rm()
+    # test_lnp()
     # test_re()
     # test_s3c()
     # test_3sum()
