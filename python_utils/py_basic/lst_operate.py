@@ -387,6 +387,19 @@ def lst_idx_reverse():
     print lst[2: 0: -1]
     # [1, 2, 4]
 
+    print range(5, 0, -1)  # range(5, -1) no use
+    # [5, 4, 3, 2, 1]
+    for i in xrange(5, 0, -1):  # xrange(5, -1) no use
+        print i
+        # 5, 4, 3, 2, 1
+
+    print range(5, -1, -1)
+    # [5, 4, 3, 2, 1, 0]
+
+    for i in reversed(xrange(3)):
+        print i
+    # 2, 1, 0
+
 if __name__ == '__main__':
     lst_idx_reverse()
     # test_find_cond()

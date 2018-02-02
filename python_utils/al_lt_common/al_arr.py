@@ -430,8 +430,8 @@ def rotate_mat(lst2):
     n = len(lst2)
 
     for i in xrange(n / 2):  # 遍历每一层
-        m = n - 1 - i
-        for j in xrange(i, m):
+        m = n - 1 - i        # 每一层的边界
+        for j in xrange(i, m):  # 替换选择四个点
             tmp = lst2[i][j]
             lst2[i][j] = lst2[n - j - 1][i]
             lst2[n - j - 1][i] = lst2[n - i - 1][n - j - 1]
@@ -445,8 +445,218 @@ def test_rm():
     print lst
 
 
+def lst_add1(lst):
+    n, carry = len(lst), 1
+
+    for i in reversed(xrange(n)):
+        r = lst[i] + carry
+        if r > 9:
+            r %= 10
+            lst[i] = r
+        else:
+            lst[i] = r
+            carry = 0
+            break
+    if carry == 1:
+        lst.insert(0, 1)
+
+    return lst
+
+
+def lst_add1_v2(lst):
+    n = len(lst)
+
+    for i in reversed(xrange(n)):
+        if lst[i] == 9: lst[i] = 0
+        else:
+            lst[i] += 1
+            return lst
+
+    if lst[-1] == 0: lst.insert(0, 1)
+
+    return lst
+
+
+def test_la1():
+    lst = [9, 9, 9]
+    # print lst_add1(lst)
+    print lst_add1_v2(lst)
+
+
+def gray_code(n):
+    lst = [0]
+    high_or = 1
+    for i in xrange(n):
+        for j in reversed(xrange(len(lst))):
+            lst.append(lst[j] | high_or)
+
+        high_or <<= 1
+
+    return lst
+
+
+def gray_code_v2(n):
+    lst = [0]
+    for i in xrange(n):
+        for j in reversed(xrange(len(lst))):
+            lst.append(lst[j] | (1 << i))
+
+    return lst
+
+
+def test_gc():
+    print gray_code_v2(2)
+    print gray_code_v2(3)
+    print gray_code_v2(4)
+
+
+def set_mat_zero(lst2):
+    m, n = len(lst2), len(lst2[0])
+
+    b_r_zero, b_c_zero = False, False
+
+    for i in xrange(n):  # check first row will be 0
+        if lst2[0][i] == 0:
+            b_r_zero = True
+            break
+
+    for j in xrange(m):  # check first column will be 0
+        if lst2[j][0] == 0:
+            b_c_zero = True
+            break
+
+    for i in xrange(1, m):
+        for j in xrange(1, n):
+            if lst2[i][j] == 0:
+                lst2[0][j] = 0
+                lst2[i][0] = 0
+
+    for i in xrange(1, m):
+        if lst2[i][0] == 0:
+            for j in xrange(1, n):
+                lst2[i][j] = 0
+
+    for j in xrange(1, n):
+        if lst2[0][j] == 0:
+            for i in xrange(1, m):
+                lst2[i][j] = 0
+
+    if b_r_zero:
+        for j in xrange(n):
+            lst2[0][j] = 0
+
+    if b_c_zero:
+        for i in xrange(m):
+            lst2[i][0] = 0
+
+
+def test_smz():
+    lst = [[0, 1, 1, 0], [1, 0, 1, 1],
+           [1, 1, 1, 1], [0, 1, 1, 1]]
+
+    set_mat_zero(lst)
+    print lst
+
+
+def gas_station(lst_gas, lst_cost):
+    n = len(lst_gas)
+
+    for i in xrange(n):
+        cur, flag = 0, True
+        for j in xrange(i, n):
+            cur += lst_gas[j]
+            cur -= lst_cost[j]
+            if cur < 0:  # 这里必须加上这个判断
+                flag = False
+                break
+
+        if flag:  # 如果可以继续
+            for j in xrange(0, i):  # 循环
+                cur += lst_gas[j]
+                cur -= lst_cost[j]
+                if cur < 0: break
+
+        # 还有剩余的油
+        if cur >= 0: return i
+
+    return -1
+
+
+def gas_station_v2(lst_gas, lst_cost):
+    n = len(lst_gas)
+
+    for i in xrange(n):
+        store = lst_gas[i]
+        j = i
+        while store >= lst_cost[j]:
+            store -= lst_cost[j]
+            j = (j + 1) % n  # % n not % i
+
+            if j == i: return i  # 回到原来的点
+
+            store += lst_gas[j]
+
+    return -1
+
+
+def gas_station_v3(lst_gas, lst_cost):
+    # merge to the below for loop
+    # if sum(lst_gas) < sum(lst_cost): return -1
+
+    n, store, idx, gap = len(lst_gas), 0, 0, 0
+
+    for i in xrange(n):
+        gap = gap + lst_gas[i] - lst_cost[i]
+        store += lst_gas[i]
+        store -= lst_cost[i]
+        if store < 0:
+            idx = i + 1
+            store = 0
+
+    if gap < 0: return -1
+    return idx
+
+
+def test_gs():
+    # lst1, lst2 = [3, 1, 2, 5, 4], [4, 1, 1, 2, 3]
+    # lst1, lst2 = [1, 2, 3, 4], [1, 2, 3, 4]
+    lst1, lst2 = [2, 4], [3, 4]
+    # print gas_station(lst1, lst2)
+    # print gas_station_v2(lst1, lst2)
+    print gas_station_v3(lst1, lst2)
+    pass
+
+
+def candy_num(lst):
+    n = len(lst)
+    lst_num = [1] * n
+
+    for i in xrange(n - 1):  # better than 1, n
+        if lst[i + 1] > lst[i]:
+            # lst_num[i] += 1 比前一个大1，而不是自己加 1
+            lst_num[i + 1] = lst_num[i] + 1
+
+    for i in reversed(xrange(n - 1)):
+        # if lst[i + 1] < lst[i] and lst_num[i - 1] <= lst_num[i]:
+        if lst[i + 1] < lst[i]:
+            lst_num[i] = max(lst_num[i], lst_num[i + 1] + 1)
+
+    return sum(lst_num), lst_num
+
+
+def test_cn():
+    lst1, lst2, lst3 = [1, 3, 2, 1], [1, 3, 5], [1, 0, 2]
+    print candy_num(lst1)  # (7, [1, 3, 2, 1])
+    print candy_num(lst2)  # (6, [1, 2, 3])
+    print candy_num(lst3)  # (5, [2, 1, 2])
+
 if __name__ == '__main__':
-    test_rm()
+    test_cn()
+    # test_gs()
+    # test_smz()
+    # test_gc()
+    # test_la1()
+    # test_rm()
     # test_lnp()
     # test_re()
     # test_s3c()

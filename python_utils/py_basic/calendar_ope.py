@@ -35,8 +35,8 @@ def tb_partition_sql():
     :return:
     """
     sql = """PARTITION p%s VALUES LESS THAN (TO_DAYS('%s')) ENGINE = InnoDB,"""
-    d1 = datetime.date(2017, 12, 1)
-    d2 = datetime.date(2017, 12, 31)
+    d1 = datetime.date(2018, 12, 1)
+    d2 = datetime.date(2018, 12, 31)
     days = [d1 + datetime.timedelta(days=x) for x in range((d2-d1).days + 2)]
     # print len(days)
     for i in xrange(len(days) - 1):

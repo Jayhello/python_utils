@@ -33,6 +33,6 @@ def multi_paras():
 if __name__ == '__main__':
     # app.run(debug=True)
     # so the other machine can visit the website by ip
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
 
     pass

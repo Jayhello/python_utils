@@ -229,8 +229,26 @@ def df_feature_name():
     # above three are the same ['a', 'b', 'c']
 
 
+def df_to_csv():
+    js_data = {"data": [{"uid":"1080427621","sid":"1330761808","ssid":"1330761808","asid":"","title":"我来卖玉","cover":"https://screenshot.dwstatic.com/yjmf/1080427621_1496652244.682569.jpg?imageview/4/0/w/363/h/330/exif/0/blur/1.0","count":"4","yyno":"1148665362","nickname":"逝水","start_time":"1498493654000","is_living":"0","tag_type":0},
+                        {"uid":"1080427621","sid":"1330761808","ssid":"1330761808","asid":"","title":"我来卖玉","cover":"https://screenshot.dwstatic.com/yjmf/1080427621_1496652244.682569.jpg?imageview/4/0/w/363/h/330/exif/0/blur/1.0","count":"4","yyno":"1148665362","nickname":"逝水","start_time":"1498493654000","is_living":"0","tag_type":0}]}
+
+    # js_data = {"data": [{'start_time': 1476329529}, {'start_time': 1476329529}]}
+    # df = pd.DataFrame(js_data['data'])
+    # df['start_time'] = pd.to_datetime(df['start_time'], unit='s')
+    # df['start_time'] = df['start_time'].apply(int)
+    # print pd.to_datetime(df['start_time'], unit='s')
+
+    df = pd.DataFrame(js_data['data'])
+    print df.head()
+
+    path = 'E:/baiduyun_voice/codec_inneed/yi_jian_app.csv'
+    # df.to_csv(path, index=False, encoding='gb2312')
+    df.to_csv(path, index=False)
+
 if __name__ == '__main__':
-    df_feature_name()
+    df_to_csv()
+    # df_feature_name()
     # df_multi_idx_1()
     # test_df_idx_3()
     # test_df_idx_2()

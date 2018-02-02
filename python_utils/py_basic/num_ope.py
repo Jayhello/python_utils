@@ -24,6 +24,12 @@ def round_float():
     print format(a, '.2f')
     # 13.95
 
+
+def or_shift():
+    print 1 >> 1, 1 << 1  # 0 2
+    print 1 | 4, 1 | 2  # 5 3
+
+
 if __name__ == '__main__':
     round_float()
     pass
