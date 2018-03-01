@@ -30,6 +30,15 @@ def or_shift():
     print 1 | 4, 1 | 2  # 5 3
 
 
+def print_binary():
+    m, n = 5, -5
+    print '{0:b}'.format(m)
+    print '{0:b}'.format(n)
+
+    print bin(m), bin(n)
+
+
 if __name__ == '__main__':
-    round_float()
+    print_binary()
+    # round_float()
     pass

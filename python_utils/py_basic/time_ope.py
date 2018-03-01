@@ -68,9 +68,26 @@ def test_time_transform():
     print time_stamp
     print divmod(time_stamp, 3600)
 
+
+def str_time():
+    import datetime
+    str_time = '2018-02-01 0:0:0'
+    d = datetime.datetime.strptime(str_time, "%Y-%m-%d %H:%M:%S")
+    print d, d.strftime("%Y-%m-%d %H:%M:%S")
+    # 2018-02-01 00:00:00, 2018-02-01 00:00:00
+
+    for i in xrange(2):
+        print d, d + datetime.timedelta(minutes=30)
+        d = d + datetime.timedelta(minutes=30)
+
+    # 2018-02-01 00:00:00 2018-02-01 00:30:00
+    # 2018-02-01 00:30:00 2018-02-01 01:00:00
+
+
 if __name__ == '__main__':
+    str_time()
     # test_time_consume()
     # test_time()
     # test_sp_mi_sec()
-    test_time_transform()
+    # test_time_transform()
     pass

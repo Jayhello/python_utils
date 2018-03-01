@@ -400,6 +400,11 @@ def lst_idx_reverse():
         print i
     # 2, 1, 0
 
+    for i in xrange(2, -1, -1):
+        print i
+    # 2, 1, 0
+
+
 if __name__ == '__main__':
     lst_idx_reverse()
     # test_find_cond()

@@ -1,6 +1,7 @@
 # coding:utf-8
 
 import numpy as np
+import operator
 
 
 def trap_max(lst):
@@ -650,8 +651,105 @@ def test_cn():
     print candy_num(lst2)  # (6, [1, 2, 3])
     print candy_num(lst3)  # (5, [2, 1, 2])
 
+
+def single_num(lst):
+    n, ret = len(lst), 0
+    for i in xrange(n):
+        ret ^= lst[i]
+
+    return ret
+
+
+def single_num_v2(lst):
+    ret = 0
+    for num in lst:
+        ret ^= num
+
+    return ret
+
+
+def single_num_v3(lst):
+    return reduce(lambda x, y: x^y, lst)
+
+
+def single_num_v4(lst):
+    return reduce(operator.xor, lst)
+
+
+def test_sn():
+    lst = [3, 3, 5]
+    # print single_num(lst)
+    # print single_num_v2(lst)
+    print single_num_v3(lst)
+    print single_num_v4(lst)
+
+
+def find_right_bit1(num):
+    idx = 0
+    while (num & 1 == 0) and idx < 32:
+        num, idx = num >> 1, idx + 1
+
+    return idx
+
+
+def is_nth_bit1(num, idx):
+    while idx:
+        num >>= 1
+        idx -= 1
+
+    return num & 1
+
+
+def single_num2(lst):
+    xor_ret = 0
+    for n in lst:
+        xor_ret ^= n
+
+    idx = find_right_bit1(xor_ret)
+
+    ret1, ret2 = 0, 0
+    for n in lst:
+        if is_nth_bit1(n, idx):
+            ret1 ^= n
+        else:
+            ret2 ^= n
+
+    return ret1, ret2
+
+
+def test_sn2():
+    lst = [1, 1, 3, 2, 5, 2]
+    print single_num2(lst)
+
+    lst = [1, 1, 3, 0, 5, 0]
+    print single_num2(lst)
+
+
+def single_num3(lst):
+    n, ret = len(lst), 0
+    for i in xrange(31, -1, -1):
+        mask, s = 1 << i, 0
+        for j in xrange(n):
+            if lst[j] & mask:
+                s += 1
+
+        ret = (ret << 1) + (s % 3)
+
+    return ret
+
+
+def test_sn3():
+    lst = [1, 1, 2, 1, 3, 3, 3]
+    print single_num3(lst)
+
+
 if __name__ == '__main__':
-    test_cn()
+    print 1 << 5, 1 << 31, 1 << 32
+    # 32 2147483648 4294967296
+    # test_sn3()
+    # test_sn2()
+    # test_sn()
+    # test_cn()
     # test_gs()
     # test_smz()
     # test_gc()
