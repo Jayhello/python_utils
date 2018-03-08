@@ -22,6 +22,7 @@ def byteify(input):
 
 
 def get_json_from_file(filename):
+    """注意如果自己创建的json.txt文件读取有问题，可以在pycharm中创建file.json然后再读取"""
     with open(filename) as jf:
         jsondata = json.load(jf)
 

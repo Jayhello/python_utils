@@ -743,8 +743,28 @@ def test_sn3():
     print single_num3(lst)
 
 
+def int2roman(n):
+    lst_v = [1000, 900, 500, 400, 100,   90,  50,   40,  10,   9,   5,    4,   1]
+    lst_s = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+    LEN = len(lst_v)
+
+    s_ret = ''
+    for i in xrange(LEN):
+        while n >= lst_v[i]:
+            n -= lst_v[i]
+            s_ret += lst_s[i]
+
+    return s_ret
+
+
+def test_i2r():
+    n = 3978
+    print int2roman(n)
+
+
 if __name__ == '__main__':
-    print 1 << 5, 1 << 31, 1 << 32
+    test_i2r()
+    # print 1 << 5, 1 << 31, 1 << 32
     # 32 2147483648 4294967296
     # test_sn3()
     # test_sn2()
