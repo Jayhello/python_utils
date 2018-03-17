@@ -405,6 +405,23 @@ def lst_idx_reverse():
     # 2, 1, 0
 
 
+def lst_deep_shallow_copy():
+    lst2 = [[1], [1, 2]]
+    lst2_tmp = []
+    for lst in lst2:
+        lst2_tmp.append(lst)  # shallow copy
+        # lst2_tmp.append(list(lst))  # deep copy
+
+    for lst in lst2_tmp:
+        lst.append(9)
+
+    print lst2, lst2_tmp
+    # [[1, 9], [1, 2, 9]] [[1, 9], [1, 2, 9]]
+
+    import copy
+    lst2_tmp = copy.deepcopy(lst2)
+
+
 if __name__ == '__main__':
     lst_idx_reverse()
     # test_find_cond()

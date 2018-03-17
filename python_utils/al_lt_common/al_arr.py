@@ -762,8 +762,69 @@ def test_i2r():
     print int2roman(n)
 
 
+def roman2int(s_roman):
+    lst_s = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+    lst_v = [1000, 900, 500, 400, 100,   90,  50,   40,  10,   9,   5,    4,   1]
+
+    s_len, lst_len = len(s_roman), len(lst_s)
+    i, j, i_ret = 0, 0, 0
+
+    while i < s_len and j < lst_len:
+        s_sub = lst_s[j]
+        if s_sub == s_roman[i:i+len(s_sub)]:
+            i_ret += lst_v[j]
+            i += len(s_sub)
+        else:
+            j += 1
+
+    return i_ret
+
+
+def test_r2i():
+    s = 'MMMCMLXXVIII'
+    print roman2int(s)  # 3978
+
+
+def subsets(lst):
+    lst.sort()
+    lst2_ret = []
+
+    for item in lst:
+        lst_tmp = []
+        # get sets that are already in result
+        for lst_item in lst2_ret:
+            # lst_tmp.append(lst_item) # shallow copy
+            lst_tmp.append(list(lst_item))  # deep copy
+
+        # add S[i] to existing sets
+        for lst_item in lst_tmp:
+            lst_item.append(item)
+
+        # add S[i] only as a set
+        lst_tmp.append([item])
+
+        for lst_item in lst_tmp:
+            lst2_ret.append(lst_item)
+
+    lst2_ret.append([])
+
+    return lst2_ret
+
+
+def test_subsets():
+    lst = [1, 2, 3]
+    print subsets(lst)
+    # [[1], [1, 2], [2], [1, 3], [1, 2, 3], [2, 3], [3], []]
+
 if __name__ == '__main__':
-    test_i2r()
+    test_subsets()
+    # test_i2r()
+    # test_r2i()
+
+
+    # s = 'abcd'
+    # print s[3:2:-1], s[3:1:-1], s[1:0:-1], s[::-1]  # d, dc, b, dcba
+
     # print 1 << 5, 1 << 31, 1 << 32
     # 32 2147483648 4294967296
     # test_sn3()
