@@ -816,11 +816,30 @@ def test_subsets():
     print subsets(lst)
     # [[1], [1, 2], [2], [1, 3], [1, 2, 3], [2, 3], [3], []]
 
+
+def triangle(lst2):
+    row = len(lst2)
+    if row < 0: return 0
+
+    dp = [i for i in lst2[row - 1]]
+
+    for r in reversed(xrange(row - 1)):
+        for col in xrange(r + 1):
+            dp[col] = lst2[r][col] + min(dp[col], dp[col + 1])
+
+    return dp[0]
+
+
+def test_triangle():
+    lst2 = [[-1], [2, 3], [1, -1, -3], [5, 3, -1, 2]]
+    print triangle(lst2)
+
+
 if __name__ == '__main__':
-    test_subsets()
+    test_triangle()
+    # test_subsets()
     # test_i2r()
     # test_r2i()
-
 
     # s = 'abcd'
     # print s[3:2:-1], s[3:1:-1], s[1:0:-1], s[::-1]  # d, dc, b, dcba
