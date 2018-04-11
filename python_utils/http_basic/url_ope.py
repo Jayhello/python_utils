@@ -3,6 +3,7 @@
 
 import urllib
 import requests
+import urlparse
 
 
 def url_quote():
@@ -65,8 +66,19 @@ def post_request_tw():
     s = "sign=052c177ab75dfd53ab6b1cdc25569ef1&text=%E9%83%BD%E6%95%8F%E6%B3%95%E8%BD%AE%E5%8A%9F%E7%BB%83%E4%B9%A0%E8%80%85%E8%B7%B3%E6%A5%BC%E5%89%B2%E8%85%95%E6%8A%95%E6%B2%B3%EF%BC%8C&ts=1513238084&code=0&serial=17598411"
     print urllib.unquote(s)
 
+
+def url_parse():
+    """get url query parameters"""
+    url = 'http://foo.appspot.com/abc?def=ghi'
+    parsed = urlparse.urlparse(url)
+
+    print urlparse.parse_qs(parsed.query)['def']
+    # ['ghi']
+
+
 if __name__ == '__main__':
-    post_request_tw()
+    url_parse()
+    # post_request_tw()
     # url_quote()
     # url_encode_v1()
     # url_encode_v2()
