@@ -422,8 +422,45 @@ def lst_deep_shallow_copy():
     lst2_tmp = copy.deepcopy(lst2)
 
 
+def remove_str_idx():
+    s = '0123456'
+    print s[::3]
+    # 036
+
+    # first create a new str (in python str)
+    s_new = ''
+    for i in xrange(len(s)):
+        if i % 3 != 0:
+            s_new += s[i]
+
+    print s_new
+    # 1245
+
+    s_lst = [c if i % 3 else '' for i, c in enumerate(s)]
+    print s_lst
+    # ['', '1', '2', '', '4', '5', '']
+    s_new = ''.join(s_lst)
+    print s_new
+    # 1245
+
+    # you can put it in single line
+    s_new = ''.join([c if i % 3 else '' for i, c in enumerate(s)])
+    print s_new
+    # 1245
+
+    s_new = ''.join([c for i, c in enumerate(s) if i % 3])
+    print s_new
+    # 1245
+
+    s_idx = filter(lambda x: x[0] % 3, enumerate(s))
+    print s_idx
+    # [(1, '1'), (2, '2'), (4, '4'), (5, '5')]
+    print ''.join([x[1] for x in s_idx])
+    # 1245
+
 if __name__ == '__main__':
-    lst_idx_reverse()
+    remove_str_idx()
+    # lst_idx_reverse()
     # test_find_cond()
     # test_lst_sum()
     # test_find_cond()

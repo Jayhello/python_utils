@@ -835,8 +835,29 @@ def test_triangle():
     print triangle(lst2)
 
 
+def min_str(lst):
+    def s_cmp(i1, i2):
+        s1, s2 = str(i1), str(i2)
+        if s1 + s2 > s2 + s1:
+            return -1
+        else:
+            return 1
+
+    lst.sort(s_cmp)
+    return "".join([str(i) for i in lst])
+
+
+def test_min_str():
+    lst = [321, 32, 3]
+    lst.sort()
+    print min_str(lst)
+
+
 if __name__ == '__main__':
-    test_triangle()
+    test_min_str()
+    a, b = 32, 3
+    print str(a) + str(b) < str(b) + str(a)
+    # test_triangle()
     # test_subsets()
     # test_i2r()
     # test_r2i()
