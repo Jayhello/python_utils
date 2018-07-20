@@ -48,25 +48,26 @@ def test_sp_mi_sec():
 
 
 def test_time_transform():
-    time_stamp = int(time.time())
-    s = '123'
-    print time_stamp
-    # 1509953402
-    print "%s_%s.pcm" % (s, time_stamp)
-    # 123_1509953402.pcm
-    s += str(time_stamp)
-    print s
+    # time_stamp = int(time.time())
+    # s = '123'
+    # print time_stamp
+    # # 1509953402
+    # print "%s_%s.pcm" % (s, time_stamp)
+    # # 123_1509953402.pcm
+    # s += str(time_stamp)
+    # print s
 
-    print time.ctime(time_stamp)
-    # Mon Nov 06 15:30:02 2017
+    # print time.ctime(time_stamp)
+    # Thu Jun 28 07:58:58 2018
     print time.strftime("%Y-%m-%d %H:%M:%S")
-    # 2017-11-09 17:17:02
-    print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(1509953402))
-    # 2017-11-06 15:30:02
+    # 2018-06-28 08:00:35
 
-    time_stamp = int(time.time())
-    print time_stamp
-    print divmod(time_stamp, 3600)
+    # print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(1509953402))
+    # # 2017-11-06 15:30:02
+    #
+    # time_stamp = int(time.time())
+    # print time_stamp
+    # print divmod(time_stamp, 3600)
 
 
 def str_time():
@@ -85,7 +86,30 @@ def str_time():
 
 
 if __name__ == '__main__':
-    str_time()
+    # import datetime
+    # str_time = '2018-03-08T08:00:00.000'
+    # d = datetime.datetime.strptime(str_time, "%Y-%m-%dT%H:%M:%S.%f")
+    # print d
+    # 2018-03-08 08:00:00
+
+    import time
+    str_time = '2018-03-08T08:00:00.000'
+    # str_time.replace('T', ' ')
+
+    # d = time.strftime("%Y-%m-%d %H:%M:%S.%f")
+
+    import time
+
+    str_time = '2018-03-08T08:00:00.000'
+    d = time.strptime(str_time, "%Y-%m-%dT%H:%M:%S.%f")
+
+    print d
+    # time.struct_time(tm_year=2018, tm_mon=3, tm_mday=8, tm_hour=8, tm_min=0, tm_sec=0, tm_wday=3, tm_yday=67, tm_isdst=-1)
+
+    print time.strftime("%Y-%m-%d %H:%M:%S", d)
+    # 2018-03-08 08:00:00
+
+    # str_time()
     # test_time_consume()
     # test_time()
     # test_sp_mi_sec()

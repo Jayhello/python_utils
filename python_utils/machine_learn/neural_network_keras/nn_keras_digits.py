@@ -36,7 +36,7 @@ def show_image():
     this function is for a test to show, server image
     :return:
     """
-    (X_train, y_train), (X_test, y_test) = load_data()
+    (X_train, y_train), (X_validation, y_validation), (X_test, y_test) = load_data()
     # (X_train, y_train), (X_test, y_test) = mnist.load_data()
     # plot 4 images as gray scale
     plt.subplot(221)
@@ -104,6 +104,6 @@ def train_and_evaluate():
 
 if __name__ == '__main__':
     # load_data()
-    # generate_data()
-    train_and_evaluate()
+    generate_data()
+    # train_and_evaluate()
     pass

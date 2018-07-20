@@ -20,13 +20,17 @@ def lst_2_dict():
     """
     lst1 = ['a', 'b', 'c']
     lst2 = [1, 2, 3]
-    # d = {k: v for k, v in zip(lst1, lst2)}
-    d = dict(zip(lst1, lst2))
-    print d
+    d1 = {k: v for k, v in zip(lst1, lst2)}
+    print d1
     # {'a': 1, 'c': 3, 'b': 2}
+
+    d2 = dict(zip(lst1, lst2))
+    print d2
+    # {'a': 1, 'c': 3, 'b': 2}
+
     # d.pop('a')
-    del d['a']
-    print d
+    # del d['a']
+    # print d
 
 
 def iter_dict():
@@ -188,10 +192,10 @@ if __name__ == '__main__':
     # dic_count_value()
     # dic_to_lst()
     # dict_sort_by_value()
-    # lst_2_dict()
+    lst_2_dict()
     # iter_dict()
     # iter_dic_sort()
-    iter_dict_remove()
+    # iter_dict_remove()
 
     s_lst={}
     s_lst['worker_1'] = [1, 2, 3]

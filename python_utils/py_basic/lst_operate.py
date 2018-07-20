@@ -132,7 +132,7 @@ def generate_range_tuple_list(start, end, step):
     """
     ret_lst = []
     for i in xrange(start, end, step):
-        tp = (i, i + step if(i + step < end) else end)
+        tp = (i, i + step if (i + step < end) else end)
         ret_lst.append(tp)
 
     return ret_lst
@@ -198,7 +198,7 @@ def eu_distance():
     a1 = [1, 2, 3]
     a2 = [3, 4, 5]
     from math import sqrt
-    print sqrt(sum((a - b)**2 for a, b in zip(a1, a2)))
+    print sqrt(sum((a - b) ** 2 for a, b in zip(a1, a2)))
     # 3.46410161514
 
 
@@ -263,9 +263,9 @@ def get_all_idx_of_val():
 
     import numpy as np
     arr = np.array(lst)
-    print np.where(arr==val)
+    print np.where(arr == val)
     # (array([0, 2, 4], dtype=int64),)
-    print np.where(arr==val)[0]
+    print np.where(arr == val)[0]
     # [0 2 4]
 
 
@@ -285,11 +285,11 @@ def max_activity():
     print tp_lst
     # [(3, 4), (5, 6), (3, 5), (5, 7), (8, 10), (1, 4), (6, 9), (8, 11), (2, 5), (0, 6)]
 
-    lst = sorted(zip(s, e), key=lambda t: t[1]-t[0])
+    lst = sorted(zip(s, e), key=lambda t: t[1] - t[0])
     print lst
     # [(3, 4), (5, 6), (3, 5), (5, 7), (8, 10), (1, 4), (6, 9), (8, 11), (2, 5), (0, 6)]
 
-    print sorted(zip(s, e), key=lambda t: t[1]-t[0], reverse=True)
+    print sorted(zip(s, e), key=lambda t: t[1] - t[0], reverse=True)
     # [(0, 6), (1, 4), (6, 9), (8, 11), (2, 5), (3, 5), (5, 7), (8, 10), (3, 4), (5, 6)]
 
 
@@ -402,7 +402,7 @@ def lst_idx_reverse():
 
     for i in xrange(2, -1, -1):
         print i
-    # 2, 1, 0
+        # 2, 1, 0
 
 
 def lst_deep_shallow_copy():
@@ -458,8 +458,57 @@ def remove_str_idx():
     print ''.join([x[1] for x in s_idx])
     # 1245
 
+
+def test_remove_item_while_iter():
+    lst = [1, 1, 0, 2, 0, 0, 8, 3, 0]
+
+    print filter(lambda x: x != 0, lst)
+    # [1, 1, 2, 8, 3]
+
+    print [x for x in lst if x != 0]
+    # [1, 1, 2, 8, 3]
+
+    for item in lst[:]:
+        if item == 0:
+            lst.remove(item)
+
+    print lst
+    # [1, 1, 2, 8, 3]
+
+    lst = [1, 1, 0, 2, 0, 0, 8, 3, 0]
+
+    while 0 in lst:
+        lst.remove(0)
+    print lst
+    # [1, 1, 2, 8, 3]
+
+
+def get_ele_by_indices():
+    lst = [1, 3, 5, 7]
+    idxs = [1, 2]
+    # print lst[idxs]   TypeError: list indices must be integers, not list
+
+    print [lst[idx] for idx in idxs]
+    # [3, 5]
+    import numpy as np
+
+    print np.array(lst)[idxs]
+    # [3, 5]
+
+    import operator
+    # print operator.indexOf(lst, idxs)
+
+    # print map(operator.indexOf, lst, idxs)
+    print map(lst.__getitem__, idxs)
+    # [3, 5]
+
+
 if __name__ == '__main__':
-    remove_str_idx()
+    get_ele_by_indices()
+
+    # test_remove()
+    # test_print()
+    # remove_str_idx()
     # lst_idx_reverse()
     # test_find_cond()
     # test_lst_sum()

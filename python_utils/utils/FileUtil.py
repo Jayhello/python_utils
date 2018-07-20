@@ -22,6 +22,9 @@ def get_line_lst(filename):
     :param filename the file to be readed
         like '../dataset/dataset.txt':
     :return like [['line1 1'], ['line2 2']]:
+
+    The above may contains '\n', the below one line can solve it.
+     open(f_path).read().split('\n')
     """
     lst = []
     with open(filename) as fp:
@@ -29,6 +32,18 @@ def get_line_lst(filename):
             lst.append(line)
 
     return lst
+
+
+def write_lines_to_txt():
+    lst = ['line1', 'line2', 'line3']
+
+    f_path = 'output.txt'
+    with open(f_path, 'w') as fp:
+        for line in lst:
+            fp.write("%s\n" % line)
+
+        # or
+        # fp.write("\n".join(lst))
 
 
 def get_all_files_name_in_dir(dir):
@@ -185,8 +200,20 @@ def get_file_create_time(f_path=None):
     print now_t, now_t - int(t)
     # 1511856026 13997
 
+
+def get_relative_path():
+    """
+    https://stackoverflow.com/questions/8693024/how-to-remove-a-path-prefix-in-python
+    :return:
+    """
+    full_path = '/book/html/wa/foo/bar/'
+    print os.path.relpath(full_path, '/book/html')
+    # wa\foo\bar
+
+
 if __name__ == '__main__':
-    get_file_create_time()
+    get_relative_path()
+    # get_file_create_time()
     # test_write_list_excel()
     # batch_rename()
     # batch_rename_files_in_dir()

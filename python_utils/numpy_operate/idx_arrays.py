@@ -92,8 +92,15 @@ def assign_val():
     print arr
     # [0 1 0 1 2 3 4 7 8 9]　
 
+
+def np_argmax():
+    arr = np.array([1, 5, 3])
+    print np.argmax(arr)
+
+
 if __name__ == '__main__':
-    assign_val()
+    np_argmax()
+    # assign_val()
     # n_dimension_arr()
     # single_idx()
     # multidimen_idx()

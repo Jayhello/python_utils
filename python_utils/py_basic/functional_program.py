@@ -1,5 +1,7 @@
 # _*_ coding:utf-8 _*_
 
+from functools import partial
+
 
 def inc(x):
     def inc_x(y):
@@ -78,9 +80,33 @@ def filter_demo():
     average = reduce(lambda x, y: x + y, odd_lst) / len(odd_lst)
     print average  # 5
 
+
+def f(a, b, c, d):
+    """
+    used by function partial_demo as demo
+    :param a: int
+    :param b: int
+    :param c: int
+    :param d: int
+    :return:
+    """
+    return a * 1000 + b * 100 + c * 10 + d
+
+
+def partial_demo():
+    # A partial function that calls f with
+    # a as 3, b as 1 and c as 4.
+    g = partial(f, 3, 1, 4)
+    print g(5)  # 3145
+
+    g2 = partial(f, d=4, c=3, b=2)
+    print g2(1)  # 1234
+
+
 if __name__ == '__main__':
+    partial_demo()
     # test_inc()
-    map_demo()
+    # map_demo()
     # reduce_demo()
     # filter_demo()
     # cal_aver()
