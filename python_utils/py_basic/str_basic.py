@@ -58,8 +58,16 @@ def char_2int_2char():
     print chr(97)
     # a
 
+
+def fill_zero():
+    s_num = 11
+    print str(s_num).zfill(5)
+    # 00011
+
+
 if __name__ == '__main__':
-    char_2int_2char()
+    print fill_zero()
+    # char_2int_2char()
     # str_replace()
     # str_format_once()
     # remove_sub_str()
