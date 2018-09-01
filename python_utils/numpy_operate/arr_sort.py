@@ -17,7 +17,13 @@ def arr_arg_sort():
     print np.argsort(-x)
     # [1 2 0] descending order
 
-    pass
+    arr = np.array([4, 1, 3, 5])
+    print arr, arr[arr.argsort()]
+    # [4 1 3 5] [1 3 4 5]
+    print arr.argsort()
+    # [1 2 0 3]
+    print np.argsort(-arr), arr[np.argsort(-arr)]
+    # [3 0 2 1], [5 4 3 1]
 
 
 def arr_sort():
@@ -54,7 +60,7 @@ def arr_sum():
     #  [0 1 2]]
 
 if __name__ == '__main__':
-    arr_sum()
-    # arr_arg_sort()
+    # arr_sum()
+    arr_arg_sort()
     # arr_sort()
     pass

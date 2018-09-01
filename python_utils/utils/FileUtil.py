@@ -211,8 +211,77 @@ def get_relative_path():
     # wa\foo\bar
 
 
+def download_from_url():
+    """download file from url, and save it to path"""
+    import urllib
+
+    dw = urllib.URLopener()
+
+    url = 'https://o-hk.ihago.net/ikxd/guest_2.png'
+    f_name = 'path/filename.ext'
+
+    # download and save file
+    dw.retrieve(url, f_name)
+
+
+def get_img_from_dir(base_dir='', lst_ext=['jpg', 'png', 'jpeg']):
+    """Get all the jpg and png file from base_dir
+
+        return: lst ['path/name.jpg, ...']
+    """
+
+    import glob
+    lst_img = []
+    for ext in lst_ext:
+        # append all the jpg
+        lst_img += glob.glob(base_dir + "*." + ext)
+
+    return lst_img
+
+
+def get_file_md5(f_path):
+    """
+    Get md5 of a file
+    :param f_path: file path
+    :return: md5
+    """
+    import hashlib
+
+    md5 = hashlib.md5()
+    with open(f_path, 'rb') as f:
+        for block in iter(lambda: f.read(128), ""):
+            md5.update(block)
+
+    return md5.hexdigest()
+
+
+def batch_rename():
+    """Batch rename file in directory to md5
+    """
+    base_dir = "E:/face_rec/face_det_test/whole_excluded_female_cleaned/"
+    base_dir = "E:/face_rec/face_det_test/whole_excluded_male_cleaned/"
+    base_dir = "E:/face_rec/face_det_test/new_task_8_28/suitable/"
+    base_dir = "E:/face_rec/face_det_test/new_task_8_28/unsuitable/"
+    base_dir = "E:/face_rec/yy_face_demand/cartoon_sample/cartoon_face_images/"
+    base_dir = "E:/tmp_img_select/other_sell/"
+    lst_img = get_img_from_dir(base_dir)
+    # lst_img = get_img_from_dir(base_dir, lst_ext=['gif'])
+
+    for path in lst_img:
+        k_md5 = get_file_md5(path)
+        ext = os.path.splitext(path)[1]
+        # new_name = os.path.join(base_dir, k_md5 + ext)
+        new_name = os.path.join(base_dir, k_md5 + '.jpg')
+        # print "now rename %s -> %s" % (path, new_name)
+        try:
+            os.rename(path, new_name)
+        except WindowsError as e:
+            print "rename error:%s %s" % (e, path)
+
+
 if __name__ == '__main__':
-    get_relative_path()
+    batch_rename()
+    # get_relative_path()
     # get_file_create_time()
     # test_write_list_excel()
     # batch_rename()

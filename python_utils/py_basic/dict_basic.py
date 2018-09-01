@@ -184,7 +184,22 @@ def dic_probability():
     print p[2], p[2][2]
     # {1: 0.1, 2: 0.3} 0.3
 
+
+def dic_extend():
+    d1 = {'a': 1}
+    d2 = {'b': 2}
+
+    # add d2 to d1
+    d1.update(d2)
+    print d1  # {'a': 1, 'b': 2}
+
+    # reset d1
+    d1 = {'a': 1}
+    print dict(d1, **d2)  # {'a': 1, 'b': 2}
+
+
 if __name__ == '__main__':
+    dic_extend()
     # dic_val_lst()
     # dict_pop()
     # sum_dic_val()
@@ -192,7 +207,7 @@ if __name__ == '__main__':
     # dic_count_value()
     # dic_to_lst()
     # dict_sort_by_value()
-    lst_2_dict()
+    # lst_2_dict()
     # iter_dict()
     # iter_dic_sort()
     # iter_dict_remove()

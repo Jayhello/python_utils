@@ -1,10 +1,11 @@
 # coding:utf-8
 
 import socket
+import BaseHTTPServer
 
 
 HOST = "127.0.0.1"
-PORT = 9000
+PORT = 8888
 
 RESPONSE = b"""\
 HTTP/1.1 200 OK
@@ -13,18 +14,20 @@ Content-length: 15
 
 <h1>Hello!</h1>""".replace(b"\n", b"\r\n")
 
-with socket.socket() as server_sock:
+
+def test_simple():
+    server_sock = socket.socket()
     server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server_sock.bind((HOST, PORT))
     server_sock.listen(0)
     print "Listening on %s:%s..." % (HOST, PORT)
 
-    client_sock, client_addr = server_sock.accept()
-    print "New connection from %s." % client_addr
-    with client_sock:
+    while 1:
+        client_sock, client_addr = server_sock.accept()
+        print "New connection from %s, %s." % client_addr
         client_sock.sendall(RESPONSE)
 
 
 if __name__ == '__main__':
-
+    test_simple()
     pass
