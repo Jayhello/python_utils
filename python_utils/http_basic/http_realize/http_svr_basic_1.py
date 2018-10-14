@@ -15,6 +15,9 @@ Content-length: 15
 <h1>Hello!</h1>""".replace(b"\n", b"\r\n")
 
 
+RESPONSE = 'a' * (1024 * 1024)
+
+
 def test_simple():
     server_sock = socket.socket()
     server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -24,8 +27,10 @@ def test_simple():
 
     while 1:
         client_sock, client_addr = server_sock.accept()
-        print "New connection from %s, %s." % client_addr
-        client_sock.sendall(RESPONSE)
+        print "New connection from %s." % client_addr
+        # client_sock.sendall(RESPONSE)
+        n = client_sock.send(RESPONSE)
+        print "just send %s bytes" % n
 
 
 if __name__ == '__main__':

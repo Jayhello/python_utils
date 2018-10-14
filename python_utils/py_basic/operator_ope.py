@@ -61,6 +61,16 @@ def reduce_ope():
     print reduce(operator.add, a)
     # 14
 
+    lst = [3, 2, 3]
+    print reduce(operator.xor, lst)
+    # 2
+
+    # use reduce with init value, sum from init
+    lst = [1, 2, 3]
+    print reduce(operator.add, lst, 10)
+    # 16
+
+
 if __name__ == '__main__':
     reduce_ope()
     # item_ope()

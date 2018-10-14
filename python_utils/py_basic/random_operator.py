@@ -50,4 +50,7 @@ if __name__ == '__main__':
     import time
     t = int(time.time())
     print random.randint(1000000, 100000000)
+
+    print random.choice([1, 3, 5, 7])
+
     pass

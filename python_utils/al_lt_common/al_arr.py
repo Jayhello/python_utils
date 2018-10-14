@@ -274,9 +274,23 @@ def two_sum(lst, val):
     return None
 
 
+def two_sum_v2(lst, target):
+    d_val_idx = {}
+
+    for i in xrange(len(lst)):
+        diff = target - lst[i]
+        if diff in d_val_idx and d_val_idx[diff] != i:
+            return [i, d_val_idx[diff]]
+
+        d_val_idx[lst[i]] = i
+
+    return []
+
+
 def test_ts():
     lst, val = [2, 11, 7, 15], 9
     print two_sum(lst, val)
+    print two_sum_v2(lst, val)
     pass
 
 
@@ -854,9 +868,9 @@ def test_min_str():
 
 
 if __name__ == '__main__':
-    test_min_str()
-    a, b = 32, 3
-    print str(a) + str(b) < str(b) + str(a)
+    # test_min_str()
+    # a, b = 32, 3
+    # print str(a) + str(b) < str(b) + str(a)
     # test_triangle()
     # test_subsets()
     # test_i2r()
@@ -880,7 +894,7 @@ if __name__ == '__main__':
     # test_re()
     # test_s3c()
     # test_3sum()
-    # test_ts()
+    test_ts()
     # test_mo2()
     # test_srs()
     # test_rd_2()

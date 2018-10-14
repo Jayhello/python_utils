@@ -89,30 +89,6 @@ def all_subdir_join():
     # ['F:/dir1', 'F:/dir2']
 
 
-def batch_rename():
-    """
-    two-level dir
-    added 2017/8/17, rename dir hello.jpg
-    :return:
-    """
-    # base_dir = 'F:/ad_samples/test_samples/'
-    base_dir = 'F:/ad_samples/test_samples_2/'
-    base_dir = 'F:/ad_samples/img_voice_test/tencent_img/'
-    sub_dir_list = glob.glob(base_dir + '*')
-    # print sub_dir_list ['F:/dir1', 'F:/dir2']
-    for dir_item in sub_dir_list:
-        files = glob.glob(dir_item + '/*.jpg')
-        # files = os.listdir(dir_item)
-        # os.chdir(dir_item)
-        i = 0
-        if len(files) == 0:
-            continue
-        for f in files:
-            # fname = 'xx' + str(i)
-            os.rename(f, os.path.join(dir_item, str(i) + '.jpg'))
-            i += 1
-
-
 def batch_rename_files_in_dir():
     """
     signal level dir
@@ -255,6 +231,33 @@ def get_file_md5(f_path):
     return md5.hexdigest()
 
 
+def batch_rename_recursive():
+    """
+    two-level dir
+    added 2017/8/17, rename dir hello.jpg
+    :return:
+    """
+    # base_dir = 'F:/ad_samples/test_samples/'
+    base_dir = 'F:/ad_samples/test_samples_2/'
+    base_dir = 'E:/face_rec/short_vedio_famous_people/people_lst/'
+    sub_dir_list = glob.glob(base_dir + '*')
+    # print sub_dir_list ['F:/dir1', 'F:/dir2']
+    for dir_item in sub_dir_list:
+        dir_item = dir_item.replace('\\', '/')
+        files = get_img_from_dir(dir_item)
+        # files = os.listdir(dir_item)
+        # os.chdir(dir_item)
+        i = 0
+        if len(files) == 0:
+            continue
+        for f in files:
+            # fname = 'xx' + str(i)
+            k_md5 = get_file_md5(f)
+            new_name = os.path.join(dir_item, k_md5 + '.jpg')
+            os.rename(f, new_name)
+            i += 1
+
+
 def batch_rename():
     """Batch rename file in directory to md5
     """
@@ -263,7 +266,8 @@ def batch_rename():
     base_dir = "E:/face_rec/face_det_test/new_task_8_28/suitable/"
     base_dir = "E:/face_rec/face_det_test/new_task_8_28/unsuitable/"
     base_dir = "E:/face_rec/yy_face_demand/cartoon_sample/cartoon_face_images/"
-    base_dir = "E:/tmp_img_select/other_sell/"
+    base_dir = "E:/face_rec/yy_face_demand/cartoon_sample/pet_test_images/"
+    base_dir = "E:/face_rec/face_det_test/new_train_data/"
     lst_img = get_img_from_dir(base_dir)
     # lst_img = get_img_from_dir(base_dir, lst_ext=['gif'])
 
@@ -280,7 +284,10 @@ def batch_rename():
 
 
 if __name__ == '__main__':
-    batch_rename()
+    # batch_rename()
+
+    batch_rename_recursive()
+
     # get_relative_path()
     # get_file_create_time()
     # test_write_list_excel()
