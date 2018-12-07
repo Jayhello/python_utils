@@ -198,8 +198,16 @@ def dic_extend():
     print dict(d1, **d2)  # {'a': 1, 'b': 2}
 
 
+def get_default_value():
+    d = {1: "xy1", 2: "xy2"}
+    # print d[3]  #  KeyError: 3
+    print d.get(3)  # None
+    print d.get(3, "xy3")  # xy3
+
+
 if __name__ == '__main__':
-    dic_extend()
+    get_default_value()
+    # dic_extend()
     # dic_val_lst()
     # dict_pop()
     # sum_dic_val()

@@ -2,6 +2,7 @@
 
 import socket
 import BaseHTTPServer
+import time
 
 
 HOST = "127.0.0.1"
@@ -15,7 +16,7 @@ Content-length: 15
 <h1>Hello!</h1>""".replace(b"\n", b"\r\n")
 
 
-RESPONSE = 'a' * (1024 * 1024)
+RESPONSE = 'a' * (1024 * 1)
 
 
 def test_simple():
@@ -27,8 +28,13 @@ def test_simple():
 
     while 1:
         client_sock, client_addr = server_sock.accept()
-        print "New connection from %s." % client_addr
+        print "New connection from %s:%s." % (client_addr)
         # client_sock.sendall(RESPONSE)
+        time.sleep(12)
+
+        data = client_sock.recv(1024)
+        print "recv :%s" % data
+
         n = client_sock.send(RESPONSE)
         print "just send %s bytes" % n
 

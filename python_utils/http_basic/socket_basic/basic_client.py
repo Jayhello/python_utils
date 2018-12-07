@@ -1,5 +1,6 @@
 # coding:utf-8
 import socket
+import time
 
 
 def basic_block():
@@ -35,17 +36,18 @@ def basic_connect_rcv():
     :return:
     """
     s = socket.socket()
-    # s.connect(('127.0.0.1', 8888))
-    s.connect(('221.228.106.244', 8888))
+    s.connect(('127.0.0.1', 8888))
+    # s.connect(('221.228.106.244', 8888))
     print("We are connected to %s:%d" % s.getpeername())
     # s_rcv = str(s.recv(1024 * 1024))
     # print 'recv, len: %s, %s' % (len(s_rcv), s_rcv)
 
-    buf = 'a' * 1024 * 1024
-    while 1:
+    buf = '123456789 -> '
+    # time.sleep(68)
+    for i in xrange(5):
         n = s.send(buf)
         print "now send %s" % n
-
+        time.sleep(2)
 
 if __name__ == '__main__':
     # basic_block()
